@@ -3,10 +3,9 @@ topMenu = {
     slider: $(".slider")
     links: {
         elems: $(".menu-link"),
-        length: $(".menu-link").length,
         width: [],
-        position: []
         allWidth: 0,
+        position: []
     },
     elemsMargin: 0
 }
@@ -14,27 +13,28 @@ topMenu = {
 topMenu.links.elems.map (el, val) ->
     topMenu.links.width[el] = val.offsetWidth
 
-topMenu.links.allWidth = topMenu.links.width.reduce (sum, current) ->
+topMenu.links.allWidth = topMenu.links.width.reduce (sum, cur) ->
     topMenu.links.position.push(sum)
-    sum + current;
+    sum + cur;
 , 0
 
-sliderMargin = (button = $('.menu-link.select')) ->
-    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[button.index()] + (topMenu.elemsMargin*(button.index()*2) + button.index()*4) - 20
+sliderMover = (button = $('.menu-link.select')) ->
+    buttonIndex = button.index()
+    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[buttonIndex] + (topMenu.elemsMargin * (buttonIndex * 2) + buttonIndex * 4) - 20
     topMenu.slider.css 'margin-left', sliderMarginNum
-        .css 'width', button.width() + 40
+        .css 'width', topMenu.links.width[buttonIndex] + 40
 
-menuMargin = ->
+do menuMover = ->
     menuWidth = topMenu.panel.width()
-    topMenu.elemsMargin = Math.floor((menuWidth-topMenu.links.allWidth)/(topMenu.links.length*2)-2)
-    topMenu.links.elems.css "padding", "0 #{topMenu.elemsMargin}px"
-    sliderMargin()
-
-menuMargin()
+    topMenu.elemsMargin = Math.floor((menuWidth - topMenu.links.allWidth) / (topMenu.links.elems.length * 2) - 2)
+    topMenu.links.elems.css "padding", "5px #{topMenu.elemsMargin}px"
+    sliderMover()
 
 $(window).resize ->
-    menuMargin()
+    menuMover()
 
 topMenu.links.elems.mouseover ->
-    sliderMargin $(this)
-    return
+    sliderMover($(this))
+    
+topMenu.links.elems.mouseout ->
+    sliderMover()

@@ -1,30 +1,33 @@
+body {
+    background-color: #fbfbfb;
+    font-family: arial, sans-serif;
+}
 .logo-panel {
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .logo {
     background-image: url('/img/logo.png');
-    background-size: 520px;
-    width: 520px;
-    height: 320px;
+    background-size: 260px;
+    width: 260px;
+    height: 160px;
     margin: auto;
 }
 .menu-panel {
-    margin-top: 40px;
-}
-.menu {
-    background-color: #000;
+    margin-top: 60px;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 .menu-link, .menu-link:hover {
     color: #101050;
     text-decoration: none;
 }
 .slider-panel {
-    background-color: #dbdbdb;
+    background-color: #ebebeb;
     height: 2px;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 .slider {
     background-color: #101050;
     height: 2px;
-    transition: .3s;
+    transition: .5s;
 }

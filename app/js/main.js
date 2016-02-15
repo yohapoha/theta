@@ -1,15 +1,14 @@
 (function() {
-  var menuMargin, sliderMargin, topMenu;
+  var menuMover, sliderMover, topMenu;
 
   topMenu = {
     panel: $(".menu-panel"),
     slider: $(".slider"),
     links: {
       elems: $(".menu-link"),
-      length: $(".menu-link").length,
       width: [],
-      position: [],
-      allWidth: 0
+      allWidth: 0,
+      position: []
     },
     elemsMargin: 0
   };
@@ -18,36 +17,39 @@
     return topMenu.links.width[el] = val.offsetWidth;
   });
 
-  topMenu.links.allWidth = topMenu.links.width.reduce(function(sum, current) {
+  topMenu.links.allWidth = topMenu.links.width.reduce(function(sum, cur) {
     topMenu.links.position.push(sum);
-    return sum + current;
+    return sum + cur;
   }, 0);
 
-  sliderMargin = function(button) {
-    var sliderMarginNum;
+  sliderMover = function(button) {
+    var buttonIndex, sliderMarginNum;
     if (button == null) {
       button = $('.menu-link.select');
     }
-    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[button.index()] + (topMenu.elemsMargin * (button.index() * 2) + button.index() * 4) - 20;
-    return topMenu.slider.css('margin-left', sliderMarginNum).css('width', button.width() + 40);
+    buttonIndex = button.index();
+    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[buttonIndex] + (topMenu.elemsMargin * (buttonIndex * 2) + buttonIndex * 4) - 20;
+    return topMenu.slider.css('margin-left', sliderMarginNum).css('width', topMenu.links.width[buttonIndex] + 40);
   };
 
-  menuMargin = function() {
+  (menuMover = function() {
     var menuWidth;
     menuWidth = topMenu.panel.width();
-    topMenu.elemsMargin = Math.floor((menuWidth - topMenu.links.allWidth) / (topMenu.links.length * 2) - 2);
-    topMenu.links.elems.css("padding", "0 " + topMenu.elemsMargin + "px");
-    return sliderMargin();
-  };
-
-  menuMargin();
+    topMenu.elemsMargin = Math.floor((menuWidth - topMenu.links.allWidth) / (topMenu.links.elems.length * 2) - 2);
+    topMenu.links.elems.css("padding", "5px " + topMenu.elemsMargin + "px");
+    return sliderMover();
+  })();
 
   $(window).resize(function() {
-    return menuMargin();
+    return menuMover();
   });
 
   topMenu.links.elems.mouseover(function() {
-    sliderMargin($(this));
+    return sliderMover($(this));
+  });
+
+  topMenu.links.elems.mouseout(function() {
+    return sliderMover();
   });
 
 }).call(this);
