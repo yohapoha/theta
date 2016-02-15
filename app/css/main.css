@@ -1,0 +1,30 @@
+.logo-panel {
+    margin-top: 20px;
+}
+.logo {
+    background-image: url('/img/logo.png');
+    background-size: 520px;
+    width: 520px;
+    height: 320px;
+    margin: auto;
+}
+.menu-panel {
+    margin-top: 40px;
+}
+.menu {
+    background-color: #000;
+}
+.menu-link, .menu-link:hover {
+    color: #101050;
+    text-decoration: none;
+}
+.slider-panel {
+    background-color: #dbdbdb;
+    height: 2px;
+    margin-top: 2px;
+}
+.slider {
+    background-color: #101050;
+    height: 2px;
+    transition: .3s;
+}
