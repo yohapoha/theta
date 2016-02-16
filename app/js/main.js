@@ -52,7 +52,7 @@
     topMenu.links.positions.map(function(val, pos) {
       return topMenu.slider.positions.push(topMenu.links.margin + val + (topMenu.links.margin * pos * 2) - 20);
     });
-    topMenu.links.elems.css("padding", "5px " + topMenu.links.margin + "px");
+    topMenu.links.elems.css("padding", "10px " + topMenu.links.margin + "px 5px");
     return sliderMargin();
   })();
 
