@@ -1,5 +1,5 @@
 (function() {
-  var menuMover, sliderMover, topMenu;
+  var menuMargin, sliderMargin, topMenu;
 
   topMenu = {
     panel: {
@@ -13,7 +13,6 @@
     },
     links: {
       elems: $(".menu-link"),
-<<<<<<< HEAD
       widths: [],
       fullWidth: 0,
       margin: 0,
@@ -21,13 +20,6 @@
       hashes: [],
       selected: "#main"
     }
-=======
-      width: [],
-      allWidth: 0,
-      position: []
-    },
-    elemsMargin: 0
->>>>>>> origin/master
   };
 
   topMenu.links.elems.map(function(pos, elem) {
@@ -39,7 +31,6 @@
     }
   });
 
-<<<<<<< HEAD
   topMenu.links.fullWidth = topMenu.links.widths.reduce(function(sum, current) {
     topMenu.links.positions.push(sum);
     return sum + current;
@@ -63,37 +54,13 @@
     });
     topMenu.links.elems.css("padding", "5px " + topMenu.links.margin + "px");
     return sliderMargin();
-=======
-  topMenu.links.allWidth = topMenu.links.width.reduce(function(sum, cur) {
-    topMenu.links.position.push(sum);
-    return sum + cur;
-  }, 0);
-
-  sliderMover = function(button) {
-    var buttonIndex, sliderMarginNum;
-    if (button == null) {
-      button = $('.menu-link.select');
-    }
-    buttonIndex = button.index();
-    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[buttonIndex] + (topMenu.elemsMargin * (buttonIndex * 2) + buttonIndex * 4) - 20;
-    return topMenu.slider.css('margin-left', sliderMarginNum).css('width', topMenu.links.width[buttonIndex] + 40);
-  };
-
-  (menuMover = function() {
-    var menuWidth;
-    menuWidth = topMenu.panel.width();
-    topMenu.elemsMargin = Math.floor((menuWidth - topMenu.links.allWidth) / (topMenu.links.elems.length * 2) - 2);
-    topMenu.links.elems.css("padding", "5px " + topMenu.elemsMargin + "px");
-    return sliderMover();
->>>>>>> origin/master
   })();
 
   $(window).resize(function() {
-    return menuMover();
+    return menuMargin();
   });
 
   topMenu.links.elems.mouseover(function() {
-<<<<<<< HEAD
     return sliderMargin(this.hash);
   });
 
@@ -104,13 +71,6 @@
   topMenu.links.elems.click(function() {
     topMenu.links.selected = this.hash;
     return sliderMargin();
-=======
-    return sliderMover($(this));
-  });
-
-  topMenu.links.elems.mouseout(function() {
-    return sliderMover();
->>>>>>> origin/master
   });
 
 }).call(this);
