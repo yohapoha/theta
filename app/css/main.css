@@ -5,33 +5,9 @@ body {
 a, a:visited, a:hover, a:active, a:focus {
     color: #000;
     text-decoration: none;
+    outline: none;
 }
-.logo-panel {
-    margin-top: 40px;
-}
-.logo {
-    background-image: url('/img/logo_b.png');
-    background-size: 260px;
-    width: 260px;
-    height: 160px;
-    margin: auto;
-}
-.menu-panel {
-    margin-top: 50px;
-    font-size: 12px;
-    text-transform: uppercase;
-}
-.menu-link, .menu-link:hover {
-    color: #000;
-    text-decoration: none;
-    float: left;
-}
-.slider-panel {
-    background-color: #ebebeb;
-    height: 2px;
-}
-.slider {
-    background-color: #000;
-    height: 2px;
-    transition: .5s;
+
+.red-bg {
+    background-color: red;
 }
