@@ -2,15 +2,22 @@ body {
     background-color: #fbfbfb;
     font-family: arial, sans-serif;
 }
+<<<<<<< HEAD
 a, a:visited, a:hover, a:active, a:focus {
     color: #000;
     text-decoration: none;
 }
+=======
+>>>>>>> origin/master
 .logo-panel {
     margin-top: 40px;
 }
 .logo {
+<<<<<<< HEAD
     background-image: url('/img/logo_b.png');
+=======
+    background-image: url('/img/logo.png');
+>>>>>>> origin/master
     background-size: 260px;
     width: 260px;
     height: 160px;
@@ -28,11 +35,15 @@ a, a:visited, a:hover, a:active, a:focus {
     float: left;
 }
 .slider-panel {
-    background-color: #dbdbdb;
+    background-color: #ebebeb;
     height: 2px;
+<<<<<<< HEAD
+=======
+    margin-top: 3px;
+>>>>>>> origin/master
 }
 .slider {
     background-color: #000;
     height: 2px;
-    transition: .3s;
+    transition: .5s;
 }

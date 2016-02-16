@@ -9,6 +9,7 @@ topMenu = {
         positions: []
     }
     links: {
+<<<<<<< HEAD
         elems: $(".menu-link")
         widths: []
         fullWidth: 0
@@ -17,6 +18,14 @@ topMenu = {
         hashes: []
         selected: "#main"
     }
+=======
+        elems: $(".menu-link"),
+        width: [],
+        allWidth: 0,
+        position: []
+    },
+    elemsMargin: 0
+>>>>>>> origin/master
 }
 
 topMenu.links.elems.map (pos, elem) ->
@@ -26,6 +35,7 @@ topMenu.links.elems.map (pos, elem) ->
     if elem.hash == window.location.hash
         topMenu.links.selected = elem.hash
 
+<<<<<<< HEAD
 topMenu.links.fullWidth = topMenu.links.widths.reduce (sum, current) ->
     topMenu.links.positions.push(sum)
     sum + current;
@@ -44,11 +54,30 @@ do menuMargin = ->
         topMenu.slider.positions.push(topMenu.links.margin + val + (topMenu.links.margin * pos * 2) - 20)
     topMenu.links.elems.css "padding", "5px #{topMenu.links.margin}px"
     sliderMargin()
+=======
+topMenu.links.allWidth = topMenu.links.width.reduce (sum, cur) ->
+    topMenu.links.position.push(sum)
+    sum + cur;
+, 0
+
+sliderMover = (button = $('.menu-link.select')) ->
+    buttonIndex = button.index()
+    sliderMarginNum = topMenu.elemsMargin + topMenu.links.position[buttonIndex] + (topMenu.elemsMargin * (buttonIndex * 2) + buttonIndex * 4) - 20
+    topMenu.slider.css 'margin-left', sliderMarginNum
+        .css 'width', topMenu.links.width[buttonIndex] + 40
+
+do menuMover = ->
+    menuWidth = topMenu.panel.width()
+    topMenu.elemsMargin = Math.floor((menuWidth - topMenu.links.allWidth) / (topMenu.links.elems.length * 2) - 2)
+    topMenu.links.elems.css "padding", "5px #{topMenu.elemsMargin}px"
+    sliderMover()
+>>>>>>> origin/master
 
 $(window).resize ->
-    menuMargin()
+    menuMover()
 
 topMenu.links.elems.mouseover ->
+<<<<<<< HEAD
     sliderMargin(this.hash)
 
 topMenu.links.elems.mouseout ->
@@ -57,3 +86,9 @@ topMenu.links.elems.mouseout ->
 topMenu.links.elems.click ->
     topMenu.links.selected = this.hash
     sliderMargin()
+=======
+    sliderMover($(this))
+    
+topMenu.links.elems.mouseout ->
+    sliderMover()
+>>>>>>> origin/master
