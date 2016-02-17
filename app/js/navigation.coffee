@@ -36,6 +36,7 @@ navigation = {
             elem: $(".bottom")
             height: 40
         }
+        position: 0
         navbarFix: ->
             if $(window).scrollTop() >= navigation.scroll.head.height
                 if not navigation.scroll.navbar.elem.hasClass "navbar-fixed-top"
@@ -47,10 +48,11 @@ navigation = {
                     navigation.scroll.navbar.elem.removeClass "navbar-fixed-top"
                     navigation.scroll.bottom.elem.css "height", 0
                     navigation.scroll.content.elem.css "padding-top", 0
-        scrollTo: ->
-
+        scrollTo: (index) ->
+            $(window).scrollTop(navigation.pages.positions[index] - navigation.scroll.navbar.padding)
     }
 }
+
 navigation.scroll.navbarFix()
 navigation.links.elems.map (pos, elem) ->
     navigation.slider.widths.push elem.offsetWidth + navigation.slider.outerwidth
@@ -91,9 +93,22 @@ navigation.links.elems.mouseout ->
 navigation.links.elems.click ->
     navigation.links.selected = navigation.links.hashes.indexOf(this.hash)
     sliderMove(navigation.links.selected)
-    console.log navigation.pages.positions[navigation.links.selected]
-    $(window).scrollTop(navigation.pages.positions[navigation.links.selected])
+    navigation.scroll.scrollTo(navigation.links.selected)
 
 
 $(window).scroll ->
     navigation.scroll.navbarFix()
+
+    scrollPos = $(window).scrollTop()
+    startPos = if navigation.scroll.position <= 0 then 0 else navigation.scroll.position
+    scrollStart = navigation.pages.positions[startPos] - navigation.scroll.navbar.padding
+    endPos = if navigation.scroll.position >= navigation.links.hashes.length then navigation.links.hashes.length else navigation.scroll.position+1
+    scrollEnd = navigation.pages.positions[endPos] - navigation.scroll.navbar.padding
+    #console.log navigation.links.hashes[navigation.links.hashes.length-1]
+    if not (scrollStart <= scrollPos <= scrollEnd)
+        if scrollPos < scrollStart and navigation.scroll.position != 0
+            --navigation.scroll.position
+        if scrollPos > scrollEnd and navigation.scroll.position != navigation.links.hashes.length-1
+            ++navigation.scroll.position
+    else
+        console.log navigation.links.hashes[navigation.scroll.position]

@@ -39,6 +39,7 @@
         elem: $(".bottom"),
         height: 40
       },
+      position: 0,
       navbarFix: function() {
         if ($(window).scrollTop() >= navigation.scroll.head.height) {
           if (!navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
@@ -54,7 +55,9 @@
           }
         }
       },
-      scrollTo: function() {}
+      scrollTo: function(index) {
+        return $(window).scrollTop(navigation.pages.positions[index] - navigation.scroll.navbar.padding);
+      }
     }
   };
 
@@ -111,12 +114,27 @@
   navigation.links.elems.click(function() {
     navigation.links.selected = navigation.links.hashes.indexOf(this.hash);
     sliderMove(navigation.links.selected);
-    console.log(navigation.pages.positions[navigation.links.selected]);
-    return $(window).scrollTop(navigation.pages.positions[navigation.links.selected]);
+    return navigation.scroll.scrollTo(navigation.links.selected);
   });
 
   $(window).scroll(function() {
-    return navigation.scroll.navbarFix();
+    var endPos, scrollEnd, scrollPos, scrollStart, startPos;
+    navigation.scroll.navbarFix();
+    scrollPos = $(window).scrollTop();
+    startPos = navigation.scroll.position <= 0 ? 0 : navigation.scroll.position;
+    scrollStart = navigation.pages.positions[startPos] - navigation.scroll.navbar.padding;
+    endPos = navigation.scroll.position >= navigation.links.hashes.length ? navigation.links.hashes.length : navigation.scroll.position + 1;
+    scrollEnd = navigation.pages.positions[endPos] - navigation.scroll.navbar.padding;
+    if (!((scrollStart <= scrollPos && scrollPos <= scrollEnd))) {
+      if (scrollPos < scrollStart && navigation.scroll.position !== 0) {
+        --navigation.scroll.position;
+      }
+      if (scrollPos > scrollEnd && navigation.scroll.position !== navigation.links.hashes.length - 1) {
+        return ++navigation.scroll.position;
+      }
+    } else {
+      return console.log(navigation.links.hashes[navigation.scroll.position]);
+    }
   });
 
 }).call(this);
