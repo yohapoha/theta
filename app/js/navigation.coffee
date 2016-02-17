@@ -16,70 +16,84 @@ navigation = {
         margin: 0
         positions: []
         hashes: []
-        selected: "#main"
+        selected: 0
+    }
+    pages: {
+        positions: []
     }
     scroll: {
         head: {
             height: $(".head").outerHeight()
         }
-        nav: {
+        navbar: {
             elem: $(".navigation")
+            padding: 40
+        }
+        content: {
+            elem: $(".content")
         }
         bottom: {
             elem: $(".bottom")
             height: 40
         }
+        navbarFix: ->
+            if $(window).scrollTop() >= navigation.scroll.head.height
+                if not navigation.scroll.navbar.elem.hasClass "navbar-fixed-top"
+                    navigation.scroll.navbar.elem.addClass "navbar-fixed-top"
+                    navigation.scroll.bottom.elem.css "height", navigation.scroll.bottom.height
+                    navigation.scroll.content.elem.css "padding-top", navigation.scroll.navbar.padding
+            else
+                if navigation.scroll.navbar.elem.hasClass "navbar-fixed-top"
+                    navigation.scroll.navbar.elem.removeClass "navbar-fixed-top"
+                    navigation.scroll.bottom.elem.css "height", 0
+                    navigation.scroll.content.elem.css "padding-top", 0
+        scrollTo: ->
+
     }
 }
-
+navigation.scroll.navbarFix()
 navigation.links.elems.map (pos, elem) ->
-    navigation.slider.widths[pos] = elem.offsetWidth + navigation.slider.outerwidth
-    navigation.links.widths[pos] = elem.offsetWidth
-    navigation.links.hashes[pos] = elem.hash
+    navigation.slider.widths.push elem.offsetWidth + navigation.slider.outerwidth
+    navigation.links.widths.push elem.offsetWidth
+    navigation.links.hashes.push elem.hash
     if elem.hash == window.location.hash
-        navigation.links.selected = elem.hash
+        navigation.links.selected = navigation.links.hashes.indexOf(elem.hash)
 
 navigation.links.fullWidth = navigation.links.widths.reduce (sum, current) ->
-    navigation.links.positions.push(sum)
+    navigation.links.positions.push sum
     sum + current;
 , 0
-
-sliderMove = (hash = navigation.links.selected) ->
-    buttonIndex = navigation.links.hashes.indexOf(hash)
-    navigation.slider.elem.css 'margin-left', navigation.slider.positions[buttonIndex]
-        .css 'width', navigation.slider.widths[buttonIndex]
+sliderMove = (index = navigation.links.selected) ->
+    navigation.slider.elem.css 'margin-left', navigation.slider.positions[index]
+        .css 'width', navigation.slider.widths[index]
 
 do linksMargin = ->
     navigation.panel.width = navigation.panel.elem.width()
     navigation.links.margin = Math.floor((navigation.panel.width - navigation.links.fullWidth) / (navigation.links.elems.length * 2))
+    navigation.links.elems.css "padding", "10px #{navigation.links.margin}px 6px"
     navigation.slider.positions = []
     navigation.links.positions.map (val, pos) ->
         navigation.slider.positions.push(navigation.links.margin + val + (navigation.links.margin * pos * 2) - navigation.slider.outerwidth / 2)
-    navigation.links.elems.css "padding", "10px #{navigation.links.margin}px 6px"
     sliderMove()
-
-do scrolling =  ->
-    if $(window).scrollTop() >= navigation.scroll.head.height
-        if not navigation.scroll.nav.elem.hasClass "navbar-fixed-top"
-            navigation.scroll.nav.elem.addClass "navbar-fixed-top"
-            navigation.scroll.bottom.elem.css "height", navigation.scroll.bottom.height
-    else
-        if navigation.scroll.nav.elem.hasClass "navbar-fixed-top"
-            navigation.scroll.nav.elem.removeClass "navbar-fixed-top"
-            navigation.scroll.bottom.elem.css "height", 0
+    navigation.pages.positions = []
+    navigation.links.elems.map (pos, elem) ->
+        navigation.pages.positions.push $("#{elem.hash}-page").offset().top
 
 $(window).resize ->
     linksMargin()
 
 navigation.links.elems.mouseover ->
-    sliderMove(this.hash)
+    sliderMove(navigation.links.hashes.indexOf(this.hash))
 
 navigation.links.elems.mouseout ->
     sliderMove()
 
 navigation.links.elems.click ->
-    navigation.links.selected = this.hash
-    sliderMove()
+    navigation.links.selected = navigation.links.hashes.indexOf(this.hash)
+    sliderMove(navigation.links.selected)
+    console.log navigation.pages.positions[navigation.links.selected]
+    $(window).scrollTop(navigation.pages.positions[navigation.links.selected])
+
 
 $(window).scroll ->
-    scrolling()
+    navigation.scroll.navbarFix()

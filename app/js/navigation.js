@@ -1,5 +1,5 @@
 (function() {
-  var linksMargin, navigation, scrolling, sliderMove;
+  var linksMargin, navigation, sliderMove;
 
   navigation = {
     panel: {
@@ -19,28 +19,53 @@
       margin: 0,
       positions: [],
       hashes: [],
-      selected: "#main"
+      selected: 0
+    },
+    pages: {
+      positions: []
     },
     scroll: {
       head: {
         height: $(".head").outerHeight()
       },
-      nav: {
-        elem: $(".navigation")
+      navbar: {
+        elem: $(".navigation"),
+        padding: 40
+      },
+      content: {
+        elem: $(".content")
       },
       bottom: {
         elem: $(".bottom"),
         height: 40
-      }
+      },
+      navbarFix: function() {
+        if ($(window).scrollTop() >= navigation.scroll.head.height) {
+          if (!navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
+            navigation.scroll.navbar.elem.addClass("navbar-fixed-top");
+            navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
+            return navigation.scroll.content.elem.css("padding-top", navigation.scroll.navbar.padding);
+          }
+        } else {
+          if (navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
+            navigation.scroll.navbar.elem.removeClass("navbar-fixed-top");
+            navigation.scroll.bottom.elem.css("height", 0);
+            return navigation.scroll.content.elem.css("padding-top", 0);
+          }
+        }
+      },
+      scrollTo: function() {}
     }
   };
 
+  navigation.scroll.navbarFix();
+
   navigation.links.elems.map(function(pos, elem) {
-    navigation.slider.widths[pos] = elem.offsetWidth + navigation.slider.outerwidth;
-    navigation.links.widths[pos] = elem.offsetWidth;
-    navigation.links.hashes[pos] = elem.hash;
+    navigation.slider.widths.push(elem.offsetWidth + navigation.slider.outerwidth);
+    navigation.links.widths.push(elem.offsetWidth);
+    navigation.links.hashes.push(elem.hash);
     if (elem.hash === window.location.hash) {
-      return navigation.links.selected = elem.hash;
+      return navigation.links.selected = navigation.links.hashes.indexOf(elem.hash);
     }
   });
 
@@ -49,38 +74,26 @@
     return sum + current;
   }, 0);
 
-  sliderMove = function(hash) {
-    var buttonIndex;
-    if (hash == null) {
-      hash = navigation.links.selected;
+  sliderMove = function(index) {
+    if (index == null) {
+      index = navigation.links.selected;
     }
-    buttonIndex = navigation.links.hashes.indexOf(hash);
-    return navigation.slider.elem.css('margin-left', navigation.slider.positions[buttonIndex]).css('width', navigation.slider.widths[buttonIndex]);
+    return navigation.slider.elem.css('margin-left', navigation.slider.positions[index]).css('width', navigation.slider.widths[index]);
   };
 
   (linksMargin = function() {
     navigation.panel.width = navigation.panel.elem.width();
     navigation.links.margin = Math.floor((navigation.panel.width - navigation.links.fullWidth) / (navigation.links.elems.length * 2));
+    navigation.links.elems.css("padding", "10px " + navigation.links.margin + "px 6px");
     navigation.slider.positions = [];
     navigation.links.positions.map(function(val, pos) {
       return navigation.slider.positions.push(navigation.links.margin + val + (navigation.links.margin * pos * 2) - navigation.slider.outerwidth / 2);
     });
-    navigation.links.elems.css("padding", "10px " + navigation.links.margin + "px 6px");
-    return sliderMove();
-  })();
-
-  (scrolling = function() {
-    if ($(window).scrollTop() >= navigation.scroll.head.height) {
-      if (!navigation.scroll.nav.elem.hasClass("navbar-fixed-top")) {
-        navigation.scroll.nav.elem.addClass("navbar-fixed-top");
-        return navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
-      }
-    } else {
-      if (navigation.scroll.nav.elem.hasClass("navbar-fixed-top")) {
-        navigation.scroll.nav.elem.removeClass("navbar-fixed-top");
-        return navigation.scroll.bottom.elem.css("height", 0);
-      }
-    }
+    sliderMove();
+    navigation.pages.positions = [];
+    return navigation.links.elems.map(function(pos, elem) {
+      return navigation.pages.positions.push($(elem.hash + "-page").offset().top);
+    });
   })();
 
   $(window).resize(function() {
@@ -88,7 +101,7 @@
   });
 
   navigation.links.elems.mouseover(function() {
-    return sliderMove(this.hash);
+    return sliderMove(navigation.links.hashes.indexOf(this.hash));
   });
 
   navigation.links.elems.mouseout(function() {
@@ -96,12 +109,14 @@
   });
 
   navigation.links.elems.click(function() {
-    navigation.links.selected = this.hash;
-    return sliderMove();
+    navigation.links.selected = navigation.links.hashes.indexOf(this.hash);
+    sliderMove(navigation.links.selected);
+    console.log(navigation.pages.positions[navigation.links.selected]);
+    return $(window).scrollTop(navigation.pages.positions[navigation.links.selected]);
   });
 
   $(window).scroll(function() {
-    return scrolling();
+    return navigation.scroll.navbarFix();
   });
 
 }).call(this);
