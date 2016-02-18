@@ -4,6 +4,7 @@
   navigation = {
     panel: {
       elem: $(".navigation-panel"),
+      height: $(".navigation-panel").outerHeight() + $(".slider-panel").outerHeight(),
       width: 0
     },
     slider: {
@@ -14,6 +15,7 @@
     },
     links: {
       elems: $(".navigation-link"),
+      length: 0,
       widths: [],
       fullWidth: 0,
       margin: 0,
@@ -29,8 +31,7 @@
         height: $(".head").outerHeight()
       },
       navbar: {
-        elem: $(".navigation"),
-        padding: 40
+        elem: $(".navigation")
       },
       content: {
         elem: $(".content")
@@ -39,13 +40,12 @@
         elem: $(".bottom"),
         height: 40
       },
-      position: 0,
       navbarFix: function() {
         if ($(window).scrollTop() >= navigation.scroll.head.height) {
           if (!navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
             navigation.scroll.navbar.elem.addClass("navbar-fixed-top");
             navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
-            return navigation.scroll.content.elem.css("padding-top", navigation.scroll.navbar.padding);
+            return navigation.scroll.content.elem.css("padding-top", navigation.panel.height);
           }
         } else {
           if (navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
@@ -56,10 +56,29 @@
         }
       },
       scrollTo: function(index) {
-        return $(window).scrollTop(navigation.pages.positions[index] - navigation.scroll.navbar.padding);
+        return $(window).scrollTop(navigation.pages.positions[index] - navigation.panel.height);
+      },
+      sliderAutoscroll: {
+        startPosition: 0,
+        endPosition: 0,
+        calcPositions: function() {
+          var currentPage, nextPage;
+          currentPage = navigation.links.selected <= 0 ? 0 : navigation.links.selected;
+          navigation.scroll.sliderAutoscroll.startPosition = navigation.pages.positions[currentPage] - navigation.panel.height;
+          nextPage = navigation.links.selected >= (navigation.links.length - 1) ? navigation.links.length - 1 : navigation.links.selected + 1;
+          navigation.scroll.sliderAutoscroll.endPosition = navigation.pages.positions[nextPage] - navigation.panel.height;
+          if (currentPage === 0) {
+            navigation.scroll.sliderAutoscroll.startPosition = 0;
+          }
+          if (currentPage === nextPage) {
+            return navigation.scroll.sliderAutoscroll.endPosition = Infinity;
+          }
+        }
       }
     }
   };
+
+  navigation.links.length = navigation.links.elems.length;
 
   navigation.scroll.navbarFix();
 
@@ -86,8 +105,8 @@
 
   (linksMargin = function() {
     navigation.panel.width = navigation.panel.elem.width();
-    navigation.links.margin = Math.floor((navigation.panel.width - navigation.links.fullWidth) / (navigation.links.elems.length * 2));
-    navigation.links.elems.css("padding", "10px " + navigation.links.margin + "px 6px");
+    navigation.links.margin = Math.floor((navigation.panel.width - navigation.links.fullWidth) / (navigation.links.length * 2));
+    navigation.links.elems.css("padding", "0 " + navigation.links.margin + "px");
     navigation.slider.positions = [];
     navigation.links.positions.map(function(val, pos) {
       return navigation.slider.positions.push(navigation.links.margin + val + (navigation.links.margin * pos * 2) - navigation.slider.outerwidth / 2);
@@ -117,23 +136,23 @@
     return navigation.scroll.scrollTo(navigation.links.selected);
   });
 
+  console.log(navigation.scroll.s);
+
   $(window).scroll(function() {
-    var endPos, scrollEnd, scrollPos, scrollStart, startPos;
+    var scrollPos;
     navigation.scroll.navbarFix();
     scrollPos = $(window).scrollTop();
-    startPos = navigation.scroll.position <= 0 ? 0 : navigation.scroll.position;
-    scrollStart = navigation.pages.positions[startPos] - navigation.scroll.navbar.padding;
-    endPos = navigation.scroll.position >= navigation.links.hashes.length ? navigation.links.hashes.length : navigation.scroll.position + 1;
-    scrollEnd = navigation.pages.positions[endPos] - navigation.scroll.navbar.padding;
-    if (!((scrollStart <= scrollPos && scrollPos <= scrollEnd))) {
-      if (scrollPos < scrollStart && navigation.scroll.position !== 0) {
-        --navigation.scroll.position;
+    if (!((navigation.scroll.sliderAutoscroll.startPosition <= scrollPos && scrollPos <= navigation.scroll.sliderAutoscroll.endPosition))) {
+      if (scrollPos < navigation.scroll.sliderAutoscroll.startPosition && navigation.links.selected !== 0) {
+        --navigation.links.selected;
       }
-      if (scrollPos > scrollEnd && navigation.scroll.position !== navigation.links.hashes.length - 1) {
-        return ++navigation.scroll.position;
+      if (scrollPos > navigation.scroll.sliderAutoscroll.endPosition && navigation.links.selected !== navigation.links.length - 1) {
+        ++navigation.links.selected;
       }
+      navigation.scroll.sliderAutoscroll.calcPositions();
+      return sliderMove(navigation.links.selected);
     } else {
-      return console.log(navigation.links.hashes[navigation.scroll.position]);
+      return console.log(navigation.links.hashes[navigation.links.selected]);
     }
   });
 
