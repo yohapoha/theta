@@ -4,40 +4,37 @@
   navigation = {
     panel: {
       elem: $(".navigation-panel"),
-      height: $(".navigation-panel").outerHeight() + $(".slider-panel").outerHeight(),
       width: 0
     },
     slider: {
       elem: $(".slider"),
-      width: [],
-      outerwidth: 40,
+      margin: [],
+      outerwidth: 20,
       positions: [],
       mover: function(index) {
         if (index == null) {
           index = navigation.link.selected;
         }
-        return navigation.slider.elem.css('margin-left', navigation.slider.positions[index]).css('width', navigation.slider.width[index]);
+        return navigation.slider.elem.css('margin-left', navigation.slider.positions[index]).css('width', navigation.slider.margin[index]);
       }
     },
     link: {
-      elems: $(".navigation-link"),
+      elem: $(".navigation-link"),
       length: 0,
-      width: [],
       fullWidth: 0,
       margin: 0,
-      positions: [],
-      hashes: [],
+      position: [],
+      hash: [],
       selected: 0
     },
     page: {
-      positions: []
+      position: []
     },
     scroll: {
-      head: {
-        height: $(".head").outerHeight()
-      },
       navbar: {
-        elem: $(".navigation")
+        elem: $(".navigation"),
+        height: $(".navigation").outerHeight(),
+        position: $(".navigation").offset().top
       },
       content: {
         elem: $(".content")
@@ -47,11 +44,11 @@
         height: 40
       },
       navbarFix: function() {
-        if ($(window).scrollTop() >= navigation.scroll.head.height) {
+        if ($(window).scrollTop() >= navigation.scroll.navbar.position) {
           if (!navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
             navigation.scroll.navbar.elem.addClass("navbar-fixed-top");
             navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
-            return navigation.scroll.content.elem.css("padding-top", navigation.panel.height);
+            return navigation.scroll.content.elem.css("padding-top", navigation.scroll.navbar.height);
           }
         } else {
           if (navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
@@ -65,7 +62,7 @@
         if (index == null) {
           index = navigation.link.selected;
         }
-        return $(window).scrollTop(navigation.page.positions[index]);
+        return $(window).scrollTop(navigation.page.position[index]);
       },
       sliderAutoscroll: {
         startPosition: 0,
@@ -74,9 +71,9 @@
         calcSliderPositions: function() {
           var currentPage, nextPage;
           currentPage = navigation.link.selected <= 0 ? 0 : navigation.link.selected;
-          navigation.scroll.sliderAutoscroll.startPosition = navigation.page.positions[currentPage];
+          navigation.scroll.sliderAutoscroll.startPosition = navigation.page.position[currentPage];
           nextPage = navigation.link.selected >= (navigation.link.length - 1) ? navigation.link.length - 1 : navigation.link.selected + 1;
-          navigation.scroll.sliderAutoscroll.endPosition = navigation.page.positions[nextPage];
+          navigation.scroll.sliderAutoscroll.endPosition = navigation.page.position[nextPage];
           if (currentPage === 0) {
             navigation.scroll.sliderAutoscroll.startPosition = 0;
           }
@@ -92,7 +89,7 @@
             if (scrollPosition >= navigation.scroll.sliderAutoscroll.endPosition && navigation.link.selected !== navigation.link.length - 1) {
               ++navigation.link.selected;
             }
-            window.location.hash = navigation.link.hashes[navigation.link.selected];
+            window.location.hash = navigation.link.hash[navigation.link.selected];
             navigation.scroll.sliderAutoscroll.calcSliderPositions();
             return navigation.slider.mover();
           }
@@ -102,38 +99,38 @@
     navigationInit: function() {
       navigation.panel.width = navigation.panel.elem.width();
       navigation.link.margin = Math.floor((navigation.panel.width - navigation.link.fullWidth) / (navigation.link.length * 2));
-      navigation.link.elems.css("padding", "0 " + navigation.link.margin + "px");
+      navigation.link.elem.css("padding", "0 " + navigation.link.margin + "px");
       navigation.slider.positions = [];
-      navigation.link.positions.map(function(val, pos) {
-        return navigation.slider.positions.push(navigation.link.margin + val + (navigation.link.margin * pos * 2) - navigation.slider.outerwidth / 2);
+      navigation.link.position.map(function(val, pos) {
+        return navigation.slider.positions.push(navigation.link.margin + val + (navigation.link.margin * pos * 2) - navigation.slider.outerwidth);
       });
       navigation.slider.mover();
-      navigation.page.positions = [];
-      navigation.link.elems.map(function(pos, elem) {
+      navigation.page.position = [];
+      navigation.link.elem.map(function(pos, elem) {
         if (pos) {
-          return navigation.page.positions.push($(elem.hash + "-page").offset().top - navigation.panel.height);
+          return navigation.page.position.push($(elem.hash + "-page").offset().top - navigation.scroll.navbar.height);
         } else {
-          return navigation.page.positions.push(0);
+          return navigation.page.position.push(0);
         }
       });
       return navigation.scroll.sliderAutoscroll.calcSliderPositions();
     }
   };
 
-  navigation.link.length = navigation.link.elems.length;
+  navigation.link.length = navigation.link.elem.length;
 
-  navigation.link.elems.map(function(pos, elem) {
-    navigation.slider.width.push(elem.offsetWidth + navigation.slider.outerwidth);
-    navigation.link.width.push(elem.offsetWidth);
-    return navigation.link.hashes.push(elem.hash);
+  navigation.link.elem.map(function(pos, elem) {
+    navigation.slider.margin.push(elem.offsetWidth + navigation.slider.outerwidth * 2);
+    navigation.link.fullWidth += elem.offsetWidth;
+    navigation.link.hash.push(elem.hash);
+    return navigation.link.position.push((navigation.link.position[pos - 1] || 0) + elem.offsetWidth);
   });
 
-  navigation.link.fullWidth = navigation.link.width.reduce(function(sum, current) {
-    navigation.link.positions.push(sum);
-    return sum + current;
-  }, 0);
+  navigation.link.position.unshift(0);
 
-  navigation.link.selected = navigation.link.hashes.indexOf(window.location.hash);
+  navigation.link.position.pop();
+
+  navigation.link.selected = navigation.link.hash.indexOf(window.location.hash) + 1 ? navigation.link.hash.indexOf(window.location.hash) : 0;
 
   navigation.navigationInit();
 
@@ -147,16 +144,16 @@
     return navigation.navigationInit();
   });
 
-  navigation.link.elems.mouseover(function() {
-    return navigation.slider.mover(navigation.link.hashes.indexOf(this.hash));
+  navigation.link.elem.mouseover(function() {
+    return navigation.slider.mover(navigation.link.hash.indexOf(this.hash));
   });
 
-  navigation.link.elems.mouseout(function() {
+  navigation.link.elem.mouseout(function() {
     return navigation.slider.mover();
   });
 
-  navigation.link.elems.click(function() {
-    navigation.link.selected = navigation.link.hashes.indexOf(this.hash);
+  navigation.link.elem.click(function() {
+    navigation.link.selected = navigation.link.hash.indexOf(this.hash);
     navigation.scroll.sliderAutoscroll.byScrolling = false;
     navigation.scroll.scrollTo();
     return navigation.scroll.sliderAutoscroll.calcSliderPositions();
