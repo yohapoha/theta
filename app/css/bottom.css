@@ -1,12 +1,14 @@
 .bottom {
     background-color: #fbfbfb;
     border-top: 2px solid #ebebeb;
+    line-height: 40px;
     transition: .5s;
 }
 .bottom-text {
-    margin: 11px auto;
     font-size: 13px;
     text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .copyright {
     float: left;

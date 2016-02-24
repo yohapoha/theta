@@ -1,6 +1,10 @@
 .content {
     padding-bottom: 40px;
 }
-#main-page, #service-page, #projects-page, #contacts-page, #reviews-page, #about-page {
+.page {
     height: 1000px;
+}
+.page-menu {
+    height: 1000px;
+    border-right: 2px solid #ebebeb;
 }
