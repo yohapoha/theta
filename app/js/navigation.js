@@ -2,21 +2,16 @@
   var navigation;
 
   navigation = {
-    panel: {
-      elem: $(".navigation-panel"),
-      width: 0
-    },
+    elem: $(".navigation"),
+    panel: $(".navigation-panel"),
+    width: 0,
+    height: $(".navigation").outerHeight(),
+    position: $(".navigation").offset().top,
     slider: {
       elem: $(".slider"),
       margin: [],
       outerwidth: 20,
-      positions: [],
-      mover: function(index) {
-        if (index == null) {
-          index = navigation.link.selected;
-        }
-        return navigation.slider.elem.css('margin-left', navigation.slider.positions[index]).css('width', navigation.slider.margin[index]);
-      }
+      positions: []
     },
     link: {
       elem: $(".navigation-link"),
@@ -28,92 +23,102 @@
       selected: 0
     },
     page: {
-      position: []
+      position: [],
+      scrollStart: 0,
+      scrollEnd: 0
     },
     scroll: {
-      navbar: {
-        elem: $(".navigation"),
-        height: $(".navigation").outerHeight(),
-        position: $(".navigation").offset().top
-      },
+      byScrolling: true,
       content: {
         elem: $(".content")
       },
       bottom: {
         elem: $(".bottom"),
         height: 40
-      },
-      navbarFix: function() {
-        if ($(window).scrollTop() >= navigation.scroll.navbar.position) {
-          if (!navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
-            navigation.scroll.navbar.elem.addClass("navbar-fixed-top");
-            navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
-            return navigation.scroll.content.elem.css("padding-top", navigation.scroll.navbar.height);
-          }
-        } else {
-          if (navigation.scroll.navbar.elem.hasClass("navbar-fixed-top")) {
-            navigation.scroll.navbar.elem.removeClass("navbar-fixed-top");
-            navigation.scroll.bottom.elem.css("height", 0);
-            return navigation.scroll.content.elem.css("padding-top", 0);
-          }
-        }
-      },
-      scrollTo: function(index) {
-        if (index == null) {
-          index = navigation.link.selected;
-        }
-        return $(window).scrollTop(navigation.page.position[index]);
-      },
-      sliderAutoscroll: {
-        startPosition: 0,
-        endPosition: 0,
-        byScrolling: true,
-        calcSliderPositions: function() {
-          var currentPage, nextPage;
-          currentPage = navigation.link.selected <= 0 ? 0 : navigation.link.selected;
-          navigation.scroll.sliderAutoscroll.startPosition = navigation.page.position[currentPage];
-          nextPage = navigation.link.selected >= (navigation.link.length - 1) ? navigation.link.length - 1 : navigation.link.selected + 1;
-          navigation.scroll.sliderAutoscroll.endPosition = navigation.page.position[nextPage];
-          if (currentPage === 0) {
-            navigation.scroll.sliderAutoscroll.startPosition = 0;
-          }
-          if (currentPage === nextPage) {
-            return navigation.scroll.sliderAutoscroll.endPosition = Infinity;
-          }
-        },
-        checkSliderPosition: function(scrollPosition) {
-          if (!((navigation.scroll.sliderAutoscroll.startPosition <= scrollPosition && scrollPosition <= navigation.scroll.sliderAutoscroll.endPosition))) {
-            if (scrollPosition <= navigation.scroll.sliderAutoscroll.startPosition && navigation.link.selected !== 0) {
-              --navigation.link.selected;
-            }
-            if (scrollPosition >= navigation.scroll.sliderAutoscroll.endPosition && navigation.link.selected !== navigation.link.length - 1) {
-              ++navigation.link.selected;
-            }
-            window.location.hash = navigation.link.hash[navigation.link.selected];
-            navigation.scroll.sliderAutoscroll.calcSliderPositions();
-            return navigation.slider.mover();
-          }
-        }
       }
     },
-    navigationInit: function() {
-      navigation.panel.width = navigation.panel.elem.width();
-      navigation.link.margin = Math.floor((navigation.panel.width - navigation.link.fullWidth) / (navigation.link.length * 2));
-      navigation.link.elem.css("padding", "0 " + navigation.link.margin + "px");
+    sliderMover: function(index) {
+      if (index == null) {
+        index = navigation.link.selected;
+      }
+      return navigation.slider.elem.css('margin-left', navigation.slider.positions[index]).css('width', navigation.slider.margin[index]);
+    },
+    sliderPositionsLoad: function() {
       navigation.slider.positions = [];
-      navigation.link.position.map(function(val, pos) {
+      return navigation.link.position.map(function(val, pos) {
         return navigation.slider.positions.push(navigation.link.margin + val + (navigation.link.margin * pos * 2) - navigation.slider.outerwidth);
       });
-      navigation.slider.mover();
+    },
+    scrollPositionCalc: function() {
+      var currentPage, nextPage;
+      currentPage = navigation.link.selected <= 0 ? 0 : navigation.link.selected;
+      navigation.page.scrollStart = navigation.page.position[currentPage];
+      nextPage = navigation.link.selected >= (navigation.link.length - 1) ? navigation.link.length - 1 : navigation.link.selected + 1;
+      navigation.page.scrollEnd = navigation.page.position[nextPage];
+      if (currentPage === 0) {
+        navigation.page.scrollStart = 0;
+      }
+      if (currentPage === nextPage) {
+        return navigation.page.scrollEnd = Infinity;
+      }
+    },
+    scrollPositionCheck: function(scrollPosition) {
+      if (!((navigation.page.scrollStart <= scrollPosition && scrollPosition <= navigation.page.scrollEnd))) {
+        if (scrollPosition <= navigation.page.scrollStart && navigation.link.selected !== 0) {
+          --navigation.link.selected;
+        }
+        if (scrollPosition >= navigation.page.scrollEnd && navigation.link.selected !== navigation.link.length - 1) {
+          ++navigation.link.selected;
+        }
+        window.location.hash = navigation.link.hash[navigation.link.selected];
+        navigation.scrollPositionCalc();
+        return navigation.sliderMover();
+      }
+    },
+    pagePositionsLoad: function() {
       navigation.page.position = [];
-      navigation.link.elem.map(function(pos, elem) {
+      return navigation.link.elem.map(function(pos, elem) {
         if (pos) {
-          return navigation.page.position.push($(elem.hash + "-page").offset().top - navigation.scroll.navbar.height);
+          return navigation.page.position.push($(elem.hash + "-page").offset().top - navigation.height);
         } else {
           return navigation.page.position.push(0);
         }
       });
-      return navigation.scroll.sliderAutoscroll.calcSliderPositions();
+    },
+    pageScroll: function(index) {
+      if (index == null) {
+        index = navigation.link.selected;
+      }
+      navigation.scroll.byScrolling = false;
+      return $(window).scrollTop(navigation.page.position[index]);
+    },
+    navigationCentralize: function() {
+      navigation.width = navigation.panel.width();
+      navigation.link.margin = Math.floor((navigation.width - navigation.link.fullWidth) / (navigation.link.length * 2));
+      return navigation.link.elem.css("padding", "0 " + navigation.link.margin + "px");
+    },
+    navigationFixing: function() {
+      console.log(navigation.position);
+      if ($(window).scrollTop() >= navigation.position) {
+        if (!navigation.elem.hasClass("navbar-fixed-top")) {
+          navigation.elem.addClass("navbar-fixed-top");
+          navigation.scroll.bottom.elem.css("height", navigation.scroll.bottom.height);
+          return navigation.scroll.content.elem.css("padding-top", navigation.height);
+        }
+      } else {
+        if (navigation.elem.hasClass("navbar-fixed-top")) {
+          navigation.elem.removeClass("navbar-fixed-top");
+          navigation.scroll.bottom.elem.css("height", 0);
+          return navigation.scroll.content.elem.css("padding-top", 0);
+        }
+      }
+    },
+    navigationInit: function() {
+      navigation.navigationCentralize();
+      navigation.sliderPositionsLoad();
+      navigation.sliderMover();
+      navigation.pagePositionsLoad();
+      return navigation.scrollPositionCalc();
     }
   };
 
@@ -135,9 +140,8 @@
   navigation.navigationInit();
 
   if (navigation.link.selected) {
-    navigation.scroll.sliderAutoscroll.byScrolling = false;
-    navigation.scroll.scrollTo(navigation.link.selected);
-    navigation.scroll.navbarFix();
+    navigation.pageScroll(navigation.link.selected);
+    navigation.navigationFixing();
   }
 
   $(window).resize(function() {
@@ -145,26 +149,26 @@
   });
 
   navigation.link.elem.mouseover(function() {
-    return navigation.slider.mover(navigation.link.hash.indexOf(this.hash));
+    return navigation.sliderMover(navigation.link.hash.indexOf(this.hash));
   });
 
   navigation.link.elem.mouseout(function() {
-    return navigation.slider.mover();
+    return navigation.sliderMover();
   });
 
   navigation.link.elem.click(function() {
     navigation.link.selected = navigation.link.hash.indexOf(this.hash);
-    navigation.scroll.sliderAutoscroll.byScrolling = false;
-    navigation.scroll.scrollTo();
-    return navigation.scroll.sliderAutoscroll.calcSliderPositions();
+    navigation.pageScroll();
+    return navigation.scrollPositionCalc();
   });
 
   $(window).scroll(function() {
-    navigation.scroll.navbarFix();
-    if (navigation.scroll.sliderAutoscroll.byScrolling) {
-      navigation.scroll.sliderAutoscroll.checkSliderPosition($(window).scrollTop());
+    navigation.navigationFixing();
+    if (navigation.scroll.byScrolling) {
+      return navigation.scrollPositionCheck($(window).scrollTop());
+    } else {
+      return navigation.scroll.byScrolling = true;
     }
-    return navigation.scroll.sliderAutoscroll.byScrolling = true;
   });
 
 }).call(this);

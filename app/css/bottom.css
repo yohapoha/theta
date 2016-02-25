@@ -1,14 +1,11 @@
 .bottom {
     background-color: #fbfbfb;
-    border-top: 2px solid #ebebeb;
+    height: 0;
     line-height: 40px;
+    border-top: 2px solid #ebebeb;
     transition: .5s;
 }
 .bottom-text {
-<<<<<<< Updated upstream
-=======
-    margin: 0 auto;
->>>>>>> Stashed changes
     font-size: 13px;
     text-align: center;
     white-space: nowrap;
