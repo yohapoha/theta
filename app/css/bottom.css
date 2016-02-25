@@ -5,6 +5,10 @@
     transition: .5s;
 }
 .bottom-text {
+<<<<<<< Updated upstream
+=======
+    margin: 0 auto;
+>>>>>>> Stashed changes
     font-size: 13px;
     text-align: center;
     white-space: nowrap;

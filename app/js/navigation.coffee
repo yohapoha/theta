@@ -8,9 +8,6 @@ navigation = {
         margin: [] #Размеры отступов элементов меню
         outerwidth: 20 #Размер выступа слайдера
         positions: []
-        mover: (index = navigation.link.selected) ->
-            navigation.slider.elem.css 'margin-left', navigation.slider.positions[index]
-                .css 'width', navigation.slider.margin[index]
     }
     link: {
         elem: $(".navigation-link")
@@ -69,21 +66,30 @@ navigation = {
                         ++navigation.link.selected
                     window.location.hash = navigation.link.hash[navigation.link.selected]
                     navigation.scroll.sliderAutoscroll.calcSliderPositions()
-                    navigation.slider.mover()
+                    navigation.sliderMover()
 
         }
     }
-    navigationInit: ->
-        navigation.panel.width = navigation.panel.elem.width()
-        navigation.link.margin = Math.floor((navigation.panel.width - navigation.link.fullWidth) / (navigation.link.length * 2))
-        navigation.link.elem.css "padding", "0 #{navigation.link.margin}px"
+    sliderPositions: ->
         navigation.slider.positions = []
         navigation.link.position.map (val, pos) ->
             navigation.slider.positions.push(navigation.link.margin + val + (navigation.link.margin * pos * 2) - navigation.slider.outerwidth)
-        navigation.slider.mover()
+    sliderMover: (index = navigation.link.selected) ->
+        navigation.slider.elem.css 'margin-left', navigation.slider.positions[index]
+            .css 'width', navigation.slider.margin[index]
+    pagePositions: ->
         navigation.page.position = []
         navigation.link.elem.map (pos, elem) ->
             if pos then navigation.page.position.push($("#{elem.hash}-page").offset().top - navigation.scroll.navbar.height) else navigation.page.position.push(0)
+    navigationCentralize: ->
+        navigation.panel.width = navigation.panel.elem.width()
+        navigation.link.margin = Math.floor((navigation.panel.width - navigation.link.fullWidth) / (navigation.link.length * 2))
+        navigation.link.elem.css "padding", "0 #{navigation.link.margin}px"
+    navigationInit: ->
+        navigation.navigationCentralize()
+        navigation.sliderPositions()
+        navigation.sliderMover()
+        navigation.pagePositions()
         navigation.scroll.sliderAutoscroll.calcSliderPositions()
 }
 navigation.link.length = navigation.link.elem.length
@@ -108,10 +114,10 @@ $(window).resize ->
     navigation.navigationInit()
 
 navigation.link.elem.mouseover ->
-    navigation.slider.mover(navigation.link.hash.indexOf(this.hash))
+    navigation.sliderMover(navigation.link.hash.indexOf(this.hash))
 
 navigation.link.elem.mouseout ->
-    navigation.slider.mover()
+    navigation.sliderMover()
 
 navigation.link.elem.click ->
     navigation.link.selected = navigation.link.hash.indexOf(this.hash)
