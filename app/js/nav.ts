@@ -18,6 +18,7 @@ interface iNavigation {
         width:number
     }
     slider: {
+        type:string,
         outer:number,
         margin:Array<number>
     }
@@ -37,6 +38,7 @@ class Navigation implements iNavigation {
         width: 0
     };
     slider = {
+        type: "slider",
         outer: 20,
         margin: []
 
@@ -49,9 +51,10 @@ class Navigation implements iNavigation {
         hash: []
     };
     constructor(public init:any) {
-        this.functions.centralize = typeof init.centralize === "boolean"?init.centralize:true;
+        if(typeof init.centralize === "boolean") this.functions.centralize = init.centralize;
+        if(typeof init.sliderOuter === "number") this.slider.outer = init.sliderOuter;
         this.nav.width = init.navPanel.width();
-        this.slider.outer = typeof init.sliderOuter === "number"?init.sliderOuter:20;
+        console.log(this.slider.outer);
         this.loadMap(init.link, this.slider, this.link);
         this.link.length = init.link.length;
         this.link.margin = Math.floor((this.nav.width - this.link.width) / (this.link.length * 2));
@@ -68,6 +71,11 @@ class Navigation implements iNavigation {
     navigationCentralize():void {
         this.init.link.css("padding", "0 " + this.link.margin + "px");
     };
+    sliderType():void {
+        if(this.slider.type === "slider") {
+
+        }
+    };
     loader():void {
         !this.functions.centralize || this.navigationCentralize();
     }
@@ -78,5 +86,5 @@ var nav = new Navigation({
     slider: $(".slider"),
     link: $(".navigation-link"),
     content: $(".content"),
-    bottom: $(".bottom"),
+    bottom: $(".bottom")
 });
