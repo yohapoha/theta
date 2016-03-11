@@ -16,7 +16,7 @@
     link: {
       elem: $(".navigation-link"),
       length: 0,
-      fullWidth: 0,
+      width: 0,
       margin: 0,
       position: [],
       hash: [],
@@ -94,11 +94,10 @@
     },
     navigationCentralize: function() {
       navigation.width = navigation.panel.width();
-      navigation.link.margin = Math.floor((navigation.width - navigation.link.fullWidth) / (navigation.link.length * 2));
+      navigation.link.margin = Math.floor((navigation.width - navigation.link.width) / (navigation.link.length * 2));
       return navigation.link.elem.css("padding", "0 " + navigation.link.margin + "px");
     },
     navigationFixing: function() {
-      console.log(navigation.position);
       if ($(window).scrollTop() >= navigation.position) {
         if (!navigation.elem.hasClass("navbar-fixed-top")) {
           navigation.elem.addClass("navbar-fixed-top");
@@ -114,7 +113,6 @@
       }
     },
     navigationInit: function() {
-      navigation.navigationCentralize();
       navigation.sliderPositionsLoad();
       navigation.sliderMover();
       navigation.pagePositionsLoad();
@@ -126,7 +124,7 @@
 
   navigation.link.elem.map(function(pos, elem) {
     navigation.slider.margin.push(elem.offsetWidth + navigation.slider.outerwidth * 2);
-    navigation.link.fullWidth += elem.offsetWidth;
+    navigation.link.width += elem.offsetWidth;
     navigation.link.hash.push(elem.hash);
     return navigation.link.position.push((navigation.link.position[pos - 1] || 0) + elem.offsetWidth);
   });
