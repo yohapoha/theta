@@ -4,6 +4,6 @@
     "jquery": "^2.2",
     "bootstrap": "^3.3.6",
     "angular": "^1.4.9",
-    "throttle": "^0.2.0"
+    "limit.js": "limit#*"
   }
 }

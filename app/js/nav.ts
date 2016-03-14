@@ -8,7 +8,7 @@ interface iNavigation {
         link:JQuery,
         content:JQuery,
         bottom?:JQuery,
-        bottomHeight?:string,
+        bottomHeight?:number,
         centralize:boolean
     }
     functions: {
@@ -77,8 +77,9 @@ class Navigation implements iNavigation {
     };
     constructor(public init:any) {
         var _this = this;
-        if(typeof init.centralize === "boolean") this.functions.centralize = init.centralize;
         if(typeof init.sliderOuter === "number") this.slider.outer = init.sliderOuter;
+        if(typeof init.bottomHeight === "number") this.bottom.height = init.bottomHeight;
+        if(typeof init.centralize === "boolean") this.functions.centralize = init.centralize;
         this.nav.height = init.nav.height();
         this.nav.position = init.nav.offset().top;
         this.link.length = init.link.length;
@@ -123,9 +124,6 @@ class Navigation implements iNavigation {
         this.sliderMover();
         this.scrollPositionCalc();
     };
-    linkCentralize():void {
-        this.init.link.css("padding", "0 " + this.link.margin + "px");
-    };
     sliderMover(index:number = this.link.selected):void {
         this.init.slider.css('margin-left', this.slider.position[index]).css('width', this.slider.width[index]);
     };
@@ -164,11 +162,11 @@ class Navigation implements iNavigation {
         }, function () {
             _this.sliderMover();
         });
-        $(window).resize(throttle(function() {
+        $(window).resize(function() {
             _this.valuesLoad();
             _this.sliderMover();
             _this.functionsLoad();
-        }, 500));
+        }.debounce(300));
         $(window).scroll(function() {
             _this.navFix();
             if(_this.page.scroll) {
@@ -177,6 +175,9 @@ class Navigation implements iNavigation {
                 _this.page.scroll = true;
             }
         });
+    };
+    linkCentralize():void {
+        this.init.link.css("padding", "0 " + this.link.margin + "px");
     };
     functionsLoad():void {
         !this.functions.centralize || this.linkCentralize();
