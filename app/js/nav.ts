@@ -154,9 +154,9 @@ class Navigation implements iNavigation {
     eventsLoad():void {
         var _this = this;
         this.init.link.click(function() {
-            //$(window).scrollTop(_this.page.position[]);
             _this.page.scroll = false;
             _this.link.selected = _this.link.hash.indexOf(this.hash);
+            $(window).scrollTop(_this.page.position[_this.link.selected]);
             _this.sliderMover();
         });
         this.init.link.hover(function() {
