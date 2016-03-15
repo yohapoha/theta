@@ -15,9 +15,9 @@ interface iNavigation {
         centralize:boolean
     }
     page: {
+        height:Array<number>,
         scrollStart:number,
         scrollEnd:number,
-        position:Array<number>,
         scroll:boolean
     };
     nav: {
@@ -48,9 +48,9 @@ class Navigation implements iNavigation {
         centralize: true
     };
     page = {
+        height: [],
         scrollStart: 0,
         scrollEnd: 0,
-        position: [],
         scroll: true
     };
     nav = {
@@ -89,13 +89,14 @@ class Navigation implements iNavigation {
             _this.link.hash.push(elem.hash);
             _this.link.position.push(_this.link.position[pos] + elem.offsetWidth);
         });
+        this.link.selected = this.link.hash.indexOf(window.location.hash);
         this.loader();
     };
     valuesLoad():void {
         var _this = this;
-        this.page.position = [];
+        this.page.height = [];
         this.init.link.map(function(pos, elem) {
-            pos?_this.page.position.push($(elem.hash + "-page").offset().top - _this.nav.height):_this.page.position.push(0);
+            pos?_this.page.height.push($(elem.hash + "-page").offset().top - _this.nav.height):_this.page.height.push(0);
         });
         this.nav.width = this.init.navPanel.width();
         this.link.margin = Math.floor((this.nav.width - this.link.width) / (this.link.length * 2));
@@ -122,21 +123,25 @@ class Navigation implements iNavigation {
     navLoad():void {
         this.navFix();
         this.sliderMover();
-        this.scrollPositionCalc();
+        this.scrollCalc();
+        this.scrollTo();
     };
     sliderMover(index:number = this.link.selected):void {
         this.init.slider.css('margin-left', this.slider.position[index]).css('width', this.slider.width[index]);
     };
-    scrollPositionCalc():void {
+    scrollTo(index:number = this.link.selected):void {
+        $(window).scrollTop(this.page.height[index]);
+    };
+    scrollCalc():void {
         var currentPage, nextPage;
         currentPage = this.link.selected <= 0 ? 0 : this.link.selected;
-        this.page.scrollStart = this.page.position[currentPage];
+        this.page.scrollStart = this.page.height[currentPage];
         nextPage = this.link.selected >= (this.link.length - 1) ? this.link.length - 1 : this.link.selected + 1;
-        this.page.scrollEnd = this.page.position[nextPage];
+        this.page.scrollEnd = this.page.height[nextPage];
         if(currentPage === 0) this.page.scrollStart = 0;
         if(currentPage === nextPage) this.page.scrollEnd = Infinity;
     };
-    scrollPositionCheck(scrollPosition:number):void {
+    scrollCheck(scrollPosition:number):void {
         if(!((this.page.scrollStart <= scrollPosition && scrollPosition <= this.page.scrollEnd))) {
             if(scrollPosition <= this.page.scrollStart && this.link.selected !== 0) {
                 --this.link.selected;
@@ -145,7 +150,7 @@ class Navigation implements iNavigation {
                 ++this.link.selected;
             }
             window.location.hash = this.link.hash[this.link.selected];
-            this.scrollPositionCalc();
+            this.scrollCalc();
             this.sliderMover();
         }
     };
@@ -154,7 +159,7 @@ class Navigation implements iNavigation {
         this.init.link.click(function() {
             _this.page.scroll = false;
             _this.link.selected = _this.link.hash.indexOf(this.hash);
-            $(window).scrollTop(_this.page.position[_this.link.selected]);
+            _this.scrollTo();
             _this.sliderMover();
         });
         this.init.link.hover(function() {
@@ -170,7 +175,7 @@ class Navigation implements iNavigation {
         $(window).scroll(function() {
             _this.navFix();
             if(_this.page.scroll) {
-                _this.scrollPositionCheck($(window).scrollTop());
+                _this.scrollCheck($(window).scrollTop());
             } else {
                 _this.page.scroll = true;
             }

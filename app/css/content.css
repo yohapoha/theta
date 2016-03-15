@@ -2,9 +2,59 @@
     padding-bottom: 40px;
 }
 .page {
-    height: 1000px;
+    /height: 1000px;
 }
 .page-menu {
     height: 1000px;
     border-right: 2px solid #ebebeb;
+}
+.page-title {
+    padding: 20px 0;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.page-body {
+}
+.page-hightlight {
+    background-color: #ebebeb;
+    border-radius: 10px;
+}
+.page-text {
+    padding: 20px 0;
+    text-align: justify;
+}
+.page-sub-title {
+    padding: 0 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+.infolist li {
+    line-height: 30px;
+    font-size: 16px;
+}
+.link-inside {
+    padding: 0 5px;
+    border-bottom: 2px solid #000;
+    font-size: 12px;
+    text-transform: uppercase;
+    /font-weight: bold;
+    transition: .1s;
+}
+.link-inside:hover {
+    padding: 0 10px;
+}
+.input-title {
+    width: 40%;
+    padding-right: 10px;
+}
+.input-value {
+    width: 60%;
+    padding-bottom: 10px;
+}
+.online-order {
+    margin: 20px 10px;
+}
+.online-order input {
+    width: 100%;
 }

@@ -5,7 +5,7 @@
     <title>Document</title>
     <!-- build:css css/vendors.css -->
     	<!-- bower:css -->
-    	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     	<!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/main.css -->
@@ -44,12 +44,12 @@
     <nav class="container-fluid navigation">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 no-padding navigation-panel">
-                <a href="#main" class="navigation-link">Добро пожаловать</a>
+                <a href="#main" class="navigation-link">Тета Технолоджис</a>
+                <a href="#online" class="navigation-link">Онлайн заявка</a>
                 <a href="#service" class="navigation-link">Услуги и цены</a>
-                <a href="#projects" class="navigation-link">Онлайн заявка</a>
-                <a href="#contacts" class="navigation-link">Гарантия</a>
-                <a href="#reviews" class="navigation-link">Режим работы</a>
-                <a href="#about" class="navigation-link">Контакты</a>
+                <a href="#warranty" class="navigation-link">Гарантия</a>
+                <a href="#worktime" class="navigation-link">Режим работы</a>
+                <a href="#contacts" class="navigation-link">Контакты</a>
             </div>
             <div class="clearfix"></div>
             <div class="hidden-xs hidden-sm col-md-1 col-lg-2 slider-panel-side"></div>
@@ -61,9 +61,82 @@
     </nav>
     <div class="container-fluid content">
         <div id="main-page" class="row page">
+            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                <div class="page-body">
+                    <div class="page-text">
+                        Уважаемый клиент!
+                        <br/><br/>Мы рады приветствовать Вас на нашем сайте. Если по какой-то причине Вы не найдете нужную для Вас информацию, пожалуйста, напишите или позвоните нам и мы обязательно ответим на интересующие Вас вопросы.
+                        <br/><br/>О всех доступных способах связи с нами написано в разделе <a href="#contacts" class="link-inside">Контакты</a>.
+                    </div>
+                    <div class="row page-sub">
+                        <div class="col-xs-12 col-sm-8">
+                            <h4 class="page-sub-title">О нас</h4>
+                            <div class="page-sub-body">
+                                <div class="page-text">
+                                    Theta Technologies ● Тета Технолоджис - это молодая, но амбициозная IT компания. На текущий момент основная наша деятельность направлена на сопровождение персональных компьютеров как физических, так и юридических лиц. Не смотря на то, что мы относительно молодая компания, мы имеем огромный опыт в области обслуживания персональных компьютеров.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4">
+                            <h4 class="page-sub-title">Наши преимущества</h4>
+                            <div class="page-sub-body infolist">
+                                <div class="page-text">
+                                    <ul>
+                                        <li>Оперативное реагирование</li>
+                                        <li>Решение любых проблем</li>
+                                        <li>Успех в 99% случаев</li>
+                                        <li>Гарантия качества</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="online-page" class="row page">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                <h3 class="page-title">Добро пожаловать</h3>
-                <div class="page-body"></div>
+                <h3 class="page-title">Онлайн заявка</h3>
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-5">
+                            <h4 class="page-sub-title">Подсказка</h4>
+                            <div class="page-sub-body">
+                                <div class="page-text">
+                                    Для того, чтобы оставить онлайн заявку заполните специальную форму и в скором времени мы Вам перезвоним.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 col-sm-7 page-hightlight">
+                            <table class="online-order">
+                                <form action="">
+                                    <tr>
+                                        <td class="input-title">Ваше имя</td>
+                                        <td class='input-value'><input class='input' type="text" value="" name="clientName"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="input-title">Номер телефона</td>
+                                        <td class='input-value'><input class='input' type="text" value="" name="clientPhone"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="input-title">Время для звонка</td>
+                                        <td class='input-value'>
+                                            <input class='input' type="datetime-local" value="16.02.1990" name="clientDate"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="input-title">Описание проблемы (не обязательно)</td>
+                                        <td class='input-value'><input type="field" value="" name="clientDate"/></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class='input-value'><input type="submit" value="Оставить заявку"></td>
+                                    </tr>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="service-page" class="row page">
@@ -72,25 +145,20 @@
                 <div class="page-body"></div>
             </div>
         </div>
-        <div id="projects-page" class="row page">
-            <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                <h3 class="page-title">Онлайн заявка</h3>
-                <div class="page-body"></div>
-            </div>
-        </div>
-        <div id="contacts-page" class="row page">
+
+        <div id="warranty-page" class="row page">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 <h3 class="page-title">Гарантия</h3>
                 <div class="page-body"></div>
             </div>
         </div>
-        <div id="reviews-page" class="row page">
+        <div id="worktime-page" class="row page">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 <h3 class="page-title">Режим работы</h3>
                 <div class="page-body"></div>
             </div>
         </div>
-        <div id="about-page" class="row page">
+        <div id="contacts-page" class="row page">
             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                 <h3 class="page-title">Контакты</h3>
                 <div class="page-body"></div>
