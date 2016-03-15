@@ -17,8 +17,10 @@
 .page-body {
 }
 .page-hightlight {
-    background-color: #ebebeb;
-    border-radius: 10px;
+    /background-color: #ebebeb;
+    border: 2px solid #ebebeb;
+    border-radius: 0px;
+    /box-shadow: 2px 2px 7px #0f0f0f;
 }
 .page-text {
     padding: 20px 0;
