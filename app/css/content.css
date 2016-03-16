@@ -16,12 +16,6 @@
 }
 .page-body {
 }
-.page-hightlight {
-    /background-color: #ebebeb;
-    border: 2px solid #ebebeb;
-    border-radius: 0px;
-    /box-shadow: 2px 2px 7px #0f0f0f;
-}
 .page-text {
     padding: 20px 0;
     text-align: justify;
@@ -40,23 +34,8 @@
     border-bottom: 2px solid #000;
     font-size: 12px;
     text-transform: uppercase;
-    /font-weight: bold;
     transition: .1s;
 }
 .link-inside:hover {
     padding: 0 10px;
-}
-.input-title {
-    width: 40%;
-    padding-right: 10px;
-}
-.input-value {
-    width: 60%;
-    padding-bottom: 10px;
-}
-.online-order {
-    margin: 20px 10px;
-}
-.online-order input {
-    width: 100%;
 }

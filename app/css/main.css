@@ -1,13 +1,9 @@
 body {
-    background-color: #fbfbfb;
+    background-color: #fff;
     font-family: arial, helvetica, sans-serif;
 }
 a, a:visited, a:hover, a:active, a:focus {
     color: #000;
     text-decoration: none;
     outline: none;
-}
-
-.red-bg {
-    background-color: red;
 }
