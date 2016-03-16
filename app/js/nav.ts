@@ -89,7 +89,7 @@ class Navigation implements iNavigation {
             _this.link.hash.push(elem.hash);
             _this.link.position.push(_this.link.position[pos] + elem.offsetWidth);
         });
-        this.link.selected = this.link.hash.indexOf(window.location.hash);
+        this.link.selected = this.link.hash.indexOf(window.location.hash) > -1?this.link.hash.indexOf(window.location.hash):0;
         this.loader();
     };
     valuesLoad():void {
