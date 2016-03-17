@@ -11,11 +11,12 @@
     <!-- build:css css/main.css -->
     	<!-- inject:css -->
     	<link rel="stylesheet" href="/css/bottom.css">
-    	<link rel="stylesheet" href="/css/content.css">
+    	<link rel="stylesheet" href="/css/conten.css">
     	<link rel="stylesheet" href="/css/head.css">
     	<link rel="stylesheet" href="/css/main.css">
     	<link rel="stylesheet" href="/css/nav.css">
     	<link rel="stylesheet" href="/css/sidebar.css">
+    	<link rel="stylesheet" href="/css/siderbar-order.css">
     	<!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/vendors.js -->
@@ -44,7 +45,7 @@
     </div>
     <nav class="container-fluid navigation">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 no-padding navigation-panel">
+            <div class="col-xs-12 col-sm-12 navigation-panel">
                 <a href="#main" class="navigation-link">Theta Technologies</a>
                 <a href="#online" class="navigation-link">Онлайн заявка</a>
                 <a href="#service" class="navigation-link">Услуги и цены</a>
@@ -53,18 +54,16 @@
                 <a href="#contacts" class="navigation-link">Контакты</a>
             </div>
             <div class="clearfix"></div>
-            <div class="hidden-xs hidden-sm col-md-1 col-lg-2 slider-panel-side"></div>
-            <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8 no-padding slider-panel">
+            <div class="col-xs-12 col-sm-12 slider-panel">
                <div class="slider"></div>
             </div>
-            <div class="hidden-xs hidden-sm col-md-1 col-lg-2 slider-panel-side"></div>
         </div>
     </nav>
-    <div class="container-fluid content">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+            <div class="col-xs-12 col-sm-12 wrap">
                 <div class="row">
-                    <div class="col-xs-8 col-sm-8">
+                    <div class="col-xs-12 col-sm-8 content">
                         <div id="main-page" class="row page">
                             <div class="col-xs-12 col-sm-12">
                                 <div class="page-body">
@@ -122,7 +121,6 @@
                                 <div class="page-body"></div>
                             </div>
                         </div>
-
                         <div id="warranty-page" class="row page">
                             <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
                                 <h3 class="page-title">Гарантия</h3>
@@ -142,37 +140,28 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-4 col-sm-4 sidebar">
+                    <div class="col-xs-12 col-sm-4 sidebar">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 sidebar-page">
                                 <h4 class="sidebar-page-title">Онлайн заявка</h4>
                                 <h4 class="sidebar-page-subtitle">Оставитьте онлайн заявку и мы с Вами свяжемся</h4>
-                                <form action="">
-                                    <table class="sidebar-page-order">
-                                            <tr>
-                                                <td class="input-title">Ваше имя</td>
-                                                <td class="input-value"><input class='input' type="text" value="" name="clientName"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="input-title">Номер телефона</td>
-                                                <td class="input-value"><input class='input' type="text" value="" name="clientPhone"/></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="input-title">Время для звонка</td>
-                                                <td class="input-value">
-                                                    <input class='input' type="datetime-local" value="16.02.1990" name="clientDate"/>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="input-title">Описание проблемы (не&nbsp;обязательно)</td>
-                                                <td class="input-value"><textarea name="comment" cols="30" rows="3"></textarea></td>
-                                            </tr>
-                                        <tr>
-                                            <td class="input-submit" colspan="2"><input class='send-order' type="submit" value="Оставить заявку"></td>
-                                        </tr>
-                                    </table>
-                                </form>
+                                <div class="sidebar-page-body">
+                                    <form action="">
+                                        <div class="input-title">Ваше имя</div>
+                                        <input class="input-value" type="text" value="" name="clientName"/>
+                                        <div class="input-title">Номер телефона</div>
+                                        <input class="input-value" type="text" value="" name="clientPhone"/>
+                                        <div class="input-title">Время для звонка</div>
+                                        <input class="input-value" type="datetime-local" value="16.02.1990" name="clientDate"/>
+                                        <div class="input-title">Описание проблемы (не&nbsp;обязательно)</div>
+                                        <textarea class="input-value" name="comment" cols="30" rows="3"></textarea>
+                                        <div class="button-center">
+                                            <input class='input-submit' type="submit" value="Оставить заявку">
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
                 </div>

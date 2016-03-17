@@ -16,6 +16,7 @@
     "gulp-uncss": "^1.0.4",
     "gulp-useref": "^3.0.5",
     "ntypescript": "^1.201603110105.1",
+    "stylus": "^0.54.2",
     "typescript": "^1.8.7",
     "wiredep": "^3.0.0"
   }
