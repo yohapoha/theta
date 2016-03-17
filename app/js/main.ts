@@ -1,18 +1,11 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
-interface iCentralize {
-    element:JQuery,
-    parent:JQuery
-}
-class Centralize implements iCentralize {
-    parent = $();
-    constructor(public element:JQuery) {
-        this.parent = element.parent();
-        this.elementCentralize();
-    };
-    elementCentralize():void {
-        this.element.css("margin-left", Math.floor(this.parent.width() - this.element.width()/2));
-        console.log(this.parent);
+function centralize(element:JQuery, onResize:boolean = false):void {
+    var parent:JQuery = element.parent();
+    element.css("margin-left", Math.floor((parent.width() - element.width())/2));
+    if(onResize) {
+        $(window).resize(function () {
+            element.css("margin-left", Math.floor((parent.width() - element.width()) / 2));
+        }.debounce(300));
     }
-
 }
-new Centralize($("input-submit"));
+centralize($(".input-submit"), true);

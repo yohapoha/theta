@@ -1,17 +1,13 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
-var Centralize = (function () {
-    function Centralize(element) {
-        this.element = element;
-        this.parent = $();
-        this.parent = element.parent();
-        this.elementCentralize();
+function centralize(element, onResize) {
+    if (onResize === void 0) { onResize = false; }
+    var parent = element.parent();
+    element.css("margin-left", Math.floor((parent.width() - element.width()) / 2));
+    if (onResize) {
+        $(window).resize(function () {
+            element.css("margin-left", Math.floor((parent.width() - element.width()) / 2));
+        }.debounce(300));
     }
-    ;
-    Centralize.prototype.elementCentralize = function () {
-        this.element.css("margin-left", Math.floor(this.parent.width() - this.element.width() / 2));
-        console.log(this.parent);
-    };
-    return Centralize;
-})();
-new Centralize($("input-submit"));
+}
+centralize($(".input-submit"), true);
 //# sourceMappingURL=main.js.map

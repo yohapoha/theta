@@ -9,16 +9,18 @@ interface iNavigation {
         content:JQuery,
         bottom?:JQuery,
         bottomHeight?:number,
-        centralize:boolean
+        centralize:boolean,
+        fixing?:Array<JQuery>
     }
     functions: {
-        centralize:boolean
+        centralize:boolean,
     }
     page: {
         height:Array<number>,
         scrollStart:number,
         scrollEnd:number,
-        scroll:boolean
+        scroll:boolean,
+        fixWidth:Array<number>
     };
     nav: {
         width:number,
@@ -51,7 +53,8 @@ class Navigation implements iNavigation {
         height: [],
         scrollStart: 0,
         scrollEnd: 0,
-        scroll: true
+        scroll: true,
+        fixWidth: []
     };
     nav = {
         width: 0,
@@ -104,19 +107,40 @@ class Navigation implements iNavigation {
         this.link.position.map(function(val, pos) {
             _this.slider.position.push(_this.link.margin + val + (_this.link.margin * pos * 2) - _this.slider.outer);
         });
+        if(typeof this.init.fixing === "object") {
+            this.page.fixWidth = [];
+            this.init.fixing.map(function(val) {
+                _this.page.fixWidth.push(val.outerWidth());
+            })
+        };
     };
     navFix():void {
+        var _this = this;
         if ($(window).scrollTop() >= this.nav.position) {
             if(!this.init.nav.hasClass("navbar-fixed-top")) {
                 this.init.nav.addClass("navbar-fixed-top");
                 this.init.bottom.css("height", this.bottom.height);
                 this.init.content.css("padding-top", this.nav.height);
+                if(this.init.fixing) {
+                    this.init.fixing.map(function(val, pos) {
+                        val.css("position", "fixed")
+                            .css("top", _this.nav.height)
+                            .css("width", _this.page.fixWidth[pos]);
+                    });
+                }
             }
         } else {
             if(this.init.nav.hasClass("navbar-fixed-top")) {
                 this.init.nav.removeClass("navbar-fixed-top");
                 this.init.bottom.css("height", 0);
                 this.init.content.css("padding-top", 0);
+                if(this.init.fixing) {
+                    this.init.fixing.map(function(val, pos) {
+                        val.css("position", "relative")
+                            .css("top", 0)
+                            .css("width", "100%");
+                    });
+                }
             }
         }
     }
@@ -184,6 +208,7 @@ class Navigation implements iNavigation {
     linkCentralize():void {
         this.init.link.css("padding", "0 " + this.link.margin + "px");
     };
+
     functionsLoad():void {
         !this.functions.centralize || this.linkCentralize();
     };
@@ -200,5 +225,6 @@ var nav = new Navigation({
     slider: $(".slider"),
     link: $(".navigation-link"),
     content: $(".content"),
-    bottom: $(".bottom")
+    bottom: $(".bottom"),
+    fixing: [$('#sidebar-order')]
 });

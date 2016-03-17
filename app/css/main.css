@@ -1,7 +1,15 @@
 a,
+a:link,
 a:hover,
 a:active,
 a:visited {
   text-decoration: none;
   color: #000;
+}
+.simple-line {
+  background-color: #e2e2e2;
+  width: 100%;
+  height: 1px;
+  margin-top: 20px;
+  float: left;
 }
