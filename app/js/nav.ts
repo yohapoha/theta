@@ -19,8 +19,7 @@ interface iNavigation {
         height:Array<number>,
         scrollStart:number,
         scrollEnd:number,
-        scroll:boolean,
-        fixWidth:Array<number>
+        scroll:boolean
     };
     nav: {
         width:number,
@@ -54,7 +53,6 @@ class Navigation implements iNavigation {
         scrollStart: 0,
         scrollEnd: 0,
         scroll: true,
-        fixWidth: []
     };
     nav = {
         width: 0,
@@ -107,12 +105,6 @@ class Navigation implements iNavigation {
         this.link.position.map(function(val, pos) {
             _this.slider.position.push(_this.link.margin + val + (_this.link.margin * pos * 2) - _this.slider.outer);
         });
-        if(typeof this.init.fixing === "object") {
-            this.page.fixWidth = [];
-            this.init.fixing.map(function(val) {
-                _this.page.fixWidth.push(val.outerWidth());
-            })
-        };
     };
     navFix():void {
         var _this = this;
@@ -125,7 +117,6 @@ class Navigation implements iNavigation {
                     this.init.fixing.map(function(val, pos) {
                         val.css("position", "fixed")
                             .css("top", _this.nav.height)
-                            .css("width", _this.page.fixWidth[pos]);
                     });
                 }
             }
@@ -138,7 +129,6 @@ class Navigation implements iNavigation {
                     this.init.fixing.map(function(val, pos) {
                         val.css("position", "relative")
                             .css("top", 0)
-                            .css("width", "100%");
                     });
                 }
             }

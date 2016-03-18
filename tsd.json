@@ -6,7 +6,10 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "552fe5d3e45ef9c8ecd3eda2b6a24d2546c438f4"
+      "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
+    },
+    "maskedinput/maskedinput.d.ts": {
+      "commit": "cc3d223a946f661eff871787edeb0fcb8f0db156"
     }
   }
 }

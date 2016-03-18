@@ -1,20 +1,30 @@
+@media (min-width: 768px) {
+  .wrap {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .sidebar-left,
+  .content,
+  .sidebar-right {
+    display: table-cell;
+  }
+}
+.page-note {
+  box-sizing border-box
+  width 100%
+  padding: 20px
+  margin: 20px 0
+  border 1px solid #e2e2e2
+  border-radius 5px
+  float left
+}
+.page-note-body {
+  text-align justify
+}
 .content {
-
-}
-.page-title {
-  padding: 20px 0;
-  font-size: 20px;
-  text-align: center;
-  text-transform: uppercase;
-}
-.page-text {
-  padding: 20px 0;
-  text-align: justify;
-}
-.page-sub-title {
-  padding: 0 10px;
-  font-size: 18px;
-  text-transform: uppercase;
+  box-sizing border-box
+  padding 0 40px
 }
 .infolist li {
   line-height: 30px;

@@ -1,0 +1,74 @@
+tableHead() {
+  box-sizing border-box
+  padding 15px 20px
+  text-align center
+  font-size 16px
+  font-weight bold
+  float left
+}
+tableCeil() {
+  box-sizing border-box
+  padding 7px 10px
+  text-align center
+  float left
+}
+ceilWidth(count) {
+  width 20% * count
+}
+
+.table {
+  width 100%
+  margin-top 20px
+  border 1px solid #e2e2e2
+  border-radius 5px
+  float left
+}
+.table-line {
+  width 100%
+  border-top 1px solid #e2e2e2
+  float left
+  transition .1s
+}
+.table-line:hover {
+  background-color: #f2f2f2
+}
+.table-head-1 {
+  tableHead()
+  ceilWidth(1)
+}
+.table-head-2 {
+  tableHead()
+  ceilWidth(2)
+}
+.table-head-3 {
+  tableHead()
+  ceilWidth(3)
+}
+.table-head-4 {
+  tableHead()
+  ceilWidth(4)
+}
+.table-head-5 {
+  tableHead()
+  ceilWidth(5)
+}
+.table-ceil-1 {
+  tableCeil()
+  ceilWidth(1)
+}
+.table-ceil-2 {
+  tableCeil()
+  ceilWidth(2)
+}
+.table-ceil-3 {
+  tableCeil()
+  ceilWidth(3)
+}
+.table-ceil-4 {
+  tableCeil()
+  ceilWidth(4)
+}
+.table-ceil-5 {
+  tableCeil()
+  ceilWidth(5)
+}
