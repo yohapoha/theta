@@ -90,7 +90,6 @@
   width: 300px;
   padding: 20px;
   margin-top: 30px;
-  border: 1px solid #e2e2e2;
   border-radius: 5px;
   float: left;
 }
@@ -105,4 +104,27 @@
   padding: 5px 10px;
   border: 1px solid #afafaf;
   border-radius: 5px;
+}
+.sidebar-page__body__workline,
+.sidebar-page__body__workline_today {
+  width: 100%;
+  padding: 5px;
+  float: left;
+}
+.sidebar-page__body__workline_today {
+  border: 1px solid #afafaf;
+  border-radius: 5px;
+}
+.sidebar-page__body__workday {
+  width: 40%;
+  text-align: center;
+  float: left;
+}
+.sidebar-page__body__worktime {
+  width: 60%;
+  text-align: center;
+  float: left;
+}
+.contacts {
+  width: 300px;
 }

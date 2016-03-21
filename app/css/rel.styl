@@ -1,16 +1,32 @@
+.top,
 .wrap {
   position relative
-  height 1000px
+  clear: both
 }
-.wrap .content,
-.wrap .sidebar-left,
-.wrap .sidebar-right {
+.top-left,
+.top-center,
+.top-right,
+.content,
+.sidebar-left,
+.sidebar-right {
   position absolute
 }
+
+
 @media (min-width 1000px) {
+  .top-left {
+    width: 0px
+  }
+  .top-center {
+    left 0
+    right: 350px
+  }
+  .top-right {
+    width: 350px
+    right: 0
+  }
   .content {
     right 300px
-    margin 0 40px
   }
   .sidebar-left,
   .sidebar-right {
@@ -23,14 +39,32 @@
   }
   .sidebar-left {
     width 0
+    pading 0
+    margin 0
     overflow hidden
   }
 }
 @media (min-width 1280px) {
+  .top-left {
+    width auto
+    left: 0;
+    right: 50%;
+    margin-right: 150px;
+  }
+  .top-center {
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+  }
+  .top-right {
+    width auto
+    left: 50%;
+    right: 0;
+    margin-left: 150px;
+  }
   .content {
     left 300px
     right 300px
-    margin 0 40px
   }
   .sidebar-left,
   .sidebar-right {
@@ -38,6 +72,7 @@
     height 1000px
     margin 0 20px
   }
+  .top-right,
   .sidebar-right {
     right 0
   }
