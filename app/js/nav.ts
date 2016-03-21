@@ -209,6 +209,7 @@ class Navigation implements iNavigation {
         this.functionsLoad();
     };
 }
+/*
 var nav = new Navigation({
     nav: $(".navigation"),
     navPanel: $(".navigation-panel"),
@@ -217,4 +218,4 @@ var nav = new Navigation({
     content: $(".content"),
     bottom: $(".bottom"),
     fixing: [$('#sidebar-order')]
-});
+});*/

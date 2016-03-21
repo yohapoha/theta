@@ -1,25 +1,27 @@
 .navigation {
-    background-color: #fff;
+  background-color: #fff;
 }
 .navigation-panel {
-    height: 38px;
-    line-height: 40px;
-    font-size: 12px;
-    text-transform: uppercase;
+  height: 38px;
+  line-height: 40px;
+  font-size: 12px;
+  text-transform: uppercase;
 }
-.navigation-link, .navigation-link:hover {
-    color: #000;
-    text-decoration: none;
-    white-space: nowrap;
-    overflow: hidden;
-    float: left;
+.navigation-link,
+.navigation-link:hover {
+  color: #1b1b1b;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  float: left;
 }
-.slider-panel, .slider-panel-side {
-    background-color: #ebebeb;
-    height: 2px;
+.slider-panel,
+.slider-panel-side {
+  background-color: #e2e2e2;
+  height: 2px;
 }
 .slider {
-    background-color: #000;
-    height: 2px;
-    transition: .5s;
+  background-color: #1b1b1b;
+  height: 2px;
+  transition: 0.5s;
 }

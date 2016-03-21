@@ -5,20 +5,21 @@
     <title>Document</title>
     <!-- build:css css/vendors.css -->
     	<!-- bower:css -->
-    	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
     	<!-- endbower -->
     <!-- endbuild -->
     <!-- build:css css/main.css -->
     	<!-- inject:css -->
     	<link rel="stylesheet" href="/css/bottom.css">
+    	<link rel="stylesheet" href="/css/colors.css">
     	<link rel="stylesheet" href="/css/conten.css">
-    	<link rel="stylesheet" href="/css/head.css">
     	<link rel="stylesheet" href="/css/main.css">
     	<link rel="stylesheet" href="/css/nav.css">
     	<link rel="stylesheet" href="/css/rel.css">
     	<link rel="stylesheet" href="/css/sidebar.css">
-    	<link rel="stylesheet" href="/css/siderbar-order.css">
+    	<link rel="stylesheet" href="/css/simples.css">
     	<link rel="stylesheet" href="/css/table.css">
+    	<link rel="stylesheet" href="/css/top.css">
     	<!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/vendors.js -->
@@ -32,21 +33,10 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div class="container-fluid head">
-        <div class="row">
-            <div class="col-xs-1"></div>
-            <div class="col-xs-10">
-                <div class="social"></div>
-            </div>
-            <div class="col-xs-1"></div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 logo-panel">
-                <div class="logo"></div>
-            </div>
-        </div>
+    <div class="top">
+        <div class="logo"></div>
     </div>
-    <nav class="container-fluid navigation">
+    <!--<nav class="container-fluid navigation">
         <div class="row">
             <div class="col-xs-12 col-sm-12 navigation-panel">
                 <a href="#main" class="navigation-link">Theta Technologies</a>
@@ -61,200 +51,216 @@
                <div class="slider"></div>
             </div>
         </div>
-    </nav>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 wrap">
-                <div class="sidebar-left"></div>
-                <div class="content">
-                    <div id="service" class="content-page">
-                        <h1 class="title">Услуги</h1>
-                        <h2 class="subtitle">Список оказываемых нами услуг, их стоимости и гарантия</h2>
-                        <div class="page-body">
-                            <div class="page-note">
-                                <h3 class="notetitle">Важная информация</h3>
-                                <div class="page-note-body">
-                                    Если Вы проживаете в пригороде или окрестностях г. Ухты, то к стоимости оказания услуги добавляется дополнительная плата. Подробнее о дополнительной плате для пригорода и окрестностей указано в специальной таблице ниже.
-                                    <br/><br/>При доставке компьютера специалисту, дополнительная плата не взимается.
-                                </div>
-                            </div>
-                            <h1 class="title table-title">Обслуживание пригорода и окрестностей</h1>
-                            <h2 class="subtitle table-subtitle">Дополнительная плата при обслуживании клиентов из пригорода и окрестностей</h2>
-                            <div class="table">
-                                <div class="table-line-head">
-                                    <div class="table-head-5">Пригород/окрестность</div>
-                                    <div class="table-head-5">Дополнительная плата</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Водный</div>
-                                    <div class="table-ceil-5">300 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Шудаяг</div>
-                                    <div class="table-ceil-5">200 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Ярега</div>
-                                    <div class="table-ceil-5">300 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Ветлосян</div>
-                                    <div class="table-ceil-5">200 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Дежнево</div>
-                                    <div class="table-ceil-5">200 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Озерный</div>
-                                    <div class="table-ceil-5">200 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Подгорный</div>
-                                    <div class="table-ceil-5">200 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Аэропорт</div>
-                                    <div class="table-ceil-5">300 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Вокзал</div>
-                                    <div class="table-ceil-5">100 руб.</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Другие</div>
-                                    <div class="table-ceil-5">По договоренности</div>
-                                </div>
-                            </div>
-                            <h1 class="title table-title">Помощь по работе с компьютером *</h1>
-                            <h2 class="subtitle table-subtitle">Если Вы не знаете, как сделать то или иное действие за компьютером</h2>
-                            <div class="table">
-                                <div class="table-line-head">
-                                    <div class="table-head-6">Наименование услуги</div>
-                                    <div class="table-head-2">Стоимость</div>
-                                    <div class="table-head-2">Гарантия</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Помощь по работе с компьютером онлайн **</div>
-                                    <div class="table-ceil-2">0 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Помощь по работе с компьютером с выездом специалиста на дом</div>
-                                    <div class="table-ceil-2">Неограничена</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
-                                </div>
-                            </div>
-                            <h1 class="title table-title">Диагностика неисправностей *</h1>
-                            <h2 class="subtitle table-subtitle">Если Ваш компьютер не включается, либо возникают проблемы во время работы</h2>
-                            <div class="table">
-                                <div class="table-line-head">
-                                    <div class="table-head-6">Наименование услуги</div>
-                                    <div class="table-head-2">Стоимость</div>
-                                    <div class="table-head-2">Гарантия</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Диагностика неисправностей с выездом специалиста на дом</div>
-                                    <div class="table-ceil-2">300 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
-                                </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Диагностика неисправностей с доставкой компьютера специалисту</div>
-                                    <div class="table-ceil-2">200 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
-                                </div>
-                            </div>
+    </nav>-->
+    <div class="wrap">
+        <div class="sidebar-left">
+            <div id="sidebar-contacts" class="sidebar-page">
+                <div class="sidebar-page__head">
+                    <h1 class="sidebar-page__head__title">Контакты</h1>
+                    <h2 class="sidebar-page__head__subtitle">Звоните и пишите нам сюда</h2>
+                </div>
+                <div class="sidebar-page__body">
+                    <div class="sidebar-page__body__panel_big">+7(909)123-60-60</div>
+                    <div class="sidebar-page__body__panel_small">(Telegram, Viber, WhatsApp и т.п.)</div>
+                    <div class="sidebar-page__body__line"></div>
+                    <div class="sidebar-page__body__panel_big">support@thetatech.ru</div>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div id="service" class="content-page">
+                <div class="content-page__head">
+                    <h1 class="content-page__head__title">Услуги</h1>
+                    <h2 class="content-page__head__subtitle">Список оказываемых нами услуг, их стоимости и гарантия</h2>
+                </div>
+                <div class="content-page__body">
+                    <div class="content-page__body__note">
+                        <h3 class="content-page__body__note__title">Важная информация</h3>
+                        <div class="content-page__body__note-body">
+                            Если Вы проживаете в пригороде или окрестностях г. Ухты, то к стоимости оказания услуги добавляется дополнительная плата. Подробнее о дополнительной плате для пригорода и окрестностей указано в специальной таблице ниже.
+                            <br/><br/>При доставке компьютера специалисту, дополнительная плата не взимается.
                         </div>
                     </div>
-                    <div id="main-page" class="row page">
-                        <div class="col-xs-12 col-sm-12">
-                            <div class="page-body">
-                                <div class="page-text">
-                                    Уважаемый клиент!
-                                    <br/><br/>Мы рады приветствовать Вас на нашем сайте. Если по какой-то причине Вы не найдете нужную для Вас информацию, пожалуйста, напишите или позвоните нам и мы обязательно ответим на интересующие Вас вопросы.
-                                    <br/><br/>О всех доступных способах связи с нами написано в разделе <a href="#contacts" class="link-inside">Контакты</a>.
-                                </div>
-                                <div class="row page-sub">
-                                    <div class="col-xs-12 col-sm-6">
-                                        <h4 class="page-sub-title">О нас</h4>
-                                        <div class="page-sub-body">
-                                            <div class="page-text">
-                                                Theta Technologies ● Тета Технолоджис - это молодая, но амбициозная IT компания. На текущий момент основная наша деятельность направлена на сопровождение персональных компьютеров как физических, так и юридических лиц. Не смотря на то, что мы относительно молодая компания, мы имеем огромный опыт в области обслуживания персональных компьютеров.
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-offset-2 col-sm-4">
-                                        <h4 class="page-sub-title">Наши преимущества</h4>
-                                        <div class="page-sub-body infolist">
-                                            <div class="page-text">
-                                                <ul>
-                                                    <li>Оперативное реагирование</li>
-                                                    <li>Решение любых проблем</li>
-                                                    <li>Успех в 99% случаев</li>
-                                                    <li>Гарантия качества</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="content-page__body__space"></div>
+                    <h1 class="content-page__body__title">Обслуживание пригорода и окрестностей</h1>
+                    <h2 class="content-page__body__subtitle">Дополнительная плата при обслуживании клиентов из пригорода и окрестностей</h2>
+                    <div class="table">
+                        <div class="table-line-head">
+                            <div class="table-head-5">Пригород/окрестность</div>
+                            <div class="table-head-5">Дополнительная плата</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">пгт. Водный</div>
+                            <div class="table-ceil-5">300 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">пгт. Шудаяг</div>
+                            <div class="table-ceil-5">200 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">пгт. Ярега</div>
+                            <div class="table-ceil-5">300 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">п. Ветлосян</div>
+                            <div class="table-ceil-5">200 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">п. Дежнево</div>
+                            <div class="table-ceil-5">200 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">п. Озерный</div>
+                            <div class="table-ceil-5">200 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">п. Подгорный</div>
+                            <div class="table-ceil-5">200 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">Аэропорт</div>
+                            <div class="table-ceil-5">300 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">Вокзал</div>
+                            <div class="table-ceil-5">100 руб.</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-5">Другие</div>
+                            <div class="table-ceil-5">По договоренности</div>
                         </div>
                     </div>
-                    <div id="online-page" class="row page">
-                        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <h3 class="page-title">Онлайн заявка</h3>
-                            <div class="page-body">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6">
-                                        <h4 class="page-sub-title">Подсказка</h4>
-                                        <div class="page-sub-body">
-                                            <div class="page-text">
-                                                Для того, чтобы оставить онлайн заявку заполните специальную форму и в скором времени мы Вам перезвоним.
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="content-page__body__space"></div>
+                    <h1 class="content-page__body__title">Помощь по работе с компьютером *</h1>
+                    <h2 class="content-page__body__subtitle">Если Вы не знаете, как сделать то или иное действие за компьютером</h2>
+                    <div class="table">
+                        <div class="table-line-head">
+                            <div class="table-head-6">Наименование услуги</div>
+                            <div class="table-head-2">Стоимость</div>
+                            <div class="table-head-2">Гарантия</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-6">Помощь по работе с компьютером онлайн **</div>
+                            <div class="table-ceil-2">0 руб.</div>
+                            <div class="table-ceil-2">Отсутствует</div>
+                        </div>
+                        <div class="table-line">
+                            <div class="table-ceil-6">Помощь по работе с компьютером с выездом специалиста на дом</div>
+                            <div class="table-ceil-2">Неограничена</div>
+                            <div class="table-ceil-2">Отсутствует</div>
                         </div>
                     </div>
-                    <div id="service-page" class="row page">
-                        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <h3 class="page-title">Услуги и цены</h3>
-                            <div class="page-body"></div>
+                    <div class="content-page__body__space"></div>
+                    <h1 class="content-page__body__title">Диагностика неисправностей *</h1>
+                    <h2 class="content-page__body__subtitle">Если Ваш компьютер не включается, либо возникают проблемы во время работы</h2>
+                    <div class="table">
+                        <div class="table-line-head">
+                            <div class="table-head-6">Наименование услуги</div>
+                            <div class="table-head-2">Стоимость</div>
+                            <div class="table-head-2">Гарантия</div>
                         </div>
-                    </div>
-                    <div id="warranty-page" class="row page">
-                        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <h3 class="page-title">Гарантия</h3>
-                            <div class="page-body"></div>
+                        <div class="table-line">
+                            <div class="table-ceil-6">Диагностика неисправностей с выездом специалиста на дом</div>
+                            <div class="table-ceil-2">300 руб.</div>
+                            <div class="table-ceil-2">Отсутствует</div>
                         </div>
-                    </div>
-                    <div id="worktime-page" class="row page">
-                        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <h3 class="page-title">Режим работы</h3>
-                            <div class="page-body"></div>
-                        </div>
-                    </div>
-                    <div id="contacts-page" class="row page">
-                        <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-                            <h3 class="page-title">Контакты</h3>
-                            <div class="page-body"></div>
+                        <div class="table-line">
+                            <div class="table-ceil-6">Диагностика неисправностей с доставкой компьютера специалисту</div>
+                            <div class="table-ceil-2">200 руб.</div>
+                            <div class="table-ceil-2">Отсутствует</div>
                         </div>
                     </div>
                 </div>
-                <div class="sidebar-right">
-                    <div id="sidebar-order" class="sidebar-page">
-                        <h1 class="title sidebar-title">Онлайн заявка</h1>
-                        <h2 class="subtitle sidebar-subtitle">Оставьте заявку и мы Вам позвоним</h2>
-                        <div class="sidebar-page-body">
-                            <form action="">
-                                <div class="input-title">Ваш номер телефона</div>
-                                <input id="order-phone" class="input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
-                                <div class="simple-line"></div>
-                                <input class='input-submit' type="submit" value="Оставить заявку">
-                            </form>
+            </div>
+            <div id="main-page" class="row page">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="page-body">
+                        <div class="page-text">
+                            Уважаемый клиент!
+                            <br/><br/>Мы рады приветствовать Вас на нашем сайте. Если по какой-то причине Вы не найдете нужную для Вас информацию, пожалуйста, напишите или позвоните нам и мы обязательно ответим на интересующие Вас вопросы.
+                            <br/><br/>О всех доступных способах связи с нами написано в разделе <a href="#contacts" class="link-inside">Контакты</a>.
+                        </div>
+                        <div class="row page-sub">
+                            <div class="col-xs-12 col-sm-6">
+                                <h4 class="page-sub-title">О нас</h4>
+                                <div class="page-sub-body">
+                                    <div class="page-text">
+                                        Theta Technologies ● Тета Технолоджис - это молодая, но амбициозная IT компания. На текущий момент основная наша деятельность направлена на сопровождение персональных компьютеров как физических, так и юридических лиц. Не смотря на то, что мы относительно молодая компания, мы имеем огромный опыт в области обслуживания персональных компьютеров.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-offset-2 col-sm-4">
+                                <h4 class="page-sub-title">Наши преимущества</h4>
+                                <div class="page-sub-body infolist">
+                                    <div class="page-text">
+                                        <ul>
+                                            <li>Оперативное реагирование</li>
+                                            <li>Решение любых проблем</li>
+                                            <li>Успех в 99% случаев</li>
+                                            <li>Гарантия качества</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div id="online-page" class="row page">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h3 class="page-title">Онлайн заявка</h3>
+                    <div class="page-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6">
+                                <h4 class="page-sub-title">Подсказка</h4>
+                                <div class="page-sub-body">
+                                    <div class="page-text">
+                                        Для того, чтобы оставить онлайн заявку заполните специальную форму и в скором времени мы Вам перезвоним.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="service-page" class="row page">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h3 class="page-title">Услуги и цены</h3>
+                    <div class="page-body"></div>
+                </div>
+            </div>
+            <div id="warranty-page" class="row page">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h3 class="page-title">Гарантия</h3>
+                    <div class="page-body"></div>
+                </div>
+            </div>
+            <div id="worktime-page" class="row page">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h3 class="page-title">Режим работы</h3>
+                    <div class="page-body"></div>
+                </div>
+            </div>
+            <div id="contacts-page" class="row page">
+                <div class="col-xs-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+                    <h3 class="page-title">Контакты</h3>
+                    <div class="page-body"></div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-right">
+            <div id="sidebar-order" class="sidebar-page">
+                <div class="sidebar-page__head">
+                    <h1 class="sidebar-page__head__title">Онлайн заявка</h1>
+                    <h2 class="sidebar-page__head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
+                </div>
+                <div class="sidebar-page__body">
+                    <form action="">
+                        <div class="sidebar-page__body__input-title">Номер телефона</div>
+                        <input id="order-phone" class="sidebar-page__body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
+                        <div class="sidebar-page__body__line"></div>
+                        <input class='sidebar-page__body__input-submit button-center' type="submit" value="Оставить заявку">
+                    </form>
                 </div>
             </div>
         </div>

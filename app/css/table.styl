@@ -1,3 +1,5 @@
+@import "colors.styl"
+
 tableHead() {
   box-sizing border-box
   display table-cell
@@ -29,7 +31,7 @@ ceilWidth(count) {
 .table {
   width 100%
   margin-top 20px
-  border 1px solid #e2e2e2
+  border 1px solid $lines_color
   border-radius 5px
   float left
 }
@@ -39,12 +41,11 @@ ceilWidth(count) {
   width 100%
 }
 .table-line {
-  border-top 1px solid #e2e2e2
+  border-top 1px solid $lines_color
   transition .1s
 }
-
 .table-line:hover {
-  background-color: #f6f6f6
+  background-color $bg_hover_color
 }
 .table-head-1,
 .table-head-2,

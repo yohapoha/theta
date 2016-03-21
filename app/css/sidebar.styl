@@ -1,22 +1,50 @@
-.sidebar-left,
-.sidebar-right
-  box-sizing border-box
-  width 300px
-  padding-right 10px
+@import "colors.styl"
+@import "simples.styl"
 
 .sidebar-page {
-  box-sizing border-box
-  background-color: #fff
   width 300px
-  margin-top 20px
-  padding: 20px
-  border: 1px solid #e2e2e2
-  border-radius: 5px
+  padding 20px
+  margin-top 30px
+  border 1px solid $lines_color
+  border-radius 5px
+  float left
 }
-.sidebar-title,
-.sidebar-subtitle {
-  width 260px
+.sidebar-page__head {
+  @extend .head
 }
-.sidebar-title {
-  margin-top 5px
+.sidebar-page__head__title {
+  @extend .title
+}
+.sidebar-page__head__subtitle {
+  @extend .subtitle
+}
+.sidebar-page__body {
+  @extend .body
+}
+.sidebar-page__body__panel_big {
+  @extend .panel_big
+}
+.sidebar-page__body__panel_small {
+  @extend .panel_small
+}
+.sidebar-page__body__line {
+  @extend .line
+}
+.sidebar-page__body__input-title,
+.sidebar-page__body__input-value {
+  width 100%
+  margin-bottom 10px
+  text-align center
+  float left
+}
+.sidebar-page__body__input-value {
+  padding 5px 10px
+  border 1px solid $input_color
+  border-radius 5px
+}
+.sidebar-page__body__input-submit {
+  @extend .input-submit
+}
+.sidebar-page__body__input-submit:hover {
+  @extend .input-submit_hover
 }

@@ -10,7 +10,7 @@ function centralize(element:JQuery, onResize:boolean = false):void {
     }
 }
 $(document).ready(function() {
-    centralize($(".input-submit"));
+    centralize($(".button-center"));
     jQuery(function($){
         $("#order-phone").mask("+7(999)999-99-99");
     });
