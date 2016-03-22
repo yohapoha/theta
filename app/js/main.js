@@ -14,13 +14,24 @@ function centralizeV(element) {
     var parent = element.parent();
     element.css("margin-top", Math.floor((parent.height() - element.outerHeight()) / 2));
 }
+function centralizeF(element) {
+    var parent = element.parent();
+    element.css("margin-top", Math.floor((parent.height() - element.outerHeight()) / 2))
+        .css("margin-left", Math.floor((parent.width() - element.outerWidth()) / 2));
+}
 $(document).ready(function () {
+    centralizeF($(".top-logo__logo"));
+    centralizeF($(".top-switch__body"));
+    centralizeH($(".button-center"));
+});
+/*
+$(document).ready(function() {
     centralizeH($(".top-center__logo"), true);
     centralizeH($(".contacts"), true);
     centralizeV($(".contacts"));
-    centralizeH($(".button-center"));
-    jQuery(function ($) {
+
+    jQuery(function($){
         $("#order-phone").mask("+7(999)999-99-99");
     });
-});
+});*/
 //# sourceMappingURL=main.js.map

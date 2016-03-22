@@ -12,6 +12,7 @@
     	<!-- inject:css -->
     	<link rel="stylesheet" href="/css/bottom.css">
     	<link rel="stylesheet" href="/css/colors.css">
+    	<link rel="stylesheet" href="/css/contacts.css">
     	<link rel="stylesheet" href="/css/conten.css">
     	<link rel="stylesheet" href="/css/main.css">
     	<link rel="stylesheet" href="/css/nav.css">
@@ -33,27 +34,159 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div class="top">
-        <div class="top-left">
-           <!-- <div class="sidebar-page__body contacts">
-                <div class="sidebar-page__body__workline_today">
-                    <div class="sidebar-page__body__workday">Пн - Чт</div>
-                    <div class="sidebar-page__body__worktime">09:00 - 22:00</div>
+    <div class="wrap">
+        <div class="contacts-panel">
+            <div class="contacts">
+                <div class="contacts__table">
+                    <div class="contacts__table__ceil">
+                        <div class="sidebar-page__body__panel_big">support@thetatech.ru</div>
+                    </div>
+                    <div class="contacts__table__ceil">
+                        <div class="sidebar-page__body__panel_big">+7(909)123-60-60</div>
+                        <div class="sidebar-page__body__panel_small">(Telegram, Viber, WhatsApp и другие мессенджеры)</div>
+                    </div>
+                    <div class="contacts__table__ceil">
+                    </div>
                 </div>
-                <div class="sidebar-page__body__workline">
-                    <div class="sidebar-page__body__workday">Пт</div>
-                    <div class="sidebar-page__body__worktime">09:00 - 18:00</div>
-                </div>
-                <div class="sidebar-page__body__workline">
-                    <div class="sidebar-page__body__workday">Сб</div>
-                    <div class="sidebar-page__body__worktime">12:00 - 18:00</div>
-                </div>
-                <div class="sidebar-page__body__workline">
-                    <div class="sidebar-page__body__workday">Вс</div>
-                    <div class="sidebar-page__body__worktime">12:00 - 16:00</div>
-                </div>
-            </div>-->
+            </div>
+            <div class="clearfix"></div>
         </div>
+        <div class="top-panel">
+            <div class="top">
+                <div class="top-logo">
+                    <div class="top-logo__logo"></div>
+                </div>
+                <div class="top-switch">
+                    <div class="top-switch__body">
+                        <div class="top-order__head">
+                            <h1 class="top-order__head__title">Онлайн заявка</h1>
+                            <h2 class="top-order__head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
+                        </div>
+                        <div class="top-order__body">
+                            <form action="">
+                                <div class="top-order__body__input-title">Номер телефона</div>
+                                <input id="order-phone" class="top-order__body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
+                                <div class="top-order__body__line"></div>
+                                <input class='top-order__body__input-submit button-center' type="submit" value="Оставить заявку">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="content-panel">
+            <div class="content">
+                <div id="service" class="content-page">
+                    <div class="content-page__head">
+                        <h1 class="content-page__head__title">Услуги</h1>
+                        <h2 class="content-page__head__subtitle">Список оказываемых нами услуг, их стоимости и гарантия</h2>
+                    </div>
+                    <div class="content-page__body">
+                        <div class="content-page__body__note">
+                            <h3 class="content-page__body__note__title">Важная информация</h3>
+                            <div class="content-page__body__note-body">
+                                Если Вы проживаете в пригороде или окрестностях г. Ухты, то к стоимости оказания услуги добавляется дополнительная плата. Подробнее о дополнительной плате для пригорода и окрестностей указано в специальной таблице ниже.
+                                <br/><br/>При доставке компьютера специалисту, дополнительная плата не взимается.
+                            </div>
+                        </div>
+                        <div class="content-page__body__space"></div>
+                        <h1 class="content-page__body__title">Обслуживание пригорода и окрестностей</h1>
+                        <h2 class="content-page__body__subtitle">Дополнительная плата при обслуживании клиентов из пригорода и окрестностей</h2>
+                        <div class="table">
+                            <div class="table-line-head">
+                                <div class="table-head-5">Пригород/окрестность</div>
+                                <div class="table-head-5">Дополнительная плата</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">пгт. Водный</div>
+                                <div class="table-ceil-5">300 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">пгт. Шудаяг</div>
+                                <div class="table-ceil-5">200 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">пгт. Ярега</div>
+                                <div class="table-ceil-5">300 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">п. Ветлосян</div>
+                                <div class="table-ceil-5">200 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">п. Дежнево</div>
+                                <div class="table-ceil-5">200 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">п. Озерный</div>
+                                <div class="table-ceil-5">200 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">п. Подгорный</div>
+                                <div class="table-ceil-5">200 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">Аэропорт</div>
+                                <div class="table-ceil-5">300 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">Вокзал</div>
+                                <div class="table-ceil-5">100 руб.</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-5">Другие</div>
+                                <div class="table-ceil-5">По договоренности</div>
+                            </div>
+                        </div>
+                        <div class="content-page__body__space"></div>
+                        <h1 class="content-page__body__title">Помощь по работе с компьютером *</h1>
+                        <h2 class="content-page__body__subtitle">Если Вы не знаете, как сделать то или иное действие за компьютером</h2>
+                        <div class="table">
+                            <div class="table-line-head">
+                                <div class="table-head-6">Наименование услуги</div>
+                                <div class="table-head-2">Стоимость</div>
+                                <div class="table-head-2">Гарантия</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-6">Помощь по работе с компьютером онлайн **</div>
+                                <div class="table-ceil-2">0 руб.</div>
+                                <div class="table-ceil-2">Отсутствует</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-6">Помощь по работе с компьютером с выездом специалиста на дом</div>
+                                <div class="table-ceil-2">Неограничена</div>
+                                <div class="table-ceil-2">Отсутствует</div>
+                            </div>
+                        </div>
+                        <div class="content-page__body__space"></div>
+                        <h1 class="content-page__body__title">Диагностика неисправностей *</h1>
+                        <h2 class="content-page__body__subtitle">Если Ваш компьютер не включается, либо возникают проблемы во время работы</h2>
+                        <div class="table">
+                            <div class="table-line-head">
+                                <div class="table-head-6">Наименование услуги</div>
+                                <div class="table-head-2">Стоимость</div>
+                                <div class="table-head-2">Гарантия</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-6">Диагностика неисправностей с выездом специалиста на дом</div>
+                                <div class="table-ceil-2">300 руб.</div>
+                                <div class="table-ceil-2">Отсутствует</div>
+                            </div>
+                            <div class="table-line">
+                                <div class="table-ceil-6">Диагностика неисправностей с доставкой компьютера специалисту</div>
+                                <div class="table-ceil-2">200 руб.</div>
+                                <div class="table-ceil-2">Отсутствует</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!--<div class="top">
+        <div class="top-left"></div>
         <div class="top-center">
             <div class="top-center__logo"></div>
         </div>
@@ -66,13 +199,12 @@
             </div>
         </div>
     </div>
-    <!--<nav class="container-fluid navigation">
+    <nav class="container-fluid navigation">
         <div class="row">
             <div class="col-xs-12 col-sm-12 navigation-panel">
-                <a href="#main" class="navigation-link">Theta Technologies</a>
-                <a href="#online" class="navigation-link">Онлайн заявка</a>
-                <a href="#service" class="navigation-link">Услуги и цены</a>
-                <a href="#warranty" class="navigation-link">Гарантия</a>
+                <a href="#main" class="navigation-link">Обслуживание физических лиц</a>
+                <a href="#online" class="navigation-link">Обслуживание юридических лиц лиц</a>
+                <a href="#service" class="navigation-link">О гарантии</a>
                 <a href="#worktime" class="navigation-link">Режим работы</a>
                 <a href="#contacts" class="navigation-link">Контакты</a>
             </div>
@@ -81,11 +213,9 @@
                <div class="slider"></div>
             </div>
         </div>
-    </nav>-->
+    </nav>
     <div class="wrap">
-        <div class="sidebar-left">
-
-        </div>
+        <div class="sidebar-left"></div>
         <div class="content">
             <div id="service" class="content-page">
                 <div class="content-page__head">
@@ -270,6 +400,34 @@
         <div class="sidebar-right">
             <div id="sidebar-order" class="sidebar-page">
                 <div class="sidebar-page__head">
+                    <h1 class="sidebar-page__head__title">Режим работы</h1>
+                    <h2 class="sidebar-page__head__subtitle">Время работы по заявкам</h2>
+                </div>
+                <div class="sidebar-page__body">
+                    <div class="sidebar-page__body__workline_today">
+                        <div class="sidebar-page__body__workday__point"></div>
+                        <div class="sidebar-page__body__workday">Пн - Чт</div>
+                        <div class="sidebar-page__body__worktime">09:00 - 22:00</div>
+                    </div>
+                    <div class="sidebar-page__body__workline">
+                        <div class="sidebar-page__body__workday__point"></div>
+                        <div class="sidebar-page__body__workday">Пт</div>
+                        <div class="sidebar-page__body__worktime">09:00 - 18:00</div>
+                    </div>
+                    <div class="sidebar-page__body__workline">
+                        <div class="sidebar-page__body__workday__point"></div>
+                        <div class="sidebar-page__body__workday">Сб</div>
+                        <div class="sidebar-page__body__worktime">12:00 - 18:00</div>
+                    </div>
+                    <div class="sidebar-page__body__workline">
+                        <div class="sidebar-page__body__workday__point"></div>
+                        <div class="sidebar-page__body__workday">Вс</div>
+                        <div class="sidebar-page__body__worktime">12:00 - 16:00</div>
+                    </div>
+                </div>
+            </div>
+            <div id="sidebar-order" class="sidebar-page">
+                <div class="sidebar-page__head">
                     <h1 class="sidebar-page__head__title">Онлайн заявка</h1>
                     <h2 class="sidebar-page__head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
                 </div>
@@ -296,7 +454,7 @@
                 <div class="bottom-text organization"></div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- build:js js/main.js -->
     	<!-- inject:js -->
     	<script src="/js/fixing.js"></script>
