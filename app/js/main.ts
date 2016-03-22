@@ -22,6 +22,9 @@ $(document).ready(function() {
     centralizeF($(".top-logo__logo"));
     centralizeF($(".top-switch__body"));
     centralizeH($(".button-center"));
+    jQuery(function($){
+        $("#order-phone").mask("+7(999)999-99-99");
+    });
 });
 /*
 $(document).ready(function() {
