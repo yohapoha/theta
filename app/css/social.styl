@@ -1,0 +1,40 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.social {
+}
+.social-table {
+  display table
+  table-layout fixed
+  width 100%
+}
+.social-table .social-table__ceil {
+  display table-cell
+  vertical-align middle
+  text-align center
+}
+.social-button {
+  background-color $button_color
+  width 32px
+  height 32px
+  padding 4px 8px
+  border-radius 3px
+  cursor pointer
+  transition .3s
+}
+.social-button__link {
+  display block
+  float left
+}
+.social-button.social-button_vk_hover:hover {
+  @extend ._social-button__vk_hover
+}
+.social-button.social-button_ok_hover:hover {
+  @extend ._social-button__ok_hover
+}
+.social-button .social-button__logo_vk {
+  @extend .social-logo_vk
+}
+.social-button .social-button__logo_ok {
+  @extend .social-logo_ok
+}
