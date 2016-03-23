@@ -1,0 +1,62 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.header-container {
+  width 100%
+  border-bottom 1px solid #e2e2e2
+}
+.header {
+  width: 1000px
+  margin 0 auto
+}
+.header-logo {
+  box-sizing border-box
+  width 600px
+  height 300px
+  margin 30px 0
+  border-right 1px solid #e2e2e2
+  float left
+}
+.header-logo .header-logo__logo {
+  @extend .logo
+}
+.header-switch {
+  width 400px
+  height 300px
+  margin 30px 0
+  float left
+}
+.switch {
+  width 280px
+  float left
+}
+.switch-head {
+  @extend .head
+}
+.switch-head .switch-head__title {
+  @extend .title
+  margin-top 0
+}
+.switch-head .switch-head__subtitle {
+  @extend .subtitle
+}
+.switch-body {
+  @extend .body
+}
+.switch-body .switch-body__input-title {
+  @extend .input-title
+}
+.switch-body .switch-body__input-value {
+  @extend .input-value
+}
+.switch-body .switch-body__line {
+  @extend .line
+}
+
+.switch-body .switch-body__input-submit {
+  @extend .input-submit
+  margin-bottom 0
+}
+.switch-body .switch-body__input-submit:hover {
+  @extend .input-submit_hover
+}

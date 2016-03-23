@@ -1,28 +1,42 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 /// <reference path="../../typings/maskedinput/maskedinput.d.ts" />
 function centralizeH(element, onResize) {
+    if (element === void 0) { element = $(".js_centralize-h"); }
     if (onResize === void 0) { onResize = false; }
-    var parent = element.parent();
-    element.css("margin-left", Math.floor((parent.width() - element.outerWidth()) / 2));
+    element.each(function () {
+        var _this = $(this);
+        var parent = _this.parent();
+        _this.css("margin-left", Math.floor((parent.width() - _this.outerWidth()) / 2));
+    });
     if (onResize) {
+        var parent = element.parent();
         $(window).resize(function () {
             element.css("margin-left", Math.floor((parent.width() - element.outerWidth()) / 2));
         }.debounce(300));
     }
 }
 function centralizeV(element) {
-    var parent = element.parent();
-    element.css("margin-top", Math.floor((parent.height() - element.outerHeight()) / 2));
+    if (element === void 0) { element = $(".js_centralize-v"); }
+    element.each(function () {
+        var _this = $(this);
+        var parent = _this.parent();
+        _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2));
+    });
 }
 function centralizeF(element) {
-    var parent = element.parent();
-    element.css("margin-top", Math.floor((parent.height() - element.outerHeight()) / 2))
-        .css("margin-left", Math.floor((parent.width() - element.outerWidth()) / 2));
+    if (element === void 0) { element = $(".js_centralize-f"); }
+    element.each(function () {
+        var _this = $(this);
+        var parent = _this.parent();
+        parent.css('transition', 1);
+        _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2))
+            .css("margin-left", Math.floor((parent.width() - _this.outerWidth()) / 2));
+        parent.css('opacity', 1);
+    });
 }
 $(document).ready(function () {
-    centralizeF($(".top-logo__logo"));
-    centralizeF($(".top-switch__body"));
-    centralizeH($(".button-center"));
+    centralizeH();
+    centralizeF();
     jQuery(function ($) {
         $("#order-phone").mask("+7(999)999-99-99");
     });

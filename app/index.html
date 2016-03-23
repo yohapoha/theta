@@ -14,13 +14,13 @@
     	<link rel="stylesheet" href="/css/colors.css">
     	<link rel="stylesheet" href="/css/contacts.css">
     	<link rel="stylesheet" href="/css/conten.css">
+    	<link rel="stylesheet" href="/css/header.css">
     	<link rel="stylesheet" href="/css/main.css">
     	<link rel="stylesheet" href="/css/nav.css">
     	<link rel="stylesheet" href="/css/rel.css">
     	<link rel="stylesheet" href="/css/sidebar.css">
     	<link rel="stylesheet" href="/css/simples.css">
     	<link rel="stylesheet" href="/css/table.css">
-    	<link rel="stylesheet" href="/css/top.css">
     	<!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/vendors.js -->
@@ -35,41 +35,40 @@
 </head>
 <body>
     <div class="wrap">
-
-        <div class="top-panel">
-            <div class="contacts-panel">
-                <div class="contacts">
-                    <div class="contacts__table">
-                        <div class="contacts__table__ceil">
-                            <div class="sidebar-page__body__panel_small">Электронная почта:</div>
-                            <div class="sidebar-page__body__panel_big">support@thetatech.ru</div>
-                        </div>
-                        <div class="contacts__table__ceil">
-                            <div class="sidebar-page__body__panel_small">Звонки, Telegram, Viber, WhatsApp и др. мессенджеры:</div>
-                            <div class="sidebar-page__body__panel_big">+7(909)123-60-60</div>
-                        </div>
-                        <div class="contacts__table__ceil">
-                        </div>
+        <div class="contacts-container">
+            <div class="contacts">
+                <div class="contacts-table">
+                    <div class="contacts-table__ceil">
+                        <div class="contacts-table__data _text-small">Электронная почта</div>
+                        <div class="contacts-table__data _text-big">support@thetatech.ru</div>
+                    </div>
+                    <div class="contacts-table__ceil">
+                        <div class="contacts-table__data _text-small">Звонки, Telegram, Viber, WhatsApp и др. мессенджеры</div>
+                        <div class="contacts-table__data _text-big">+7(909)123-60-60</div>
+                    </div>
+                    <div class="contacts__table__ceil">
                     </div>
                 </div>
-                <div class="clearfix"></div>
             </div>
-            <div class="top">
-                <div class="top-logo">
-                    <div class="top-logo__logo"></div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="header-container">
+            <div class="header">
+                <div class="header-logo _show-load">
+                    <div class="header-logo__logo js_centralize-f"></div>
                 </div>
-                <div class="top-switch">
-                    <div class="top-switch__body">
-                        <div class="top-order__head">
-                            <h1 class="top-order__head__title">Онлайн заявка</h1>
-                            <h2 class="top-order__head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
+                <div class="header-switch _show-load">
+                    <div class="switch js_centralize-f">
+                        <div class="switch-head">
+                            <h1 class="switch-head__title">Онлайн заявка</h1>
+                            <h2 class="switch-head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
                         </div>
-                        <div class="top-order__body">
+                        <div class="switch-body">
                             <form action="">
-                                <div class="top-order__body__input-title">Ваш номер телефона</div>
-                                <input id="order-phone" class="top-order__body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
-                                <div class="top-order__body__line"></div>
-                                <input class='top-order__body__input-submit button-center' type="submit" value="Оставить заявку">
+                                <div class="switch-body__input-title">Ваш номер телефона</div>
+                                <input id="order-phone" class="switch-body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
+                                <div class="switch-body__line"></div>
+                                <input class='switch-body__input-submit js_centralize-h' type="submit" value="Оставить заявку">
                             </form>
                         </div>
                     </div>
