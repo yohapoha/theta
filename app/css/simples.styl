@@ -5,6 +5,16 @@
   width 100%
   float left
 }
+.table-line {
+  display table
+  table-layout fixed
+  width 100%
+}
+.table-line__cell {
+  display table-cell
+  vertical-align middle
+  text-align center
+}
 ._show-load {
   transition 1s
   opacity 0
@@ -34,11 +44,9 @@
   padding 4px 8px
 }
 .social-logo_vk {
-  @extend .social-logo
   background-position-x 0
 }
 .social-logo_ok {
-  @extend .social-logo
   background-position-x -16px
 }
 .input-title {

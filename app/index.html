@@ -12,17 +12,19 @@
     	<!-- inject:css -->
     	<link rel="stylesheet" href="/css/bottom.css">
     	<link rel="stylesheet" href="/css/colors.css">
+    	<link rel="stylesheet" href="/css/common.css">
     	<link rel="stylesheet" href="/css/contacts.css">
     	<link rel="stylesheet" href="/css/content.css">
     	<link rel="stylesheet" href="/css/header.css">
     	<link rel="stylesheet" href="/css/main.css">
     	<link rel="stylesheet" href="/css/nav.css">
+    	<link rel="stylesheet" href="/css/order.css">
     	<link rel="stylesheet" href="/css/rel.css">
     	<link rel="stylesheet" href="/css/service.css">
     	<link rel="stylesheet" href="/css/simples.css">
     	<link rel="stylesheet" href="/css/social.css">
     	<link rel="stylesheet" href="/css/switch.css">
-    	<link rel="stylesheet" href="/css/table.css">
+    	<link rel="stylesheet" href="/css/work.css">
     	<!-- endinject -->
     <!-- endbuild -->
     <!-- build:js js/vendors.js -->
@@ -39,34 +41,34 @@
     <div class="wrap">
         <div class="contacts-container">
             <div class="contacts">
-                <div class="contacts-table">
-                    <div class="contacts-table__ceil">
-                        <div class="contacts__data_text-small">Электронная почта</div>
-                        <div class="contacts__data_text-big">support@thetatech.ru</div>
+                <div class="contacts-table-line">
+                    <div class="contacts-table-line__cell">
+                        <div class="contacts__data contacts__data_text-small">Электронная почта</div>
+                        <div class="contacts__data contacts__data_text-big">support@thetatech.ru</div>
                     </div>
-                    <div class="contacts-table__ceil">
-                        <div class="contacts__data_text-small">Звонки, Telegram, Viber, WhatsApp и др. мессенджеры</div>
-                        <div class="contacts__data_text-big">+7(909)123-60-60</div>
+                    <div class="contacts-table-line__cell">
+                        <div class="contacts__data contacts__data_text-small">Звонки, Telegram, Viber, WhatsApp и др. мессенджеры</div>
+                        <div class="contacts__data contacts__data_text-big">+7(909)123-60-60</div>
                     </div>
-                    <div class="contacts-table__ceil">
+                    <div class="contacts-table-line__cell">
                         <div class="social">
-                            <div class="social-table">
-                                <div class="social-table__ceil"></div>
-                                <div class="social-table__ceil">
+                            <div class="social-table-line">
+                                <div class="social-table-line__cell"></div>
+                                <div class="social-table-line__cell">
                                     <a class="social-button__link" href="https://vk.com/thetatech" target="_blank" title="Мы Вконтакте">
-                                        <div class="social-button social-button_vk_hover">
-                                            <div class="social-button__logo_vk"></div>
+                                        <div class="social-button social-button_vk">
+                                            <div class="social-button__logo social-button__logo_vk"></div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="social-table__ceil">
+                                <div class="social-table-line__cell">
                                     <a class="social-button__link" href="http://ok.ru" target="_blank" title="Мы в Одноклассниках">
-                                        <div class="social-button social-button_ok_hover">
-                                            <div class="social-button__logo_ok"></div>
+                                        <div class="social-button social-button_ok">
+                                            <div class="social-button__logo social-button__logo_ok"></div>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="social-table__ceil"></div>
+                                <div class="social-table-line__cell"></div>
                             </div>
                         </div>
                     </div>
@@ -80,9 +82,9 @@
                     <div class="header-logo__logo js_centralize-f"></div>
                 </div>
                 <div class="header-switch header-switch_show-load">
-                    <div class="switch js_centralize-f">
-                        <div class="switch-menu">
-                            <div class="switch-button_left switch-button_select">
+                    <div class="switch js_centralize-h">
+                        <div class="switch-menu js_switch-menu">
+                            <div class="switch-button switch-button_left switch-button_select">
                                 <div class="switch-button__point"></div>
                                 <div class="switch-button__text">Онлайн заявка</div>
                             </div>
@@ -92,17 +94,63 @@
                             </div>
                         </div>
                         <div class="switch__line"></div>
-                        <div class="switch-order">
-                            <div class="switch-head">
-                                <h1 class="switch-head__title">Онлайн заявка</h1>
-                                <h2 class="switch-head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
+                        <div class="switch-body">
+                            <div class="order switch-block switch-block_show">
+                                <div class="order-head">
+                                    <h1 class="order-head__title">Онлайн заявка</h1>
+                                    <h2 class="order-head__subtitle">Оставьте заявку и мы Вам позвоним</h2>
+                                </div>
+                                <div class="order-body">
+                                    <form action="">
+                                        <div class="order-body__input-title">Ваш номер телефона</div>
+                                        <input id="order-phone" class="order-body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
+                                        <input class='order-body__input-submit js_centralize-h' type="submit" value="Оставить заявку">
+                                    </form>
+                                </div>
                             </div>
-                            <div class="switch-body">
-                                <form action="">
-                                    <div class="switch-body__input-title">Ваш номер телефона</div>
-                                    <input id="order-phone" class="switch-body__input-value" type="text" value="" name="clientPhone" placeholder="+7(909)123-60-60"/>
-                                    <input class='switch-body__input-submit js_centralize-h' type="submit" value="Оставить заявку">
-                                </form>
+                            <div class="work switch-block">
+                                <div class="work-head">
+                                    <h1 class="work-head__title">Режим работы</h1>
+                                    <h2 class="work-head__subtitle">Режим работы по обслуживанию клиентов</h2>
+                                </div>
+                                <div class="work-body">
+                                    <div class="work-table-line">
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__point work-body__point_select"></div>
+                                            <div class="work-body__day">Пн - Чт</div>
+                                        </div>
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__time">9:00 - 22:00</div>
+                                        </div>
+                                    </div>
+                                    <div class="work-table-line">
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__point"></div>
+                                            <div class="work-body__day">Пт</div>
+                                        </div>
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__time">9:00 - 18:00</div>
+                                        </div>
+                                    </div>
+                                    <div class="work-table-line">
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__point"></div>
+                                            <div class="work-body__day">Сб</div>
+                                        </div>
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__time">12:00 - 18:00</div>
+                                        </div>
+                                    </div>
+                                    <div class="work-table-line">
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__point"></div>
+                                            <div class="work-body__day">Вс</div>
+                                        </div>
+                                        <div class="work-table-line__cell">
+                                            <div class="work-body__time">12:00 - 16:00</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,88 +176,88 @@
                         <div class="service-body">
                             <h1 class="service-body__title">Обслуживание пригорода и окрестностей</h1>
                             <h2 class="service-body__subtitle">Дополнительная плата при обслуживании клиентов из пригорода и окрестностей</h2>
-                            <div class="service-table table">
-                                <div class="table-line-head">
-                                    <div class="table-head-5">Пригород/окрестность</div>
-                                    <div class="table-head-5">Дополнительная плата</div>
+                            <div class="service-table common_table">
+                                <div class="common_table-line common_table-line_head">
+                                    <div class="common_table-line__cell-5">Пригород/окрестность</div>
+                                    <div class="common_table-line__cell-5">Дополнительная плата</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Водный</div>
-                                    <div class="table-ceil-5">300 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">пгт. Водный</div>
+                                    <div class="common_table-line__cell-5">300 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Шудаяг</div>
-                                    <div class="table-ceil-5">200 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">пгт. Шудаяг</div>
+                                    <div class="common_table-line__cell-5">200 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">пгт. Ярега</div>
-                                    <div class="table-ceil-5">300 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">пгт. Ярега</div>
+                                    <div class="common_table-line__cell-5">300 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Ветлосян</div>
-                                    <div class="table-ceil-5">200 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">п. Ветлосян</div>
+                                    <div class="common_table-line__cell-5">200 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Дежнево</div>
-                                    <div class="table-ceil-5">200 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">п. Дежнево</div>
+                                    <div class="common_table-line__cell-5">200 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Озерный</div>
-                                    <div class="table-ceil-5">200 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">п. Озерный</div>
+                                    <div class="common_table-line__cell-5">200 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">п. Подгорный</div>
-                                    <div class="table-ceil-5">200 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">п. Подгорный</div>
+                                    <div class="common_table-line__cell-5">200 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Аэропорт</div>
-                                    <div class="table-ceil-5">300 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">Аэропорт</div>
+                                    <div class="common_table-line__cell-5">300 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Вокзал</div>
-                                    <div class="table-ceil-5">100 руб.</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">Вокзал</div>
+                                    <div class="common_table-line__cell-5">100 руб.</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-5">Другие</div>
-                                    <div class="table-ceil-5">По договоренности</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-5">Другие</div>
+                                    <div class="common_table-line__cell-5">По договоренности</div>
                                 </div>
                             </div>
                             <h1 class="service-body__title">Помощь по работе с компьютером *</h1>
                             <h2 class="service-body__subtitle">Если Вы не знаете, как сделать то или иное действие за компьютером</h2>
-                            <div class="service-table table">
-                                <div class="table-line-head">
-                                    <div class="table-head-6">Наименование услуги</div>
-                                    <div class="table-head-2">Стоимость</div>
-                                    <div class="table-head-2">Гарантия</div>
+                            <div class="service-table common_table">
+                                <div class="common_table-line common_table-line_head">
+                                    <div class="common_table-line__cell-6">Наименование услуги</div>
+                                    <div class="common_table-line__cell-2">Стоимость</div>
+                                    <div class="common_table-line__cell-2">Гарантия</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Помощь по работе с компьютером онлайн **</div>
-                                    <div class="table-ceil-2">0 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-6">Помощь по работе с компьютером онлайн **</div>
+                                    <div class="common_table-line__cell-2">0 руб.</div>
+                                    <div class="common_table-line__cell-2">Отсутствует</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Помощь по работе с компьютером с выездом специалиста на дом</div>
-                                    <div class="table-ceil-2">Неограничена</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-6">Помощь по работе с компьютером с выездом специалиста на дом</div>
+                                    <div class="common_table-line__cell-2">Неограничена</div>
+                                    <div class="common_table-line__cell-2">Отсутствует</div>
                                 </div>
                             </div>
                             <h1 class="service-body__title">Диагностика неисправностей *</h1>
                             <h2 class="service-body__subtitle">Если Ваш компьютер не включается, либо возникают проблемы во время работы</h2>
-                            <div class="service-table table">
-                                <div class="table-line-head">
-                                    <div class="table-head-6">Наименование услуги</div>
-                                    <div class="table-head-2">Стоимость</div>
-                                    <div class="table-head-2">Гарантия</div>
+                            <div class="service-table common_table">
+                                <div class="common_table-line common_table-line_head">
+                                    <div class="common_table-line__cell-6">Наименование услуги</div>
+                                    <div class="common_table-line__cell-2">Стоимость</div>
+                                    <div class="common_table-line__cell-2">Гарантия</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Диагностика неисправностей с выездом специалиста на дом</div>
-                                    <div class="table-ceil-2">300 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-6">Диагностика неисправностей с выездом специалиста на дом</div>
+                                    <div class="common_table-line__cell-2">300 руб.</div>
+                                    <div class="common_table-line__cell-2">Отсутствует</div>
                                 </div>
-                                <div class="table-line">
-                                    <div class="table-ceil-6">Диагностика неисправностей с доставкой компьютера специалисту</div>
-                                    <div class="table-ceil-2">200 руб.</div>
-                                    <div class="table-ceil-2">Отсутствует</div>
+                                <div class="common_table-line">
+                                    <div class="common_table-line__cell-6">Диагностика неисправностей с доставкой компьютера специалисту</div>
+                                    <div class="common_table-line__cell-2">200 руб.</div>
+                                    <div class="common_table-line__cell-2">Отсутствует</div>
                                 </div>
                             </div>
                         </div>

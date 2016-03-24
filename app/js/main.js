@@ -7,6 +7,7 @@ function centralizeH(element, onResize) {
         var _this = $(this);
         var parent = _this.parent();
         _this.css("margin-left", Math.floor((parent.width() - _this.outerWidth()) / 2));
+        parent.css('opacity', 1);
     });
     if (onResize) {
         var parent = element.parent();
@@ -21,6 +22,8 @@ function centralizeV(element) {
         var _this = $(this);
         var parent = _this.parent();
         _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2));
+        parent.css('opacity', 1);
+        console.log(Math.floor((parent.height() - _this.outerHeight()) / 2));
     });
 }
 function centralizeF(element) {
@@ -34,12 +37,25 @@ function centralizeF(element) {
         parent.css('opacity', 1);
     });
 }
+function switchMenu() {
+    var menu = $(".switch-menu");
+    var button = $(".switch-button");
+    button.on("click", function () {
+        var _this = $(this);
+        if (!_this.hasClass("switch-button_select")) {
+            button.removeClass("switch-button_select");
+            _this.addClass("switch-button_select");
+        }
+    });
+}
 $(document).ready(function () {
     centralizeH();
+    centralizeV();
     centralizeF();
     jQuery(function ($) {
         $("#order-phone").mask("+7(999)999-99-99");
     });
+    switchMenu();
 });
 /*
 $(document).ready(function() {

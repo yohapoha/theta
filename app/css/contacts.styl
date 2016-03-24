@@ -9,20 +9,16 @@
   width: 1000px
   margin 0 auto
 }
-.contacts-table {
-  display table
-  table-layout fixed
-  width 100%
-}
-.contacts-table .contacts-table__ceil {
-  display table-cell
-  vertical-align middle
-  text-align center
-  padding 25px 10px
-}
-.contacts .contacts__data_text-small {
+.contacts .contacts__data.contacts__data_text-small {
   @extend ._text-small
 }
-.contacts .contacts__data_text-big {
+.contacts .contacts__data.contacts__data_text-big {
   @extend ._text-big
+}
+.contacts-table-line {
+  @extend .table-line
+}
+.contacts-table-line .contacts-table-line__cell {
+  @extend .table-line__cell
+  padding 25px 10px
 }

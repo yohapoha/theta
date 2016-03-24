@@ -1,0 +1,85 @@
+@import "colors.styl"
+@import "simples.styl"
+
+cellWidth(count) {
+  width (10 * count)%
+}
+.common_table {
+  width 100%
+  margin-bottom 20px
+  border 1px solid $line_color
+  border-radius 5px
+  float left
+}
+.common_table-line {
+  @extend .table-line
+  border-top 1px solid $line_color
+  transition .1s
+  cursor pointer
+}
+.common_table-line.common_table-line_head {
+  border-top none
+}
+.common_table-line:hover {
+  background-color $bg_color_hover
+}
+.common_table-line.common_table-line_head:hover {
+  background-color $bg_color
+}
+.common_table-line .common_table-line__cell-1,
+.common_table-line .common_table-line__cell-2,
+.common_table-line .common_table-line__cell-3,
+.common_table-line .common_table-line__cell-4,
+.common_table-line .common_table-line__cell-5,
+.common_table-line .common_table-line__cell-6,
+.common_table-line .common_table-line__cell-7,
+.common_table-line .common_table-line__cell-8,
+.common_table-line .common_table-line__cell-9,
+.common_table-line .common_table-line__cell-10 {
+  @extend .table-line__cell
+  padding 7px 10px
+}
+.common_table-line.common_table-line_head .common_table-line__cell-1,
+.common_table-line.common_table-line_head .common_table-line__cell-2,
+.common_table-line.common_table-line_head .common_table-line__cell-3,
+.common_table-line.common_table-line_head .common_table-line__cell-4,
+.common_table-line.common_table-line_head .common_table-line__cell-5,
+.common_table-line.common_table-line_head .common_table-line__cell-6,
+.common_table-line.common_table-line_head .common_table-line__cell-7,
+.common_table-line.common_table-line_head .common_table-line__cell-8,
+.common_table-line.common_table-line_head .common_table-line__cell-9,
+.common_table-line.common_table-line_head .common_table-line__cell-10 {
+  padding 15px 20px
+  font-size 14px
+  font-weight bold
+}
+.common_table-line .common_table-line__cell-1 {
+  cellWidth(1)
+}
+.common_table-line .common_table-line__cell-2 {
+  cellWidth(2)
+}
+.common_table-line .common_table-line__cell-3 {
+  cellWidth(3)
+}
+.common_table-line .common_table-line__cell-4 {
+  cellWidth(4)
+}
+.common_table-line .common_table-line__cell-5 {
+  cellWidth(5)
+}
+.common_table-line .common_table-line__cell-6 {
+  cellWidth(6)
+}
+.common_table-line .common_table-line__cell-7 {
+  cellWidth(7)
+}
+.common_table-line .common_table-line__cell-8 {
+  cellWidth(8)
+}
+.common_table-line .common_table-line__cell-9 {
+  cellWidth(9)
+}
+.common_table-line .common_table-line__cell-10 {
+  cellWidth(10)
+}

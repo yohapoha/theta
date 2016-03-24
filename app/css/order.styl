@@ -1,0 +1,35 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.order {
+}
+
+.order-head {
+  @extend .head
+}
+.order-head .order-head__title {
+  @extend .title
+  margin-top 0
+}
+.order-head .order-head__subtitle {
+  @extend .subtitle
+}
+.order-body {
+  @extend .body
+}
+.order-body .order-body__line {
+  @extend .line
+}
+.order-body .order-body__input-title {
+  @extend .input-title
+}
+.order-body .order-body__input-value {
+  @extend .input-value
+}
+.order-body .order-body__input-submit {
+  @extend .input-submit
+  margin-bottom 0
+}
+.order-body .order-body__input-submit:hover {
+  @extend ._input-submit_hover
+}

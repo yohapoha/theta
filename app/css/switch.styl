@@ -9,28 +9,20 @@
   margin-bottom 40px
 }
 .switch-menu {
-  display table
-  table-layout fixed
-  width 100%
+  @extend .table-line
   height 30px
-  margin-bottom 20px
+  margin 20px 0
   border 1px solid $line_color
   border-radius 5px
 }
 .switch-button {
-  display table-cell
-  vertical-align middle
-  text-align center
+  @extend .table-line__cell
   cursor pointer
 }
-.switch-button_left {
-  @extend .switch-button
+.switch-button.switch-button_left {
   border-right 1px solid $line_color
 }
-.switch-button_select {
-  @extend .switch-button
-}
-.switch-button__point {
+.switch-button .switch-button__point {
   background-color: $line_color
   width 6px
   height 6px
@@ -39,45 +31,22 @@
   float left
   transition .3s
 }
-.switch-button_select .switch-button__point {
+.switch-button.switch-button_select .switch-button__point {
   background-color: $line_color_maxdark
 }
 .switch-button:hover .switch-button__point {
   background-color: $line_color_dark
 }
-.switch-button_select:hover .switch-button__point {
+.switch-button.switch-button_select:hover .switch-button__point {
   background-color: $line_color_superdark
 }
-.switch-button__text {
+.switch-button .switch-button__text {
   line-height 30px
   float left
 }
-.switch-head {
-  @extend .head
+.switch-block {
+  display none
 }
-.switch-head .switch-head__title {
-  @extend .title
-  margin-top 0
-}
-.switch-head .switch-head__subtitle {
-  @extend .subtitle
-}
-.switch-body {
-  @extend .body
-}
-.switch-body .switch-body__line {
-  @extend .line
-}
-.switch-body .switch-body__input-title {
-  @extend .input-title
-}
-.switch-body .switch-body__input-value {
-  @extend .input-value
-}
-.switch-body .switch-body__input-submit {
-  @extend .input-submit
-  margin-bottom 0
-}
-.switch-body .switch-body__input-submit:hover {
-  @extend ._input-submit_hover
+.switch-block.switch-block_show {
+  display block
 }

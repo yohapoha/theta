@@ -1,0 +1,43 @@
+@import "colors.styl"
+@import "simples.styl"
+
+
+.work {
+}
+
+.work-head {
+  @extend .head
+}
+.work-head .work-head__title {
+  @extend .title
+  margin-top 0
+}
+.work-head .work-head__subtitle {
+  @extend .subtitle
+}
+.work-body {
+  @extend .body
+}
+.work-body .work-body__point {
+  background-color: $line_color
+  width 6px
+  height 6px
+  margin 12px 10px
+  border-radius 3px
+  float left
+}
+.work-body .work-body__point.work-body__point_select {
+  background-color: $line_color_maxdark
+}
+.work-body .work-body__day {
+  line-height 30px
+}
+.work-body .work-body__time {
+  line-height 30px
+}
+.work-table-line {
+   @extend .table-line
+}
+.work-table-line__cell {
+  @extend .table-line__cell
+}
