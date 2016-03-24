@@ -4,25 +4,22 @@
   width 280px
   float left
 }
-.switch .switch__line {
-  @extend .line
-  margin-bottom 40px
-}
-.switch-menu {
+.tabulator {
   @extend .table-line
   height 30px
-  margin 20px 0
+  margin 20px 0 30px
   border 1px solid $line_color
   border-radius 5px
 }
-.switch-button {
+.tabulator-button {
   @extend .table-line__cell
+  border-right 1px solid $line_color
   cursor pointer
 }
-.switch-button.switch-button_left {
-  border-right 1px solid $line_color
+.tabulator-button.tabulator-button_last {
+  border-right none
 }
-.switch-button .switch-button__point {
+.tabulator-button .tabulator-button__point {
   background-color: $line_color
   width 6px
   height 6px
@@ -31,22 +28,29 @@
   float left
   transition .3s
 }
-.switch-button.switch-button_select .switch-button__point {
+.tabulator-button.tabulator-button_select .tabulator-button__point {
   background-color: $line_color_maxdark
 }
-.switch-button:hover .switch-button__point {
+.tabulator-button:hover .tabulator-button__point {
   background-color: $line_color_dark
 }
-.switch-button.switch-button_select:hover .switch-button__point {
+.tabulator-button.tabulator-button_select:hover .tabulator-button__point {
   background-color: $line_color_superdark
 }
-.switch-button .switch-button__text {
+.tabulator-button .tabulator-button__text {
   line-height 30px
   float left
 }
-.switch-block {
-  display none
+.tabulator-body {
+  padding-top 40px
+  border-top 1px solid $line_color
 }
-.switch-block.switch-block_show {
+.tabulator-block {
+  display none
+  opacity 0
+  transition .2s
+}
+.tabulator-block.tabulator-block_select {
   display block
+  opacity 1
 }

@@ -13,19 +13,34 @@ cellWidth(count) {
 }
 .common_table-line {
   @extend .table-line
+  padding 7px 10px
   border-top 1px solid $line_color
+  text-align center
   transition .1s
   cursor pointer
+
+}
+.common_table-line.common_table-line_clear {
+  @extend .common_table-line
+  padding 0
+  border-top none
+  transition 0s
+  cursor auto
 }
 .common_table-line.common_table-line_head {
   border-top none
+  cursor auto
 }
 .common_table-line:hover {
   background-color $bg_color_hover
 }
+.common_table-line.common_table-line_clear:hover {
+  background-color $bg_color
+}
 .common_table-line.common_table-line_head:hover {
   background-color $bg_color
 }
+.common_table-line .common_table-line__cell,
 .common_table-line .common_table-line__cell-1,
 .common_table-line .common_table-line__cell-2,
 .common_table-line .common_table-line__cell-3,
@@ -37,8 +52,8 @@ cellWidth(count) {
 .common_table-line .common_table-line__cell-9,
 .common_table-line .common_table-line__cell-10 {
   @extend .table-line__cell
-  padding 7px 10px
 }
+.common_table-line.common_table-line_head .common_table-line__cell,
 .common_table-line.common_table-line_head .common_table-line__cell-1,
 .common_table-line.common_table-line_head .common_table-line__cell-2,
 .common_table-line.common_table-line_head .common_table-line__cell-3,

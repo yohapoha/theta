@@ -3,17 +3,15 @@
 
 .social {
 }
-.social-table-line {
-  @extend .table-line
-}
-.social-table-line .social-table-line__cell {
-  @extend .table-line__cell
+.social__link {
+  display block
+  float left
 }
 .social-button {
   background-color $button_color
   width 32px
   height 32px
-  padding 4px 8px
+  padding 6px 8px
   border-radius 3px
   cursor pointer
   transition .3s
@@ -23,10 +21,6 @@
 }
 .social-button.social-button_ok:hover {
   @extend ._social-button__ok_hover
-}
-.social-button .social-button__link {
-  display block
-  float left
 }
 .social-button .social-button__logo {
   @extend .social-logo

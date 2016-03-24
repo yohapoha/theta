@@ -33,22 +33,29 @@ function centralizeF(element:JQuery = $(".js_centralize-f")):void {
         parent.css('opacity', 1);
     })
 }
-function switchMenu():void {
-    var menu:JQuery = $(".switch-menu");
-    var button:JQuery = $(".switch-button");
-    var block:JQuery = $(".switch-block");
+function tabulatorNavigation(element:JQuery = $(".js_tabulator-navigation")):void {
+    var menu:JQuery = element.find(".tabulator");
+    var button:JQuery = element.find(".tabulator-button");
+    var block:JQuery = element.find(".tabulator-block");
     button.on("click", function() {
         var _this = $(this);
-        if(!_this.hasClass("switch-button_select")) {
-            button.removeClass("switch-button_select");
-            _this.addClass("switch-button_select");
-            if(!block.eq(_this.index()).hasClass("switch-block_show")) {
-                block.removeClass("switch-block_show");
-                block.eq(_this.index()).addClass("switch-block_show");
+        if(!_this.hasClass("tabulator-button_select")) {
+            button.removeClass("tabulator-button_select");
+            _this.addClass("tabulator-button_select");
+            if(!block.eq(_this.index()).hasClass("tabulator-block_select")) {
+                block.css("opacity", 0);
+                setTimeout(function() {
+                    block.removeClass("tabulator-block_select");
+                    block.eq(_this.index()).addClass("tabulator-block_select")
+                    setTimeout(function() {
+                        block.eq(_this.index()).css("opacity", 1);
+                    }, 50)
+                }, 250)
             }
         }
     })
 }
+
 $(document).ready(function() {
     centralizeH();
     centralizeV();
@@ -56,7 +63,7 @@ $(document).ready(function() {
     jQuery(function($){
         $("#order-phone").mask("+7(999)999-99-99");
     });
-    switchMenu();
+    tabulatorNavigation();
 });
 /*
 $(document).ready(function() {
