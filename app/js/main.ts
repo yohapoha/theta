@@ -36,11 +36,16 @@ function centralizeF(element:JQuery = $(".js_centralize-f")):void {
 function switchMenu():void {
     var menu:JQuery = $(".switch-menu");
     var button:JQuery = $(".switch-button");
+    var block:JQuery = $(".switch-block");
     button.on("click", function() {
         var _this = $(this);
         if(!_this.hasClass("switch-button_select")) {
             button.removeClass("switch-button_select");
             _this.addClass("switch-button_select");
+            if(!block.eq(_this.index()).hasClass("switch-block_show")) {
+                block.removeClass("switch-block_show");
+                block.eq(_this.index()).addClass("switch-block_show");
+            }
         }
     })
 }

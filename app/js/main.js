@@ -40,11 +40,16 @@ function centralizeF(element) {
 function switchMenu() {
     var menu = $(".switch-menu");
     var button = $(".switch-button");
+    var block = $(".switch-block");
     button.on("click", function () {
         var _this = $(this);
         if (!_this.hasClass("switch-button_select")) {
             button.removeClass("switch-button_select");
             _this.addClass("switch-button_select");
+            if (!block.eq(_this.index()).hasClass("switch-block_show")) {
+                block.removeClass("switch-block_show");
+                block.eq(_this.index()).addClass("switch-block_show");
+            }
         }
     });
 }
