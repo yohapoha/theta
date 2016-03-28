@@ -5,7 +5,6 @@ function centralizeH(element:JQuery = $(".js_centralize-h"), onResize:boolean = 
         var _this = $(this);
         var parent:JQuery = _this.parent();
         _this.css("margin-left", Math.floor((parent.width() - _this.outerWidth()) / 2));
-        parent.css('opacity', 1);
     })
     if(onResize) {
         var parent:JQuery = element.parent()
@@ -19,8 +18,6 @@ function centralizeV(element:JQuery = $(".js_centralize-v")):void {
         var _this = $(this);
         var parent:JQuery = _this.parent();
         _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2));
-        parent.css('opacity', 1);
-        console.log(Math.floor((parent.height() - _this.outerHeight()) / 2))
     })
 }
 function centralizeF(element:JQuery = $(".js_centralize-f")):void {
@@ -30,7 +27,6 @@ function centralizeF(element:JQuery = $(".js_centralize-f")):void {
         parent.css('transition', 1);
         _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2))
             .css("margin-left", Math.floor((parent.width() - _this.outerWidth()) / 2));
-        parent.css('opacity', 1);
     })
 }
 function tabulatorNavigation(element:JQuery = $(".js_tabulator-navigation")):void {
@@ -55,7 +51,28 @@ function tabulatorNavigation(element:JQuery = $(".js_tabulator-navigation")):voi
         }
     })
 }
-
+function showOnLoad(element:JQuery = $(".js_show-on-load")):void {
+    setTimeout(function() {
+        element.css('opacity', 1);
+    }, 50);
+}
+function topFix(element:JQuery, point:JQuery) {
+    var startPosition = point.offset().top;
+    var elementHeight = element.outerHeight(true) + 15;
+    element.css("display", "block")
+        .css("top", -elementHeight);
+    $(window).scroll(function() {
+        var _this = $(this);
+        if(!element.hasClass("fixed") && (_this.scrollTop() >= startPosition)) {
+            element.addClass("fixed");
+            element.css("top", 0)
+        }
+        if(element.hasClass("fixed") && (_this.scrollTop() < startPosition)) {
+            element.removeClass("fixed");
+            element.css("top", -elementHeight);
+        }
+    })
+}
 $(document).ready(function() {
     centralizeH();
     centralizeV();
@@ -64,6 +81,8 @@ $(document).ready(function() {
         $("#order-phone").mask("+7(999)999-99-99");
     });
     tabulatorNavigation();
+    showOnLoad();
+    topFix($(".top-container"), $(".content-container"));
 });
 /*
 $(document).ready(function() {

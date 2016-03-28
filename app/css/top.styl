@@ -1,0 +1,27 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.top-container {
+  display none
+  position fixed
+  background-color: $bg_color
+  top -100
+  width 100%
+  box-shadow 1px 1px 15px 0px #6b6b6b
+  transition .3s
+}
+.top {
+  width: 1000px
+  padding 20px 0
+  margin 0 auto
+}
+.top-logo {
+  height 23px
+}
+.top-logo .top-logo__logo {
+  @extend .main-logo
+  background-size 130px;
+  background-position-y 23px
+  width 130px
+  height 23px
+}
