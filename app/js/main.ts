@@ -59,8 +59,10 @@ function showOnLoad(element:JQuery = $(".js_show-on-load")):void {
 function topFix(element:JQuery, point:JQuery) {
     var startPosition = point.offset().top;
     var elementHeight = element.outerHeight(true) + 15;
-    element.css("display", "block")
-        .css("top", -elementHeight);
+    setTimeout(function() {
+        element.css("display", "block")
+            .css("top", -elementHeight);
+    }, 50)
     $(window).scroll(function() {
         var _this = $(this);
         if(!element.hasClass("fixed") && (_this.scrollTop() >= startPosition)) {

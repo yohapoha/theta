@@ -65,8 +65,10 @@ function showOnLoad(element) {
 function topFix(element, point) {
     var startPosition = point.offset().top;
     var elementHeight = element.outerHeight(true) + 15;
-    element.css("display", "block")
-        .css("top", -elementHeight);
+    setTimeout(function () {
+        element.css("display", "block")
+            .css("top", -elementHeight);
+    }, 50);
     $(window).scroll(function () {
         var _this = $(this);
         if (!element.hasClass("fixed") && (_this.scrollTop() >= startPosition)) {
