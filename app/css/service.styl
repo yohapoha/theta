@@ -13,7 +13,6 @@
   @extend .note__title
 }
 .service-head {
-  @extend .head
 }
 .service-head .service-head__title {
   @extend .title
@@ -22,15 +21,28 @@
   @extend .subtitle
 }
 .service-body {
-  @extend .body
 }
 .service-body .service-body__title {
   @extend .title
-  padding-top 60px
-  border-top 1px solid $line_color
+  padding-top 20px
 }
+
 .service-body .service-body__subtitle {
   @extend .subtitle
   margin-bottom 0
   border-bottom none
+}
+.service-table {
+  margin-bottom 30px
+}
+.service-annotation {
+  width 100%
+  padding-bottom 20px
+  margin-bottom 30px
+  border-bottom 1px solid $line_color
+}
+.service-annotation .service-annotation__text {
+  padding 5px 0
+  color $text_sub_color
+  text-align justify
 }

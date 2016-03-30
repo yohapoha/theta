@@ -90,7 +90,7 @@ $(document).ready(function () {
     });
     tabulatorNavigation();
     showOnLoad();
-    topFix($(".top-container"), $(".content-container"));
+    topFix($(".top-container"), $(".js_top-point"));
 });
 /*
 $(document).ready(function() {

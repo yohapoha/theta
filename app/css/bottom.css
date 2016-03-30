@@ -1,19 +1,21 @@
+.bottom-container {
+  width: 100%;
+  border-top: 1px solid #e2e2e2;
+}
 .bottom {
-    background-color: #fff;
-    height: 0;
-    line-height: 40px;
-    border-top: 2px solid #ebebeb;
-    transition: .5s;
+  width: 1000px;
+  padding: 10px 0;
+  margin: 0 auto;
+  font-size: 13px;
 }
-.bottom-text {
-    font-size: 13px;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
+.bottom .bottom-logo {
+  text-align: center;
 }
-.copyright {
-    float: left;
+.bottom .bottom-copyright {
+  margin-left: 30px;
+  float: left;
 }
-.organization {
-    float: right;
+.bottom .bottom-organization {
+  margin-right: 30px;
+  float: right;
 }

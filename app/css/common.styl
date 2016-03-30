@@ -7,37 +7,44 @@ cellWidth(count) {
 .common_table {
   width 100%
   margin-bottom 20px
-  border 1px solid $line_color
   border-radius 5px
   float left
 }
 .common_table-line {
   @extend .table-line
-  padding 7px 10px
-  border-top 1px solid $line_color
+  background-color $table_color
+  padding 7px 30px
+  border-top 2px solid $bg_color
   text-align center
   transition .1s
   cursor pointer
 
 }
+.common_table-line.common_table-line_head {
+  border-top none
+  border-top-left-radius 3px
+  border-top-right-radius 3px
+  cursor auto
+}
+.common_table-line.common_table-line_last {
+  border-bottom-left-radius 3px
+  border-bottom-right-radius 3px
+}
 .common_table-line.common_table-line_clear {
-  @extend .common_table-line
+  background-color $bg_color
   padding 0
   border-top none
   transition 0s
   cursor auto
 }
-.common_table-line.common_table-line_head {
-  border-top none
-  cursor auto
-}
+
 .common_table-line:hover {
-  background-color $bg_color_hover
-}
-.common_table-line.common_table-line_clear:hover {
-  background-color $bg_color
+  background-color $table_color_hover
 }
 .common_table-line.common_table-line_head:hover {
+  background-color $table_color
+}
+.common_table-line.common_table-line_clear:hover {
   background-color $bg_color
 }
 .common_table-line .common_table-line__cell,
