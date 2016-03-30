@@ -81,6 +81,13 @@ function topFix(element, point) {
         }
     });
 }
+function popupClose() {
+    var container = $(".popup-container");
+    var closeButton = $(".popup__close");
+    closeButton.click(function () {
+        container.css("display", "none");
+    });
+}
 $(document).ready(function () {
     centralizeH();
     centralizeV();
@@ -91,6 +98,7 @@ $(document).ready(function () {
     tabulatorNavigation();
     showOnLoad();
     topFix($(".top-container"), $(".js_top-point"));
+    popupClose();
 });
 /*
 $(document).ready(function() {

@@ -12,9 +12,9 @@ cellWidth(count) {
 }
 .common_table-line {
   @extend .table-line
-  background-color $table_color
+  background-color $grey_light
   padding 7px 30px
-  border-top 2px solid $bg_color
+  border-top 2px solid $white
   text-align center
   transition .1s
   cursor pointer
@@ -30,20 +30,20 @@ cellWidth(count) {
   border-bottom-right-radius 3px
 }
 .common_table-line.common_table-line_clear {
-  background-color $bg_color
+  background-color $white
   padding 0
   border-top none
   transition 0s
   cursor auto
 }
 .common_table-line:hover {
-  background-color $table_color_hover
+  background-color $grey
 }
 .common_table-line.common_table-line_head:hover {
-  background-color $table_color
+  background-color $grey_light
 }
 .common_table-line.common_table-line_clear:hover {
-  background-color $bg_color
+  background-color $white
 }
 .common_table-line .common_table-line__cell,
 .common_table-line .common_table-line__cell-1,

@@ -1,3 +1,11 @@
+a,
+a:visited,
+a:active {
+  color: #643cfa;
+}
+a:hover {
+  color: #643cdc;
+}
 h1,
 h2,
 h3,

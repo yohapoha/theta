@@ -8,19 +8,19 @@
   @extend .table-line
   height 30px
   margin 20px 0 30px
-  border 1px solid $line_color
+  border 1px solid $grey
   border-radius 5px
 }
 .tabulator-button {
   @extend .table-line__cell
-  border-right 1px solid $line_color
+  border-right 1px solid $grey
   cursor pointer
 }
 .tabulator-button.tabulator-button_last {
   border-right none
 }
 .tabulator-button .tabulator-button__point {
-  background-color $line_color
+  background-color $grey_dark
   width 6px
   height 6px
   margin 12px 10px
@@ -29,13 +29,13 @@
   transition .3s
 }
 .tabulator-button.tabulator-button_select .tabulator-button__point {
-  background-color: $line_color_maxdark
+  background-color: $black
 }
 .tabulator-button:hover .tabulator-button__point {
-  background-color: $line_color_dark
+  background-color: $black_light
 }
 .tabulator-button.tabulator-button_select:hover .tabulator-button__point {
-  background-color: $line_color_superdark
+  background-color: $black_light
 }
 .tabulator-button .tabulator-button__text {
   line-height 30px
@@ -43,7 +43,7 @@
 }
 .tabulator-body {
   padding-top 40px
-  border-top 1px solid $line_color
+  border-top 1px solid $grey
 }
 .tabulator-block {
   display none
