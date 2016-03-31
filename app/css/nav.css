@@ -1,5 +1,5 @@
 .navigation {
-  background-color: #fff;
+  background-color: $bg_color;
 }
 .navigation-panel {
   height: 38px;
@@ -9,7 +9,7 @@
 }
 .navigation-link,
 .navigation-link:hover {
-  color: #1b1b1b;
+  color: $text_color;
   text-decoration: none;
   white-space: nowrap;
   overflow: hidden;
@@ -21,7 +21,7 @@
   height: 2px;
 }
 .slider {
-  background-color: #1b1b1b;
+  background-color: $text_color;
   height: 2px;
   transition: 0.5s;
 }

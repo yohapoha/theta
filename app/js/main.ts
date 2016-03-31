@@ -75,12 +75,43 @@ function topFix(element:JQuery, point:JQuery) {
         }
     })
 }
-function popupClose():void {
-    var container = $(".popup-container");
-    var closeButton = $(".popup__close");
-    closeButton.click(function() {
-        container.css("display", "none");
-    })
+interface iPopup {
+    container:JQuery,
+    popup:JQuery,
+    openButton:JQuery,
+    closeButton:JQuery
+}
+class Popup implements iPopup {
+    container:JQuery = $(".popup-container");
+    popup:JQuery = $(".popup");
+    openButton = $(".js_popup__popup-open");
+    closeButton:JQuery = $(".js_popup__popup-close");
+    constructor() {
+        this.popupActions();
+    };
+    popupClose():void {
+        var _this = this;
+        this.container.css("opacity", 0);
+        setTimeout(function() {
+            _this.container.css("display", "none");
+        }, 500);
+    };
+    popupOpen():void {
+        var _this = this;
+        this.container.css("display", "block")
+        setTimeout(function() {
+            _this.container.css("opacity", 1);
+        }, 50);
+    };
+    popupActions():void {
+        var _this = this;
+        this.closeButton.on("click", function() {
+            _this.popupClose();
+        });
+        this.openButton.on("click", function() {
+            _this.popupOpen();
+        });
+    };
 }
 $(document).ready(function() {
     centralizeH();
@@ -92,7 +123,7 @@ $(document).ready(function() {
     tabulatorNavigation();
     showOnLoad();
     topFix($(".top-container"), $(".js_top-point"));
-    popupClose();
+    var popup = new Popup();
 });
 /*
 $(document).ready(function() {

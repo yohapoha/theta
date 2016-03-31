@@ -81,13 +81,43 @@ function topFix(element, point) {
         }
     });
 }
-function popupClose() {
-    var container = $(".popup-container");
-    var closeButton = $(".popup__close");
-    closeButton.click(function () {
-        container.css("display", "none");
-    });
-}
+var Popup = (function () {
+    function Popup() {
+        this.container = $(".popup-container");
+        this.popup = $(".popup");
+        this.openButton = $(".js_popup__popup-open");
+        this.closeButton = $(".js_popup__popup-close");
+        this.popupActions();
+    }
+    ;
+    Popup.prototype.popupClose = function () {
+        var _this = this;
+        this.container.css("opacity", 0);
+        setTimeout(function () {
+            _this.container.css("display", "none");
+        }, 500);
+    };
+    ;
+    Popup.prototype.popupOpen = function () {
+        var _this = this;
+        this.container.css("display", "block");
+        setTimeout(function () {
+            _this.container.css("opacity", 1);
+        }, 50);
+    };
+    ;
+    Popup.prototype.popupActions = function () {
+        var _this = this;
+        this.closeButton.on("click", function () {
+            _this.popupClose();
+        });
+        this.openButton.on("click", function () {
+            _this.popupOpen();
+        });
+    };
+    ;
+    return Popup;
+})();
 $(document).ready(function () {
     centralizeH();
     centralizeV();
@@ -98,7 +128,7 @@ $(document).ready(function () {
     tabulatorNavigation();
     showOnLoad();
     topFix($(".top-container"), $(".js_top-point"));
-    popupClose();
+    var popup = new Popup();
 });
 /*
 $(document).ready(function() {
