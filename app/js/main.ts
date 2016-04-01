@@ -89,10 +89,7 @@ class Popup implements iPopup {
     openButton = $(".js_popup__popup-open");
     closeButton:JQuery = $(".js_popup__popup-close");
     constructor() {
-        var bodyChildren = this.body.children();
-        this.popup.css("width", bodyChildren.width())
-            .css("height", bodyChildren.height());
-        this.popupActions();
+        this.popupLoad();
     };
     popupClose():void {
         var _this = this;
@@ -108,6 +105,11 @@ class Popup implements iPopup {
             _this.container.css("opacity", 1);
         }, 50);
     };
+    popupSize():void {
+        var bodyChildren = this.body.children();
+        this.popup.css("width", bodyChildren.width())
+            .css("height", bodyChildren.height());
+    };
     popupActions():void {
         var _this = this;
         this.closeButton.on("click", function() {
@@ -117,6 +119,10 @@ class Popup implements iPopup {
             _this.popupOpen();
         });
     };
+    popupLoad():void {
+        this.popupSize();
+        this.popupActions();
+    }
 }
 $(document).ready(function() {
     centralizeH();
