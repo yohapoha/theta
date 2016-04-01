@@ -78,15 +78,20 @@ function topFix(element:JQuery, point:JQuery) {
 interface iPopup {
     container:JQuery,
     popup:JQuery,
+    body:JQuery,
     openButton:JQuery,
     closeButton:JQuery
 }
 class Popup implements iPopup {
     container:JQuery = $(".popup-container");
     popup:JQuery = $(".popup");
+    body:JQuery = $(".popup-body");
     openButton = $(".js_popup__popup-open");
     closeButton:JQuery = $(".js_popup__popup-close");
     constructor() {
+        var bodyChildren = this.body.children();
+        this.popup.css("width", bodyChildren.width())
+            .css("height", bodyChildren.height());
         this.popupActions();
     };
     popupClose():void {

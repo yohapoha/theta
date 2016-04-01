@@ -85,8 +85,12 @@ var Popup = (function () {
     function Popup() {
         this.container = $(".popup-container");
         this.popup = $(".popup");
+        this.body = $(".popup-body");
         this.openButton = $(".js_popup__popup-open");
         this.closeButton = $(".js_popup__popup-close");
+        var bodyChildren = this.body.children();
+        this.popup.css("width", bodyChildren.width())
+            .css("height", bodyChildren.height());
         this.popupActions();
     }
     ;

@@ -3,7 +3,7 @@
 
 .popup-container {
   display none
-  background-color rgba(100, 60, 250, 0.8)
+  background-color rgba(0, 0, 0, .5)
   position fixed
   top 0
   left 0
@@ -14,23 +14,23 @@
   z-index 2
 }
 .popup {
-  background-color: $white
+  box-size border-box
   position absolute
   top 0
   left 0
   right 0
   bottom 0
-  width: 600px
-  height 500px
+  background-color: $white
   padding 30px
   border-radius 5px
   margin auto
+  box-shadow 0px 0px 15px 0px $black_light
 }
 .popup__close {
   position absolute
   top 0
   right 0
-  background-color: $grey_dark
+  background-color: $purple
   background-image url('/img/buttons.png')
   background-size 20px
   width 20px
@@ -40,11 +40,15 @@
   transition .3s
 }
 .popup__close:hover {
-  background-color: $purple
+  background-color: $purple_dark
 }
 .popup-head .popup-head__title {
   @extend .title
 }
 .popup-head .popup-head__subtitle {
   @extend .subtitle
+}
+.popup-order {
+  width 500px
+  height 500px
 }
