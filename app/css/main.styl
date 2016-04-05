@@ -1,4 +1,5 @@
 @import "colors.styl"
+@import "simples.styl"
 
 a,
 a:visited,
@@ -24,18 +25,38 @@ table {
 input {
   text-align center
 }
-.menu-main {
-  background-color: $white
-  width 120px
-  padding 3px 15px
-  margin-top 10px
-  border 1px solid $grey
-  border-radius 3px
-  color $black
-  text-align center
+.header-slider {
+  width 500px
+  margin 0 50px
+  float left
+}
+.slider-navigation {
+  width 100%
+  float left
+}
+.slider-navigation .slider-navigation__link {
+  padding 10px 0
+  line-height 25px
+  float left
   cursor pointer
+}
+.slider-line {
+  background-color: $grey
+  width 100%
+  height 1px
+  float left
+}
+.slider-line .slider-line__slider {
+  background-color: $black
+  width 100px
+  height 2px
+  float left
   transition .3s
 }
-.menu-main:hover {
-  border-color $black_light
+.link__logo {
+  @extend .main-logo
+  background-size 65px;
+  background-position-y 0px
+  width 65px
+  height 25px
 }

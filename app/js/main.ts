@@ -124,6 +124,100 @@ class Popup implements iPopup {
         this.popupActions();
     }
 }
+interface iSlider {
+    container: {
+        element:JQuery,
+        width:number
+    },
+    link: {
+        element:JQuery,
+        num:number,
+        width: {
+            sum:number,
+            each:Array<number>
+        },
+        margin:number
+    },
+    linkNum:number,
+    slider: {
+        element:JQuery,
+        width:Array<number>,
+        padding:number,
+        margin:Array<number>,
+        position:number
+    }
+}
+class Slider implements iSlider {
+    container = {
+        element: $(),
+        width: 0
+    };
+    link = {
+        element: $(),
+        num: 0,
+        width: {
+            sum: 0,
+            each: []
+        },
+        margin: 0
+    };
+    linkNum = 0;
+    slider = {
+        element: $(),
+        width: [],
+        padding: 15,
+        margin: [],
+        position: 0
+    };
+    constructor(container:JQuery) {
+        var _this = this;
+        this.container.element = container;
+        this.container.width = this.container.element.width();
+        this.link.element = container.find(".slider-navigation__link");
+        this.link.num = this.link.element.length;
+        this.link.element.map(function(index, element) {
+            var elementWidth = $(element).width();
+            _this.link.width.each.push(elementWidth);
+            _this.link.width.sum += elementWidth;
+            _this.slider.width.push(elementWidth + _this.slider.padding * 2);
+        });
+        this.link.margin = Math.floor(((this.container.width - this.link.width.sum)/this.link.num)/2) -1;
+        this.slider.element = container.find(".slider-line__slider");
+        this.link.element.map(function(index, element) {
+            if(!index) {
+                _this.slider.margin.push(_this.link.margin - _this.slider.padding);
+            } else {
+                _this.slider.margin.push(_this.slider.margin[index-1] + _this.link.width.each[index-1] + _this.link.margin * 2);
+            }
+        });
+        this.sliderLoad();
+    };
+    linkCentralize():void {
+        this.link.element.css("margin", "0 "+this.link.margin+"px");
+    }
+    sliderMove(index:number = this.slider.position):void {
+        this.slider.element.css("width", this.slider.width[index])
+            .css("margin-left", this.slider.margin[index]);
+    }
+    sliderActions():void {
+        var _this = this;
+        this.link.element.on("click", function() {
+            _this.slider.position = $(this).index();
+        });
+        this.link.element.hover(
+            function() {
+                _this.sliderMove($(this).index());
+            }, function() {
+                _this.sliderMove();
+            }
+        );
+    }
+    sliderLoad():void {
+        this.linkCentralize();
+        this.sliderActions();
+        this.sliderMove();
+    }
+}
 $(document).ready(function() {
     centralizeH();
     centralizeV();
@@ -134,7 +228,8 @@ $(document).ready(function() {
     tabulatorNavigation();
     showOnLoad();
     topFix($(".top-container"), $(".js_top-point"));
-    var popup = new Popup();
+    new Popup();
+    new Slider($(".header-slider"));
 });
 /*
 $(document).ready(function() {
