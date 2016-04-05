@@ -142,7 +142,6 @@ interface iSlider {
     slider: {
         element:JQuery,
         width:Array<number>,
-        padding:number,
         margin:Array<number>,
         position:number
     }
@@ -165,7 +164,6 @@ class Slider implements iSlider {
     slider = {
         element: $(),
         width: [],
-        padding: 15,
         margin: [],
         position: 0
     };
@@ -176,16 +174,16 @@ class Slider implements iSlider {
         this.link.element = container.find(".slider-navigation__link");
         this.link.num = this.link.element.length;
         this.link.element.map(function(index, element) {
-            var elementWidth = $(element).width();
+            var elementWidth = $(element).outerWidth(true);
             _this.link.width.each.push(elementWidth);
             _this.link.width.sum += elementWidth;
-            _this.slider.width.push(elementWidth + _this.slider.padding * 2);
+            _this.slider.width.push(elementWidth);
         });
         this.link.margin = Math.floor(((this.container.width - this.link.width.sum)/this.link.num)/2) -1;
         this.slider.element = container.find(".slider-line__slider");
         this.link.element.map(function(index, element) {
             if(!index) {
-                _this.slider.margin.push(_this.link.margin - _this.slider.padding);
+                _this.slider.margin.push(_this.link.margin);
             } else {
                 _this.slider.margin.push(_this.slider.margin[index-1] + _this.link.width.each[index-1] + _this.link.margin * 2);
             }
