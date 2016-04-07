@@ -216,6 +216,59 @@ class Slider implements iSlider {
         this.sliderMove();
     }
 }
+interface iMenuSlider {
+    body:JQuery,
+    sector: {
+        element:JQuery,
+        width:Array<number>,
+        links:Array<number>
+    }
+    link: {
+        element:JQuery,
+        width:Array<number>,
+        margin:Array<number>
+    }
+}
+class MenuSlider implements iMenuSlider {
+    body = $(".menu");
+    sector = {
+        element: $(".menu-sector"),
+        width: [],
+        links: []
+    }
+    link = {
+        element: $(".menu-sector__link"),
+        width: [],
+        margin: []
+    }
+    slider = {
+        element: $(".menu-slide__slider"),
+        margin: []
+    }
+    constructor(){
+        var _this = this;
+        this.sector.element.map(function(index, element) {
+            var elem:JQuery = $(element);
+            _this.sector.width.push(elem.width());
+            _this.sector.links.push(elem.children().length);
+        })
+        this.link.element.map(function(index, element) {
+            var elem:JQuery = $(element);
+            _this.link.width.push(elem.outerWidth());
+        })
+        this.sector.links.map(function(index, element) {
+            for(index)
+        })
+        console.log(this.link.margin)
+        this.linkCentralize();
+    }
+    linkCentralize():void {
+        var _this = this;
+        this.link.element.map(function(index, element) {
+            $(element).css("margin", "0 "+_this.link.margin[index]+"px");
+        })
+    }
+}
 $(document).ready(function() {
     centralizeH();
     centralizeV();
@@ -228,6 +281,7 @@ $(document).ready(function() {
     topFix($(".top-container"), $(".js_top-point"));
     new Popup();
     new Slider($(".header-slider"));
+    new MenuSlider();
 });
 /*
 $(document).ready(function() {

@@ -25,9 +25,9 @@ table {
 input {
   text-align center
 }
+
 .header-slider {
-  width 500px
-  margin 0 50px
+  width 100%
   float left
 }
 .slider-navigation {
@@ -41,9 +41,8 @@ input {
   cursor pointer
 }
 .slider-line {
-  background-color: $grey
   width 100%
-  height 1px
+  height 0px
   float left
 }
 .slider-line .slider-line__slider {
@@ -53,10 +52,41 @@ input {
   float left
   transition .3s
 }
-.link__logo {
+.menu-container {
+  width 100%
+  border-bottom 1px solid $grey
+}
+.menu {
+  width 980px
+  line-height 55px
+  margin 0 auto
+}
+.menu-slide {
+  width 100%
+  height 0px
+  float left
+}
+.menu-slide .menu-slide__slider {
+  background-color: $black
+  width 100px
+  height 2px
+  float left
+  transition .3s
+}
+.menu-logo {
+  width 65px
+}
+.menu-sector .menu-sector__link {
+  display block
+  padding 0 10px
+  float left
+  cursor pointer
+}
+.menu-sector .menu-sector__link.menu-sector__link_logo {
   @extend .main-logo
   background-size 65px;
   background-position-y 0px
   width 65px
   height 25px
+  padding 0
 }
