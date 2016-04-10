@@ -58,14 +58,14 @@ class MenuSlider implements iMenuSlider {
             _this.sector.margin.push(sectorMargin);
             if (index) {
                 (function() {
-                    var _index = index;
+                    var _index: number = index;
                     while (_index != 0) {
                         sliderMargin += _this.sector.width[--_index];
                     }
                 })();
             }
             childs.map(function(index, element) {
-                var linkIndex = _this.linkIndex($(element));
+                var linkIndex: number = _this.linkIndex($(element));
                 if(!index) {
                     sliderMargin += sectorMargin;
                 } else {
@@ -106,13 +106,13 @@ class MenuSlider implements iMenuSlider {
     sliderActions(): void {
         var _this = this;
         this.link.element.hover(function() {
-            var linkIndex = _this.linkIndex($(this));
+            var linkIndex: number = _this.linkIndex($(this));
             _this.sliderMover(linkIndex);
         }, function() {
             _this.sliderMover();
         })
         this.link.element.click(function() {
-            var linkIndex = _this.linkIndex($(this));
+            var linkIndex: number = _this.linkIndex($(this));
             _this.link.select = linkIndex;
         })
     }
