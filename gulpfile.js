@@ -36,7 +36,7 @@ gulp.task('watch', function() {
     gulp.watch('app/*.html', ['html']);
     gulp.watch('app/**/*.css', ['css', 'html_inject']);
     gulp.watch('app/**/*.ts', ['javascript']);
-    gulp.watch('app/**/*.js', ['html_inject']);
+    gulp.watch('app/js/**/*.js', ['html_inject']);
     gulp.watch('bower.json', ['bower']);
 });
 
