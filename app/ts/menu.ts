@@ -54,7 +54,7 @@ class MenuSlider implements iMenuSlider {
                 _this.slider.width.push(linkWidth);
                 
             })
-            sectorMargin = Math.floor(((sectorWidth - childsWidth) / 2) / childsNumber);
+            sectorMargin = Math.floor(((sectorWidth - childsWidth) / 2) / childsNumber) -1;
             _this.sector.margin.push(sectorMargin);
             if (index) {
                 (function() {
