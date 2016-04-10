@@ -20,6 +20,7 @@ function centralizeV(element: JQuery = $(".js_centralize-v")): void {
         _this.css("margin-top", Math.floor((parent.height() - _this.outerHeight()) / 2));
     })
 }
+
 function centralizeF(element: JQuery = $(".js_centralize-f")): void {
     element.each(function() {
         var _this = $(this);

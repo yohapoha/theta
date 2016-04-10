@@ -34,8 +34,9 @@ gulp.task('default', ['watch', 'server', 'html', 'css', 'javascript', 'bower', '
 
 gulp.task('watch', function() {
     gulp.watch('app/*.html', ['html']);
-    gulp.watch('app/css/*.css', ['css', 'html_inject']);
-    gulp.watch('app/js/*.ts', ['javascript', 'html_inject']);
+    gulp.watch('app/**/*.css', ['css', 'html_inject']);
+    gulp.watch('app/**/*.ts', ['javascript']);
+    gulp.watch('app/**/*.js', ['html_inject']);
     gulp.watch('bower.json', ['bower']);
 });
 
@@ -56,7 +57,7 @@ gulp.task('html_inject', function() {
             read: false,
             addRootSlash: false
         })))
-        .pipe(gulp.dest('app/js/'));
+        .pipe(gulp.dest('app'));
 });
 
 gulp.task('css', function() {
