@@ -13,6 +13,6 @@ $(document).ready(function () {
     showOnLoad();
     topFix($(".top-container"), $(".js_top-point"));
     new Popup();
-    new MenuSlider();
+    new MenuSlider(1);
 });
 //# sourceMappingURL=main.js.map

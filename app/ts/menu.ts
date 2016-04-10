@@ -28,15 +28,16 @@ class MenuSlider implements iMenuSlider {
     }
     link = {
         element: $(".menu-sector__link"),
-        select: 1
+        select: 0
     }
     slider = {
         element: $(".menu-slide__slider"),
         width: [],
         margin: []
     }
-    constructor() {
+    constructor(linkSelect:number) {
         var _this = this;
+        this.link.select = linkSelect;
         this.sector.element.map(function(index, element) {
             var sector: JQuery = $(element);
             var sectorWidth: number = sector.width();

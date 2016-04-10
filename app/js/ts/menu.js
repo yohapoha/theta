@@ -1,6 +1,6 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 var MenuSlider = (function () {
-    function MenuSlider() {
+    function MenuSlider(linkSelect) {
         this.body = $(".menu");
         this.sector = {
             element: $(".menu-sector"),
@@ -10,7 +10,7 @@ var MenuSlider = (function () {
         };
         this.link = {
             element: $(".menu-sector__link"),
-            select: 1
+            select: 0
         };
         this.slider = {
             element: $(".menu-slide__slider"),
@@ -18,6 +18,7 @@ var MenuSlider = (function () {
             margin: []
         };
         var _this = this;
+        this.link.select = linkSelect;
         this.sector.element.map(function (index, element) {
             var sector = $(element);
             var sectorWidth = sector.width();
