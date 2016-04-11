@@ -1,0 +1,110 @@
+@import "colors.styl"
+@import "simples.styl"
+
+cellWidth(count) {
+  width (10 * count)%
+}
+.common_table {
+  width 100%
+  margin-bottom 20px
+  border-radius 5px
+  float left
+}
+.common_table-line {
+  @extend .table-line
+  background-color $grey_light
+  padding 7px 30px
+  border-top 2px solid $white
+  text-align center
+  transition .1s
+  cursor pointer
+}
+.common_table-line.common_table-line_head {
+  border-top none
+  border-top-left-radius 3px
+  border-top-right-radius 3px
+  cursor auto
+}
+.common_table-line.common_table-line_last {
+  border-bottom-left-radius 3px
+  border-bottom-right-radius 3px
+}
+.common_table-line.common_table-line_clear {
+  background-color inherit
+  padding 0
+  border-top none
+  transition 0s
+  cursor auto
+}
+.common_table-line:hover {
+  background-color $grey
+}
+.common_table-line.common_table-line_head:hover {
+  background-color $grey_light
+}
+.common_table-line.common_table-line_clear:hover {
+  background-color inherit
+}
+.common_table-line .common_table-line__cell,
+.common_table-line .common_table-line__cell-1,
+.common_table-line .common_table-line__cell-2,
+.common_table-line .common_table-line__cell-3,
+.common_table-line .common_table-line__cell-4,
+.common_table-line .common_table-line__cell-5,
+.common_table-line .common_table-line__cell-6,
+.common_table-line .common_table-line__cell-7,
+.common_table-line .common_table-line__cell-8,
+.common_table-line .common_table-line__cell-9,
+.common_table-line .common_table-line__cell-10 {
+  @extend .table-line__cell
+}
+.common_table-line.common_table-line_head .common_table-line__cell,
+.common_table-line.common_table-line_head .common_table-line__cell-1,
+.common_table-line.common_table-line_head .common_table-line__cell-2,
+.common_table-line.common_table-line_head .common_table-line__cell-3,
+.common_table-line.common_table-line_head .common_table-line__cell-4,
+.common_table-line.common_table-line_head .common_table-line__cell-5,
+.common_table-line.common_table-line_head .common_table-line__cell-6,
+.common_table-line.common_table-line_head .common_table-line__cell-7,
+.common_table-line.common_table-line_head .common_table-line__cell-8,
+.common_table-line.common_table-line_head .common_table-line__cell-9,
+.common_table-line.common_table-line_head .common_table-line__cell-10 {
+  padding 15px 20px
+  font-size 14px
+  font-weight bold
+}
+.common_table-line .common_table-line__cell-1 {
+  cellWidth(1)
+}
+.common_table-line .common_table-line__cell-2 {
+  cellWidth(2)
+}
+.common_table-line .common_table-line__cell-3 {
+  cellWidth(3)
+}
+.common_table-line .common_table-line__cell-4 {
+  cellWidth(4)
+}
+.common_table-line .common_table-line__cell-5 {
+  cellWidth(5)
+}
+.common_table-line .common_table-line__cell-6 {
+  cellWidth(6)
+}
+.common_table-line .common_table-line__cell-7 {
+  cellWidth(7)
+}
+.common_table-line .common_table-line__cell-8 {
+  cellWidth(8)
+}
+.common_table-line .common_table-line__cell-9 {
+  cellWidth(9)
+}
+.common_table-line .common_table-line__cell-10 {
+  cellWidth(10)
+}
+
+.common_block-link {
+  display block
+  float left
+}

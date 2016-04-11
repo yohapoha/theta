@@ -1,0 +1,92 @@
+@import "colors.styl"
+@import "simples.styl"
+
+a,
+a:visited,
+a:active {
+  color $purple
+}
+a:hover {
+  color $purple_dark
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  padding 0
+  margin 0
+  font-weight normal
+}
+table {
+  margin 0
+  padding 0
+}
+input {
+  text-align center
+}
+
+.header-slider {
+  width 100%
+  float left
+}
+.slider-navigation {
+  width 100%
+  float left
+}
+.slider-navigation .slider-navigation__link {
+  padding 10px 15px
+  line-height 25px
+  float left
+  cursor pointer
+}
+.slider-line {
+  width 100%
+  height 0px
+  float left
+}
+.slider-line .slider-line__slider {
+  background-color: $black
+  width 100px
+  height 2px
+  float left
+  transition .3s
+}
+.menu-container {
+  width 100%
+  border-bottom 1px solid $grey
+}
+.menu {
+  width 980px
+  line-height 55px
+  margin 0 auto
+}
+.menu-slide {
+  width 100%
+  height 0px
+  float left
+}
+.menu-slide .menu-slide__slider {
+  background-color: $black
+  width 100px
+  height 2px
+  float left
+  transition .3s
+}
+.menu-logo {
+  width 65px
+}
+.menu-sector .menu-sector__link {
+  display block
+  padding 0 10px
+  float left
+  cursor pointer
+}
+.menu-sector .menu-sector__link.menu-sector__link_logo {
+  @extend .main-logo
+  background-size 65px;
+  background-position-y 0px
+  width 65px
+  height 25px
+  padding 0
+}

@@ -2,6 +2,7 @@ var gulp,
 css_autoprefixer,
 css_cssnano,
 css_uncss,
+css_stylus,
 file_clean,
 file_concat,
 file_if,
@@ -9,7 +10,6 @@ file_inject,
 file_useref,
 html_htmlmin,
 html_wiredep,
-javascript_coffee,
 javascript_typescrypt,
 javascript_uglify,
 server_connect;
@@ -26,17 +26,16 @@ html_htmlmin = require('gulp-htmlmin');
 css_autoprefixer = require('gulp-autoprefixer');
 css_cssnano = require('gulp-cssnano');
 css_uncss = require('gulp-uncss');
-javascript_coffee = require('gulp-coffee');
+css_stylus = require('gulp-stylus');
 javascript_typescrypt = require('gulp-typescript-compiler');
 javascript_uglify = require('gulp-uglify');
 
-gulp.task('default', ['watch', 'server', 'html', 'css', 'javascript', 'bower', 'html_inject']);
+gulp.task('default', ['watch', 'server', 'html', 'css2styl', 'ts2js', 'bower']);
 
 gulp.task('watch', function() {
     gulp.watch('app/*.html', ['html']);
-    gulp.watch('app/**/*.css', ['css', 'html_inject']);
-    gulp.watch('app/**/*.ts', ['javascript']);
-    gulp.watch('app/js/**/*.js', ['html_inject']);
+    gulp.watch('app/modules/**/*.styl', ['css2styl']);
+    gulp.watch('app/modules/**/*.ts', ['ts2js']);
     gulp.watch('bower.json', ['bower']);
 });
 
@@ -50,22 +49,16 @@ gulp.task('html', function() {
     gulp.src('app/**/*.html')
         .pipe(server_connect.reload());
 });
-gulp.task('html_inject', function() {
-    gulp.src('app/index.html')
-        .pipe(file_inject(gulp.src(['js/**/*.js', 'css/*.css'], {
-            cwd: 'app/',
-            read: false,
-            addRootSlash: false
-        })))
-        .pipe(gulp.dest('app'));
-});
 
-gulp.task('css', function() {
-    gulp.src(['app/css/*.css'])
+gulp.task('css2styl', function() {
+    gulp.src(['app/modules/**/*.styl'])
+        .pipe(css_stylus())
+        .pipe(gulp.dest('app/css/'))
         .pipe(server_connect.reload());
+        
 });
-gulp.task('javascript', function() {
-    gulp.src('app/**/*.ts')
+gulp.task('ts2js',function() {
+    gulp.src('app/modules/**/*.ts')
         .pipe(javascript_typescrypt({
             module: '',
             target: 'ES5',
@@ -75,8 +68,17 @@ gulp.task('javascript', function() {
         .pipe(gulp.dest('app/js/'))
         .pipe(server_connect.reload());
 });
+gulp.task('inject', function() {
+    gulp.src('app/index.html')
+        .pipe(file_inject(gulp.src(['css/**/*.css', 'js/**/*.js'], {
+            cwd: 'app/',
+            read: false,
+            addRootSlash: false
+        })))
+        .pipe(gulp.dest('app'));
+});
 
-gulp.task('bower', ['html', 'html_inject'], function() {
+gulp.task('bower', function() {
     gulp.src('app/index.html')
         .pipe(html_wiredep({
           "directory": "app/bower_components"

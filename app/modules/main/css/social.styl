@@ -1,0 +1,29 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.social {
+}
+.social-button {
+  background-color $black
+  width 32px
+  height 32px
+  padding 6px 8px
+  border-radius 3px
+  cursor pointer
+  transition .3s
+}
+.social-button.social-button_vk:hover {
+  @extend ._social-button__vk_hover
+}
+.social-button.social-button_ok:hover {
+  @extend ._social-button__ok_hover
+}
+.social-button .social-button__logo {
+  @extend .social-logo
+}
+.social-button .social-button__logo.social-button__logo_vk {
+  @extend .social-logo_vk
+}
+.social-button .social-button__logo.social-button__logo_ok {
+  @extend .social-logo_ok
+}
