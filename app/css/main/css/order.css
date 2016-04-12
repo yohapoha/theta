@@ -123,6 +123,9 @@
   margin: 10px 0;
   float: left;
 }
+.order {
+  float: left;
+}
 .order-head .order-head__subtitle {
   margin-bottom: 20px;
 }

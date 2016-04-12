@@ -25,7 +25,7 @@
   background-color: #f58220;
 }
 .main-logo,
-.menu-sector .menu-sector__link.menu-sector__link_logo {
+.menu-sector_logo .menu-sector__link.menu-sector_logo__link {
   background-image: url("/img/logo_b.png");
   background-size: 260px;
   width: 260px;
@@ -138,39 +138,13 @@ table {
 input {
   text-align: center;
 }
-.header-slider {
-  width: 100%;
-  float: left;
-}
-.slider-navigation {
-  width: 100%;
-  float: left;
-}
-.slider-navigation .slider-navigation__link {
-  padding: 10px 15px;
-  line-height: 25px;
-  float: left;
-  cursor: pointer;
-}
-.slider-line {
-  width: 100%;
-  height: 0px;
-  float: left;
-}
-.slider-line .slider-line__slider {
-  background-color: #2b2b2b;
-  width: 100px;
-  height: 2px;
-  float: left;
-  transition: 0.3s;
-}
 .menu-container {
   width: 100%;
   border-bottom: 1px solid #e2e2e2;
 }
 .menu {
   width: 980px;
-  line-height: 55px;
+  line-height: 35px;
   margin: 0 auto;
 }
 .menu-slide {
@@ -182,19 +156,21 @@ input {
   background-color: #2b2b2b;
   width: 100px;
   height: 2px;
-  float: left;
   transition: 0.3s;
 }
 .menu-logo {
   width: 65px;
 }
+.menu-sector.menu-sector_logo {
+  width: 100px;
+}
 .menu-sector .menu-sector__link {
   display: block;
-  padding: 0 10px;
+  padding: 5px 15px;
   float: left;
   cursor: pointer;
 }
-.menu-sector .menu-sector__link.menu-sector__link_logo {
+.menu-sector_logo .menu-sector__link.menu-sector_logo__link {
   background-size: 65px;
   background-position-y: 0px;
   width: 65px;
