@@ -8,7 +8,7 @@ interface iMenuSlider {
         margin: Array<number>;
         childs: Array<number>;
     };
-    link: {
+    button: {
         element: JQuery;
         select: number;
     };
@@ -26,8 +26,8 @@ class MenuSlider implements iMenuSlider {
         margin: [],
         childs: []
     }
-    link = {
-        element: $(".menu-sector__link"),
+    button = {
+        element: $(".menu-button"),
         select: 0
     }
     slider = {
@@ -35,9 +35,9 @@ class MenuSlider implements iMenuSlider {
         width: [],
         margin: []
     }
-    constructor(linkSelect:number) {
+    constructor(buttonSelect:number) {
         var _this = this;
-        this.link.select = linkSelect;
+        this.button.select = buttonSelect;
         this.sector.element.map(function(index, element) {
             var sector: JQuery = $(element);
             var sectorWidth: number = sector.width();
@@ -49,9 +49,9 @@ class MenuSlider implements iMenuSlider {
             _this.sector.width.push(sectorWidth);
             _this.sector.childs.push(childsNumber);
             childs.map(function(index, element) {
-                var linkWidth: number = $(element).outerWidth();
-                childsWidth += linkWidth;
-                _this.slider.width.push(linkWidth);
+                var buttonWidth: number = $(element).outerWidth();
+                childsWidth += buttonWidth;
+                _this.slider.width.push(buttonWidth);
                 
             })
             sectorMargin = Math.floor(((sectorWidth - childsWidth) / 2) / childsNumber) -1;
@@ -65,20 +65,20 @@ class MenuSlider implements iMenuSlider {
                 })();
             }
             childs.map(function(index, element) {
-                var linkIndex: number = _this.linkIndex($(element));
+                var buttonIndex: number = _this.buttonIndex($(element));
                 if(!index) {
                     sliderMargin += sectorMargin;
                 } else {
-                    sliderMargin += _this.slider.width[linkIndex - 1] + sectorMargin * 2;
+                    sliderMargin += _this.slider.width[buttonIndex - 1] + sectorMargin * 2;
                 }
                 _this.slider.margin.push(sliderMargin);
             })
         })        
-        this.linkCentralize();
+        this.buttonCentralize();
         this.sliderMover();
         this.sliderActions();
     }
-    linkCentralize(): void {
+    buttonCentralize(): void {
         var _this = this;
         this.sector.element.map(function(index, element) {
             var elem: JQuery = $(element);
@@ -87,33 +87,33 @@ class MenuSlider implements iMenuSlider {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         })
     }
-    linkIndex(element: JQuery): number {
-        var link: JQuery = element;
-        var linkIndex: number = link.index();
-        var sector: JQuery = link.parent();
+    buttonIndex(element: JQuery): number {
+        var button: JQuery = element;
+        var buttonIndex: number = button.index();
+        var sector: JQuery = button.parent();
         var sectorIndex: number = sector.index();
         if (sectorIndex) {
             while (sectorIndex != 0) {
-                linkIndex += this.sector.childs[--sectorIndex];
+                buttonIndex += this.sector.childs[--sectorIndex];
             }
         }
-        return linkIndex;
+        return buttonIndex;
     }
-    sliderMover(linkIndex: number = this.link.select): void {
-        this.slider.element.css("margin-left", this.slider.margin[linkIndex])
-            .css("width", this.slider.width[linkIndex]);
+    sliderMover(buttonIndex: number = this.button.select): void {
+        this.slider.element.css("margin-left", this.slider.margin[buttonIndex])
+            .css("width", this.slider.width[buttonIndex]);
     }
     sliderActions(): void {
         var _this = this;
-        this.link.element.hover(function() {
-            var linkIndex: number = _this.linkIndex($(this));
-            _this.sliderMover(linkIndex);
+        this.button.element.hover(function() {
+            var buttonIndex: number = _this.buttonIndex($(this));
+            _this.sliderMover(buttonIndex);
         }, function() {
             _this.sliderMover();
         })
-        this.link.element.click(function() {
-            var linkIndex: number = _this.linkIndex($(this));
-            _this.link.select = linkIndex;
+        this.button.element.click(function() {
+            var buttonIndex: number = _this.buttonIndex($(this));
+            _this.button.select = buttonIndex;
         })
     }
 }

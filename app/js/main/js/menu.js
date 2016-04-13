@@ -1,6 +1,6 @@
 /// <reference path="../../typings/jquery/jquery.d.ts" />
 var MenuSlider = (function () {
-    function MenuSlider(linkSelect) {
+    function MenuSlider(buttonSelect) {
         this.body = $(".menu");
         this.sector = {
             element: $(".menu-sector"),
@@ -8,8 +8,8 @@ var MenuSlider = (function () {
             margin: [],
             childs: []
         };
-        this.link = {
-            element: $(".menu-sector__link"),
+        this.button = {
+            element: $(".menu-button"),
             select: 0
         };
         this.slider = {
@@ -18,7 +18,7 @@ var MenuSlider = (function () {
             margin: []
         };
         var _this = this;
-        this.link.select = linkSelect;
+        this.button.select = buttonSelect;
         this.sector.element.map(function (index, element) {
             var sector = $(element);
             var sectorWidth = sector.width();
@@ -30,9 +30,9 @@ var MenuSlider = (function () {
             _this.sector.width.push(sectorWidth);
             _this.sector.childs.push(childsNumber);
             childs.map(function (index, element) {
-                var linkWidth = $(element).outerWidth();
-                childsWidth += linkWidth;
-                _this.slider.width.push(linkWidth);
+                var buttonWidth = $(element).outerWidth();
+                childsWidth += buttonWidth;
+                _this.slider.width.push(buttonWidth);
             });
             sectorMargin = Math.floor(((sectorWidth - childsWidth) / 2) / childsNumber) - 1;
             _this.sector.margin.push(sectorMargin);
@@ -45,20 +45,20 @@ var MenuSlider = (function () {
                 })();
             }
             childs.map(function (index, element) {
-                var linkIndex = _this.linkIndex($(element));
+                var buttonIndex = _this.buttonIndex($(element));
                 if (!index) {
                     sliderMargin += sectorMargin;
                 } else {
-                    sliderMargin += _this.slider.width[linkIndex - 1] + sectorMargin * 2;
+                    sliderMargin += _this.slider.width[buttonIndex - 1] + sectorMargin * 2;
                 }
                 _this.slider.margin.push(sliderMargin);
             });
         });
-        this.linkCentralize();
+        this.buttonCentralize();
         this.sliderMover();
         this.sliderActions();
     }
-    MenuSlider.prototype.linkCentralize = function () {
+    MenuSlider.prototype.buttonCentralize = function () {
         var _this = this;
         this.sector.element.map(function (index, element) {
             var elem = $(element);
@@ -67,33 +67,33 @@ var MenuSlider = (function () {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         });
     };
-    MenuSlider.prototype.linkIndex = function (element) {
-        var link = element;
-        var linkIndex = link.index();
-        var sector = link.parent();
+    MenuSlider.prototype.buttonIndex = function (element) {
+        var button = element;
+        var buttonIndex = button.index();
+        var sector = button.parent();
         var sectorIndex = sector.index();
         if (sectorIndex) {
             while (sectorIndex != 0) {
-                linkIndex += this.sector.childs[--sectorIndex];
+                buttonIndex += this.sector.childs[--sectorIndex];
             }
         }
-        return linkIndex;
+        return buttonIndex;
     };
-    MenuSlider.prototype.sliderMover = function (linkIndex) {
-        if (typeof linkIndex === "undefined") { linkIndex = this.link.select; }
-        this.slider.element.css("margin-left", this.slider.margin[linkIndex]).css("width", this.slider.width[linkIndex]);
+    MenuSlider.prototype.sliderMover = function (buttonIndex) {
+        if (typeof buttonIndex === "undefined") { buttonIndex = this.button.select; }
+        this.slider.element.css("margin-left", this.slider.margin[buttonIndex]).css("width", this.slider.width[buttonIndex]);
     };
     MenuSlider.prototype.sliderActions = function () {
         var _this = this;
-        this.link.element.hover(function () {
-            var linkIndex = _this.linkIndex($(this));
-            _this.sliderMover(linkIndex);
+        this.button.element.hover(function () {
+            var buttonIndex = _this.buttonIndex($(this));
+            _this.sliderMover(buttonIndex);
         }, function () {
             _this.sliderMover();
         });
-        this.link.element.click(function () {
-            var linkIndex = _this.linkIndex($(this));
-            _this.link.select = linkIndex;
+        this.button.element.click(function () {
+            var buttonIndex = _this.buttonIndex($(this));
+            _this.button.select = buttonIndex;
         });
     };
     return MenuSlider;
