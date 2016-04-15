@@ -25,8 +25,8 @@
   background-color: #f58220;
 }
 .main-logo {
-  background-image: url("/img/logo.png");
-  background-size: 260px;
+  background-image: url("/img/logo.svg");
+  background-size: 260px 160px;
   width: 260px;
   height: 160px;
 }
@@ -165,8 +165,8 @@ input {
   padding-top: 6px;
 }
 .menu-button-logo .menu-button-logo__img {
-  background-image: url("/img/icons.png");
-  background-size: 75px;
+  background-image: url("/img/icons.svg");
+  background-size: 75px 25px;
   width: 25px;
   height: 25px;
   margin: 0 auto;
