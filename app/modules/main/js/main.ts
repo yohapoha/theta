@@ -15,4 +15,7 @@ $(document).ready(function() {
     topFix($(".top-container"), $(".js_top-point"));
     new Popup();
     new MenuSlider(1);
+    if (navigator.userAgent.indexOf('Mac') != -1) {
+        console.log("hello")
+    }
 });
