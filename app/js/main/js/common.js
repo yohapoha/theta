@@ -1,4 +1,4 @@
-/// <reference path="../../typings/jquery/jquery.d.ts" />
+/// <reference path="../../../../typings/jquery/jquery.d.ts" />
 function centralizeH(element, onResize) {
     if (typeof element === "undefined") { element = $(".js_centralize-h"); }
     if (typeof onResize === "undefined") { onResize = false; }

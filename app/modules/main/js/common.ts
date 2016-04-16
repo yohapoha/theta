@@ -1,4 +1,4 @@
-/// <reference path="../../typings/jquery/jquery.d.ts" />
+/// <reference path="../../../../typings/jquery/jquery.d.ts" />
 
 function centralizeH(element: JQuery = $(".js_centralize-h"), onResize: boolean = false): void {
     element.each(function() {

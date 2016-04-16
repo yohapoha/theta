@@ -1,4 +1,4 @@
-/// <reference path="../../typings/jquery/jquery.d.ts" />
+/// <reference path="../../../../typings/jquery/jquery.d.ts" />
 var MenuSlider = (function () {
     function MenuSlider(buttonSelect) {
         this.body = $(".menu");

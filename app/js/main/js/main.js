@@ -1,4 +1,4 @@
-/// <reference path="../../typings/maskedinput/maskedinput.d.ts" />
+/// <reference path="../../../../typings/maskedinput/maskedinput.d.ts" />
 /// <reference path="common.ts"/>
 /// <reference path="popup.ts"/>
 /// <reference path="menu.ts"/>
