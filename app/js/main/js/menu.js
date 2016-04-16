@@ -35,17 +35,17 @@ var Menu = (function () {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         });
     };
-    Menu.prototype.buttonSelect = function (element, hover) {
-        if (typeof hover === "undefined") { hover = false; }
+    Menu.prototype.buttonSelect = function (element, selectHover) {
+        if (typeof selectHover === "undefined") { selectHover = false; }
         element.find(".menu-button__line").css("background-color", "#2b2b2b");
-        if (hover) {
-            this.button.select.find(".menu-button__line").css("background-color", "#643cfa");
+        if (selectHover) {
+            this.button.select.find(".menu-button__line").css("background-color", "#a2a2a2");
         }
     };
-    Menu.prototype.buttonFree = function (element, hover) {
-        if (typeof hover === "undefined") { hover = false; }
+    Menu.prototype.buttonFree = function (element, selectHover) {
+        if (typeof selectHover === "undefined") { selectHover = false; }
         element.find(".menu-button__line").css("background-color", "inherit");
-        if (hover) {
+        if (selectHover) {
             this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
         }
     };
@@ -55,16 +55,16 @@ var Menu = (function () {
         this.button.element.hover(function () {
             var button = $(this);
             if (!button.hasClass("menu-button_select")) {
-                _this.buttonSelect(button, true);
+                _this.buttonSelect(button);
             }
         }, function () {
             var button = $(this);
             if (!button.hasClass("menu-button_select")) {
-                _this.buttonFree(button, true);
+                _this.buttonFree(button);
             }
         });
         this.button.element.click(function () {
-            _this.button.element.removeClass("menu-button_select");
+            _this.button.select.removeClass("menu-button_select");
             _this.button.select = $(this);
             $(this).addClass("menu-button_select");
             _this.buttonFree(_this.button.element);

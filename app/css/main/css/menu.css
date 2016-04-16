@@ -154,7 +154,7 @@
   height: 2px;
   margin-bottom: -2px;
   float: left;
-  transition: 0.2s;
+  transition: 0.3s;
 }
 .menu-button.menu-button_select .menu-button__line {
   background-color: #2b2b2b;
