@@ -46,16 +46,15 @@ class Menu implements iMenu {
 			childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
 		})
 	}
-	buttonSelect(element: JQuery, selectHover: boolean = false): void {
-		element.find(".menu-button__line").css("background-color", "#2b2b2b");
-		if (selectHover) {
-			this.button.select.find(".menu-button__line").css("background-color", "#a2a2a2");
-		}
+	buttonSelect(button: JQuery = this.button.select): void {
+		this.button.element.find(".menu-button__line").css("background-color", "inherit");
+		button.find(".menu-button__line").css("background-color", "#2b2b2b");
 	}
-	buttonFree(element: JQuery, selectHover: boolean = false): void {
-		element.find(".menu-button__line").css("background-color", "inherit");
-		if (selectHover) {
-			this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
+	buttonHover(button: JQuery, mouseOver: boolean = true): void {
+		if (mouseOver) {
+			button.find(".menu-button__line").css("background-color", "#a2a2a2");
+		} else {
+			button.find(".menu-button__line").css("background-color", "inherit");
 		}
 	}
 	menuActions(): void {
@@ -64,20 +63,19 @@ class Menu implements iMenu {
 		this.button.element.hover(function () {
 			var button: JQuery = $(this);
 			if (!button.hasClass("menu-button_select")) {
-				_this.buttonSelect(button);
+				_this.buttonHover(button);
 			}
 		}, function () {
 			var button: JQuery = $(this);
 			if (!button.hasClass("menu-button_select")) {
-				_this.buttonFree(button);
+				_this.buttonHover(button, false);
 			}
 		})
 		this.button.element.click(function() {
 			_this.button.select.removeClass("menu-button_select");
 			_this.button.select = $(this);
 			$(this).addClass("menu-button_select");
-			_this.buttonFree(_this.button.element);
-			_this.buttonSelect(_this.button.select);
+			_this.buttonSelect();
 			
 		})
 	}

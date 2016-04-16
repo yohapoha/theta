@@ -35,18 +35,17 @@ var Menu = (function () {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         });
     };
-    Menu.prototype.buttonSelect = function (element, selectHover) {
-        if (typeof selectHover === "undefined") { selectHover = false; }
-        element.find(".menu-button__line").css("background-color", "#2b2b2b");
-        if (selectHover) {
-            this.button.select.find(".menu-button__line").css("background-color", "#a2a2a2");
-        }
+    Menu.prototype.buttonSelect = function (button) {
+        if (typeof button === "undefined") { button = this.button.select; }
+        this.button.element.find(".menu-button__line").css("background-color", "inherit");
+        button.find(".menu-button__line").css("background-color", "#2b2b2b");
     };
-    Menu.prototype.buttonFree = function (element, selectHover) {
-        if (typeof selectHover === "undefined") { selectHover = false; }
-        element.find(".menu-button__line").css("background-color", "inherit");
-        if (selectHover) {
-            this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
+    Menu.prototype.buttonHover = function (button, mouseOver) {
+        if (typeof mouseOver === "undefined") { mouseOver = true; }
+        if (mouseOver) {
+            button.find(".menu-button__line").css("background-color", "#a2a2a2");
+        } else {
+            button.find(".menu-button__line").css("background-color", "inherit");
         }
     };
     Menu.prototype.menuActions = function () {
@@ -55,20 +54,19 @@ var Menu = (function () {
         this.button.element.hover(function () {
             var button = $(this);
             if (!button.hasClass("menu-button_select")) {
-                _this.buttonSelect(button);
+                _this.buttonHover(button);
             }
         }, function () {
             var button = $(this);
             if (!button.hasClass("menu-button_select")) {
-                _this.buttonFree(button);
+                _this.buttonHover(button, false);
             }
         });
         this.button.element.click(function () {
             _this.button.select.removeClass("menu-button_select");
             _this.button.select = $(this);
             $(this).addClass("menu-button_select");
-            _this.buttonFree(_this.button.element);
-            _this.buttonSelect(_this.button.select);
+            _this.buttonSelect();
         });
     };
     return Menu;
