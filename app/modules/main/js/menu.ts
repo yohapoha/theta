@@ -46,26 +46,14 @@ class Menu implements iMenu {
 			childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
 		})
 	}
-	buttonHover(element: JQuery, select: boolean = false): void {
-		var buttonLine: JQuery = element.find(".menu-button__line");
-		if (select) {
-			buttonLine.css("height", "2px")
-				.css("background-color", "#2b2b2b");
-		} else {
-			buttonLine.css("height", "1px")
-				.css("background-color", "#e2e2e2");
-		}
-	}
 	buttonSelect(element: JQuery, hover: boolean = false): void {
-		element.find(".menu-button__line").css("height", "2px")
-			.css("background-color", "#2b2b2b");
+		element.find(".menu-button__line").css("background-color", "#2b2b2b");
 		if (hover) {
 			this.button.select.find(".menu-button__line").css("background-color", "#643cfa");
 		}
 	}
 	buttonFree(element: JQuery, hover: boolean = false): void {
-		element.find(".menu-button__line").css("height", "1px")
-			.css("background-color", "#e2e2e2");
+		element.find(".menu-button__line").css("background-color", "inherit");
 		if (hover) {
 			this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
 		}

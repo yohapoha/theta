@@ -35,25 +35,16 @@ var Menu = (function () {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         });
     };
-    Menu.prototype.buttonHover = function (element, select) {
-        if (typeof select === "undefined") { select = false; }
-        var buttonLine = element.find(".menu-button__line");
-        if (select) {
-            buttonLine.css("height", "2px").css("background-color", "#2b2b2b");
-        } else {
-            buttonLine.css("height", "1px").css("background-color", "#e2e2e2");
-        }
-    };
     Menu.prototype.buttonSelect = function (element, hover) {
         if (typeof hover === "undefined") { hover = false; }
-        element.find(".menu-button__line").css("height", "2px").css("background-color", "#2b2b2b");
+        element.find(".menu-button__line").css("background-color", "#2b2b2b");
         if (hover) {
             this.button.select.find(".menu-button__line").css("background-color", "#643cfa");
         }
     };
     Menu.prototype.buttonFree = function (element, hover) {
         if (typeof hover === "undefined") { hover = false; }
-        element.find(".menu-button__line").css("height", "1px").css("background-color", "#e2e2e2");
+        element.find(".menu-button__line").css("background-color", "inherit");
         if (hover) {
             this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
         }
