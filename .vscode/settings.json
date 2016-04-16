@@ -1,3 +1,15 @@
 // Поместите параметры в этот файл, чтобы перезаписать параметры по умолчанию и пользовательские параметры.
 {
+    // Вставлять пробелы при нажатии клавиши TAB.
+    "editor.insertSpaces": false,
+    // При открытии файла editor.tabSize и editor.insertSpaces будут определяться на основе содержимого файла.
+	"editor.detectIndentation": false,
+	// Управляет параметром, определяющим, должен ли редактор автоматически форматировать строку после ввода.
+	"editor.formatOnType": true,
+		// Управляет автоматическим сохранением измененных файлов. Допустимые значения: "off", "afterDelay", "onFocusChange". Если задано значение "afterDelay", можно настроить задержку в files.autoSaveDelay.
+	"files.autoSave": "onFocusChange",
+	// Разрешить отправку сведений об использовании и ошибках в корпорацию Майкрософт.
+	"telemetry.enableTelemetry": false,
+	// Control whether stylelint is enabled for CSS/SCSS files or not.
+	"stylelint.enable": true,
 }

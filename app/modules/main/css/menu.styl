@@ -1,0 +1,68 @@
+@import "colors.styl"
+@import "simples.styl"
+
+.menu-container {
+	width 100%
+	border-bottom 1px solid $grey
+}
+.menu {
+	width 980px
+	margin 0 auto
+}
+.menu-sector {
+}
+.menu-button {
+	float left
+	cursor pointer
+}
+.menu-button_borders1 {
+	border-left 1px solid $grey
+	border-right 1px solid $grey
+}
+.menu-button .menu-button-logo,
+.menu-button .menu-button__text {
+	width 100% 
+	height 34px
+	padding-top 10px
+	float left 
+}
+.menu-button .menu-button__text {
+	height 32px
+	padding-top 6px
+}
+.menu-button-logo .menu-button-logo__img {
+	background-image url('/img/icons.svg')
+	background-size 75px 25px
+	width 25px
+	height 25px
+	margin 0 auto
+}
+.menu-button-logo .menu-button-logo__img.menu-button-logo__img_service-full {
+	background-position-x -25px
+}
+.menu-button-logo .menu-button-logo__img.menu-button-logo__img_service {
+	background-position-x -50px
+}
+.menu-button .menu-button__line {
+	background-color $grey
+	width 100%
+	height 1px
+	margin-bottom -2px
+	float left
+	transition .4s
+}
+.menu-button.menu-button_select .menu-button__line { 
+	background-color $black
+	height 2px
+}
+.menu-slide {
+	width 100%
+	height 0px
+	float left
+}
+.menu-slide .menu-slide__slider {
+	background-color: $black
+	width 100px
+	height 2px
+	transition .3s
+}

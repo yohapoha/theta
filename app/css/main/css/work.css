@@ -9,10 +9,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-._show-on-load {
-  transition: 1s;
-  opacity: 0;
-}
 ._text-big {
   font-size: 20px;
 }

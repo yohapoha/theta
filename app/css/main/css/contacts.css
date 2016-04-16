@@ -7,10 +7,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-._show-on-load {
-  transition: 1s;
-  opacity: 0;
-}
 ._text-big,
 .contacts-email .contacts-email__address.contacts-email__address_text-big,
 .contacts-phone .contacts-phone__number.contacts-phone__number_text-big {

@@ -7,12 +7,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-._show-on-load,
-.theta-logo.theta-logo_show-on-load,
-.switch-container.switch-container_show-on-load {
-  transition: 1s;
-  opacity: 0;
-}
 ._text-big {
   font-size: 20px;
 }
@@ -131,11 +125,5 @@
   height: 360px;
   margin: 30px 0;
   border-right: 1px solid #e2e2e2;
-  float: left;
-}
-.switch-container {
-  width: 380px;
-  height: 360px;
-  margin: 30px 0;
   float: left;
 }

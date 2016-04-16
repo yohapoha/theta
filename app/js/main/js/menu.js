@@ -1,24 +1,15 @@
 /// <reference path="../../../../typings/jquery/jquery.d.ts" />
-var MenuSlider = (function () {
-    function MenuSlider(buttonSelect) {
-        this.body = $(".menu");
+var Menu = (function () {
+    function Menu() {
         this.sector = {
             element: $(".menu-sector"),
-            width: [],
-            margin: [],
-            childs: []
+            margin: []
         };
         this.button = {
             element: $(".menu-button"),
-            select: 0
-        };
-        this.slider = {
-            element: $(".menu-slide__slider"),
-            width: [],
-            margin: []
+            select: $(".menu-button_select")
         };
         var _this = this;
-        this.button.select = buttonSelect;
         this.sector.element.map(function (index, element) {
             var sector = $(element);
             var sectorWidth = sector.width();
@@ -26,39 +17,16 @@ var MenuSlider = (function () {
             var childs = sector.children();
             var childsNumber = childs.length;
             var childsWidth = 0;
-            var sliderMargin = 0;
-            _this.sector.width.push(sectorWidth);
-            _this.sector.childs.push(childsNumber);
             childs.map(function (index, element) {
-                var buttonWidth = $(element).outerWidth();
-                childsWidth += buttonWidth;
-                _this.slider.width.push(buttonWidth);
+                childsWidth += $(element).outerWidth();
             });
             sectorMargin = Math.floor(((sectorWidth - childsWidth) / 2) / childsNumber) - 1;
             _this.sector.margin.push(sectorMargin);
-            if (index) {
-                (function () {
-                    var _index = index;
-                    while (_index != 0) {
-                        sliderMargin += _this.sector.width[--_index];
-                    }
-                })();
-            }
-            childs.map(function (index, element) {
-                var buttonIndex = _this.buttonIndex($(element));
-                if (!index) {
-                    sliderMargin += sectorMargin;
-                } else {
-                    sliderMargin += _this.slider.width[buttonIndex - 1] + sectorMargin * 2;
-                }
-                _this.slider.margin.push(sliderMargin);
-            });
         });
         this.buttonCentralize();
-        this.sliderMover();
-        this.sliderActions();
+        this.menuActions();
     }
-    MenuSlider.prototype.buttonCentralize = function () {
+    Menu.prototype.buttonCentralize = function () {
         var _this = this;
         this.sector.element.map(function (index, element) {
             var elem = $(element);
@@ -67,35 +35,51 @@ var MenuSlider = (function () {
             childs.css("margin", "0 " + _this.sector.margin[elemIndex] + "px");
         });
     };
-    MenuSlider.prototype.buttonIndex = function (element) {
-        var button = element;
-        var buttonIndex = button.index();
-        var sector = button.parent();
-        var sectorIndex = sector.index();
-        if (sectorIndex) {
-            while (sectorIndex != 0) {
-                buttonIndex += this.sector.childs[--sectorIndex];
-            }
+    Menu.prototype.buttonHover = function (element, select) {
+        if (typeof select === "undefined") { select = false; }
+        var buttonLine = element.find(".menu-button__line");
+        if (select) {
+            buttonLine.css("height", "2px").css("background-color", "#2b2b2b");
+        } else {
+            buttonLine.css("height", "1px").css("background-color", "#e2e2e2");
         }
-        return buttonIndex;
     };
-    MenuSlider.prototype.sliderMover = function (buttonIndex) {
-        if (typeof buttonIndex === "undefined") { buttonIndex = this.button.select; }
-        this.slider.element.css("margin-left", this.slider.margin[buttonIndex]).css("width", this.slider.width[buttonIndex]);
+    Menu.prototype.buttonSelect = function (element, hover) {
+        if (typeof hover === "undefined") { hover = false; }
+        element.find(".menu-button__line").css("height", "2px").css("background-color", "#2b2b2b");
+        if (hover) {
+            this.button.select.find(".menu-button__line").css("background-color", "#643cfa");
+        }
     };
-    MenuSlider.prototype.sliderActions = function () {
+    Menu.prototype.buttonFree = function (element, hover) {
+        if (typeof hover === "undefined") { hover = false; }
+        element.find(".menu-button__line").css("height", "1px").css("background-color", "#e2e2e2");
+        if (hover) {
+            this.button.select.find(".menu-button__line").css("background-color", "#2b2b2b");
+        }
+    };
+    Menu.prototype.menuActions = function () {
         var _this = this;
+        this.buttonSelect(this.button.select);
         this.button.element.hover(function () {
-            var buttonIndex = _this.buttonIndex($(this));
-            _this.sliderMover(buttonIndex);
+            var button = $(this);
+            if (!button.hasClass("menu-button_select")) {
+                _this.buttonSelect(button, true);
+            }
         }, function () {
-            _this.sliderMover();
+            var button = $(this);
+            if (!button.hasClass("menu-button_select")) {
+                _this.buttonFree(button, true);
+            }
         });
         this.button.element.click(function () {
-            var buttonIndex = _this.buttonIndex($(this));
-            _this.button.select = buttonIndex;
+            _this.button.element.removeClass("menu-button_select");
+            _this.button.select = $(this);
+            $(this).addClass("menu-button_select");
+            _this.buttonFree(_this.button.element);
+            _this.buttonSelect(_this.button.select);
         });
     };
-    return MenuSlider;
+    return Menu;
 })();
 //# sourceMappingURL=menu.js.map

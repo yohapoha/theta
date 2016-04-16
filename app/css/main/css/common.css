@@ -19,10 +19,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-._show-on-load {
-  transition: 1s;
-  opacity: 0;
-}
 ._text-big {
   font-size: 20px;
 }
@@ -213,4 +209,8 @@
 .common_block-link {
   display: block;
   float: left;
+}
+.common_show-on-load {
+  transition: 1s;
+  opacity: 0;
 }

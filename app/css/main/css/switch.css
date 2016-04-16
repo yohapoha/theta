@@ -9,10 +9,6 @@
   display: table-cell;
   vertical-align: middle;
 }
-._show-on-load {
-  transition: 1s;
-  opacity: 0;
-}
 ._text-big {
   font-size: 20px;
 }
@@ -113,6 +109,12 @@
   width: 100%;
   height: 1px;
   margin: 10px 0;
+  float: left;
+}
+.switch-container {
+  width: 380px;
+  height: 360px;
+  margin: 30px 0;
   float: left;
 }
 .switch {
