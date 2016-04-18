@@ -37,10 +37,9 @@ var Menu = (function () {
     };
     Menu.prototype.buttonSelect = function (button) {
         if (typeof button === "undefined") { button = this.button.select; }
-        this.button.select.removeClass("menu-button_select");
-        this.button.select.find(".menu-button__line").css("background-color", "inherit");
-        this.button.select = button.addClass("menu-button_select");
-        button.find(".menu-button__line").css("background-color", "#2b2b2b");
+        this.button.select.removeClass("menu-button_select").find(".menu-button__line").css("background-color", "inherit");
+        button.addClass("menu-button_select").find(".menu-button__line").css("background-color", "#2b2b2b");
+        this.button.select = button;
     };
     Menu.prototype.buttonHover = function (button, mouseOver) {
         if (typeof mouseOver === "undefined") { mouseOver = true; }

@@ -47,10 +47,11 @@ class Menu implements iMenu {
 		})
 	}
 	buttonSelect(button: JQuery = this.button.select): void {
-		this.button.select.removeClass("menu-button_select");
-		this.button.select.find(".menu-button__line").css("background-color", "inherit");
-		this.button.select = button.addClass("menu-button_select");
-		button.find(".menu-button__line").css("background-color", "#2b2b2b");
+		this.button.select.removeClass("menu-button_select")
+			.find(".menu-button__line").css("background-color", "inherit");
+		button.addClass("menu-button_select")
+			.find(".menu-button__line").css("background-color", "#2b2b2b");
+		this.button.select = button;
 	}
 	buttonHover(button: JQuery, mouseOver: boolean = true): void {
 		var buttonLine: JQuery = button.find(".menu-button__line");
