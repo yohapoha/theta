@@ -47,7 +47,9 @@ class Menu implements iMenu {
 		})
 	}
 	buttonSelect(button: JQuery = this.button.select): void {
-		this.button.element.find(".menu-button__line").css("background-color", "inherit");
+		this.button.select.removeClass("menu-button_select");
+		this.button.select.find(".menu-button__line").css("background-color", "inherit");
+		this.button.select = button.addClass("menu-button_select");
 		button.find(".menu-button__line").css("background-color", "#2b2b2b");
 	}
 	buttonHover(button: JQuery, mouseOver: boolean = true): void {
@@ -71,10 +73,7 @@ class Menu implements iMenu {
 			_this.buttonHover($(this), false);
 		})
 		this.button.element.click(function() {
-			_this.button.select.removeClass("menu-button_select");
-			_this.button.select = $(this).addClass("menu-button_select");
 			_this.buttonSelect();
-			
 		})
 	}
 }
