@@ -11,5 +11,5 @@
 	// Разрешить отправку сведений об использовании и ошибках в корпорацию Майкрософт.
 	"telemetry.enableTelemetry": false,
 	// Control whether stylelint is enabled for CSS/SCSS files or not.
-	"stylelint.enable": true,
+	"stylelint.enable": true
 }
