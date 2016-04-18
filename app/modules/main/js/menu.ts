@@ -73,7 +73,7 @@ class Menu implements iMenu {
 			_this.buttonHover($(this), false);
 		})
 		this.button.element.click(function() {
-			_this.buttonSelect();
+			_this.buttonSelect($(this));
 		})
 	}
 }
